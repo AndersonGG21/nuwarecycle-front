@@ -1,3 +1,35 @@
+@import "primeng/resources/themes/tailwind-light/theme.css";
+@import "primeng/resources/primeng.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: Anybody;
+  font-weight: 400;
+  src: url('/src/assets/fonts/static/Anybody-Regular.ttf');
+}
+
+@font-face {
+  font-family: AnybodyItalic;
+  font-weight: 400;
+  src: url('/src/assets/fonts/static/Anybody-Italic.ttf');
+}
+
+@font-face {
+  font-family: AnybodyThin;
+  font-weight: 400;
+  src: url('/src/assets/fonts/static/Anybody-Thin.ttf');
+}
+
+@font-face {
+  font-family: AnyboydBold;
+  src: url('/src/assets/fonts/static/Anybody-Bold.ttf');
+}
+
+@layer base {
+  * {
+    font-family: "cursive", system-ui, sans-serif;
+  }
+}
