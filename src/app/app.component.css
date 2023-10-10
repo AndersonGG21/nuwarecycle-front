@@ -1,0 +1,14 @@
+::ng-deep .ng-autocomplete .p-autocomplete-input {
+    border: 1px solid gainsboro;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    width: 500px;
+}
+
+::ng-deep .ng-autocomplete input:focus {
+    border: none;
+    border-radius: 0;
+    outline: none;
+}
