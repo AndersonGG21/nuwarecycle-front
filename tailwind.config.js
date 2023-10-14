@@ -20,7 +20,7 @@ module.exports = {
         'anybody-italic': ['AnybodyItalic'],
         'anybody-bold': ['AnybodyBold'],
         'anybody-thin': ['AnybodyThin'],
-      }
+      },      
     },
   },
   plugins: [],
