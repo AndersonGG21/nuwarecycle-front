@@ -24,12 +24,16 @@
 }
 
 @font-face {
-  font-family: AnyboydBold;
+  font-family: AnybodyBold;
   src: url('/src/assets/fonts/static/Anybody-Bold.ttf');
 }
 
 @layer base {
   * {
     font-family: "cursive", system-ui, sans-serif;
+  }
+
+  body {
+    background-color: #F4F4F5;
   }
 }
