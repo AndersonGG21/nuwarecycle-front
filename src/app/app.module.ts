@@ -14,6 +14,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
 import { AvatarModule } from 'primeng/avatar';
+import { MenuModule } from 'primeng/menu';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -41,7 +42,8 @@ import { TestimonialBlockComponent } from './components/testimonial-block/testim
     MenubarModule,
     CarouselModule,
     SidebarModule,
-    AvatarModule   
+    AvatarModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
