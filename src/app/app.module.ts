@@ -12,6 +12,7 @@ import { RippleModule } from 'primeng/ripple';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenubarModule } from 'primeng/menubar';
 import { CarouselModule } from 'primeng/carousel';
+import { SidebarModule } from 'primeng/sidebar';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -37,8 +38,8 @@ import { TestimonialBlockComponent } from './components/testimonial-block/testim
     AutoCompleteModule,
     FormsModule,
     MenubarModule,
-    CarouselModule
-    
+    CarouselModule,
+    SidebarModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
