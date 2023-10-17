@@ -11,12 +11,22 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenubarModule } from 'primeng/menubar';
+import { CarouselModule } from 'primeng/carousel';
+
+//Components
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TestComponent } from './components/test/test.component';
+import { BestSellersComponent } from './components/best-sellers/best-sellers.component';
+import { TestimonialBlockComponent } from './components/testimonial-block/testimonial-block.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    TestComponent,
+    BestSellersComponent,
+    TestimonialBlockComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +36,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RippleModule,
     AutoCompleteModule,
     FormsModule,
-    MenubarModule
+    MenubarModule,
+    CarouselModule
     
   ],
   providers: [],
