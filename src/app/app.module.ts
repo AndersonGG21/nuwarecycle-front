@@ -18,18 +18,22 @@ import { MenuModule } from 'primeng/menu';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TestComponent } from './components/test/test.component';
 import { BestSellersComponent } from './components/best-sellers/best-sellers.component';
 import { TestimonialBlockComponent } from './components/testimonial-block/testimonial-block.component';
+import { HeroSectionComponent } from './components/hero-section/hero-section.component';
+import { BentoGridComponent } from './components/bento-grid/bento-grid.component';
+import { LandingComponent } from './components/pages/landing/landing.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    TestComponent,
     BestSellersComponent,
     TestimonialBlockComponent,
+    HeroSectionComponent,
+    BentoGridComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
