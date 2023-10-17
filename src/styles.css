@@ -29,11 +29,10 @@
 }
 
 @layer base {
-  * {
-    font-family: "cursive", system-ui, sans-serif;
-  }
-
   body {
-    background-color: #F4F4F5;
+    /* background-color: #F4F4F5; */
+    overflow-x: hidden;
+    @apply font-anybody
   }
 }
+
