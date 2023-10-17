@@ -13,6 +13,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenubarModule } from 'primeng/menubar';
 import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
+import { AvatarModule } from 'primeng/avatar';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -39,7 +40,8 @@ import { TestimonialBlockComponent } from './components/testimonial-block/testim
     FormsModule,
     MenubarModule,
     CarouselModule,
-    SidebarModule    
+    SidebarModule,
+    AvatarModule   
   ],
   providers: [],
   bootstrap: [AppComponent]
