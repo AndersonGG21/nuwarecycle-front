@@ -20,6 +20,14 @@ module.exports = {
         'anybody-italic': ['AnybodyItalic'],
         'anybody-bold': ['AnybodyBold'],
         'anybody-thin': ['AnybodyThin'],
+      },
+      backgroundImage: {
+        'gradient-green': "url('/assets/images/green-gradient.png')",
+        'gradient-purple': "url('/assets/images/purple-gradient.png')",
+        'gradient-black': "url('/assets/images/black-gradient.png')",
+        'gradient-orange': "url('/assets/images/orange-gradient.png')",
+        'gradient-nuwa': "url('/assets/images/nuwa-gradient.png')",
+        'gradient-mixed': "url('/assets/images/mixed-gradient.png')",
       }
     },
   },
