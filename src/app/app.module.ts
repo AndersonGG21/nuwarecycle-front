@@ -24,6 +24,7 @@ import { HeroSectionComponent } from './components/hero-section/hero-section.com
 import { BentoGridComponent } from './components/bento-grid/bento-grid.component';
 import { LandingComponent } from './components/pages/landing/landing.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductsComponent } from './components/pages/products/products.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FooterComponent } from './components/footer/footer.component';
     BentoGridComponent,
     LandingComponent,
     FooterComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
