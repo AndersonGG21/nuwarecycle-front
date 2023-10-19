@@ -15,6 +15,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
+import { DataViewModule } from 'primeng/dataview';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -51,7 +52,8 @@ import { ProductsComponent } from './components/pages/products/products.componen
     CarouselModule,
     SidebarModule,
     AvatarModule,
-    MenuModule
+    MenuModule,
+    DataViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
