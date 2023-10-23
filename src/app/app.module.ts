@@ -16,6 +16,9 @@ import { SidebarModule } from 'primeng/sidebar';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { DataViewModule } from 'primeng/dataview';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { SliderModule } from 'primeng/slider';
+import { CheckboxModule } from 'primeng/checkbox';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -53,7 +56,10 @@ import { ProductsComponent } from './components/pages/products/products.componen
     SidebarModule,
     AvatarModule,
     MenuModule,
-    DataViewModule
+    DataViewModule,
+    RadioButtonModule,
+    SliderModule,
+    CheckboxModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
