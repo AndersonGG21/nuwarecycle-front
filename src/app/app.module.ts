@@ -29,6 +29,7 @@ import { BentoGridComponent } from './components/bento-grid/bento-grid.component
 import { LandingComponent } from './components/pages/landing/landing.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/pages/products/products.component';
+import { ProductComponent } from './components/pages/product/product.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ProductsComponent } from './components/pages/products/products.componen
     LandingComponent,
     FooterComponent,
     ProductsComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
