@@ -19,6 +19,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SliderModule } from 'primeng/slider';
 import { CheckboxModule } from 'primeng/checkbox';
+import { GalleriaModule } from 'primeng/galleria';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -61,7 +62,8 @@ import { ProductComponent } from './components/pages/product/product.component';
     DataViewModule,
     RadioButtonModule,
     SliderModule,
-    CheckboxModule    
+    CheckboxModule,
+    GalleriaModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
