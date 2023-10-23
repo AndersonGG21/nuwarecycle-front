@@ -1,106 +1,322 @@
-<div class="w-full h-full flex justify-center">
-  <div class="hidden md:w-[15%] md:h-[100vh] md:bg-green-400 md:block">
-    Vagina
+<aside class="w-full h-full flex justify-center">
+  <div class="w-[20%]">
+    <div class="items-start self-stretch flex flex-col w-full mt-7 px-5">
+      <h2
+        class="text-zinc-900 text-base font-medium leading-[150%] uppercase self-stretch w-full -mr-5 font-anybody-bold"
+      >
+        Category
+      </h2>
+      <div class="flex flex-col justify-center w-full gap-y-2">
+        <div
+          class="flex items-center justify-between gap-2"
+          *ngFor="let category of categories"
+        >
+          <p-radioButton
+            name="category"
+            [value]="category"
+            [(ngModel)]="selectedCategory"
+            [inputId]="category.key"
+            class="border border-sunsetOrange-200 rounded-full"
+          ></p-radioButton>
+          <label
+            [for]="category.key"
+            class="text-zinc-900 text-sm font-medium self-stretch max-w-[305px] grow shrink-0 basis-auto"
+          >
+            {{ category.name }}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="items-start self-stretch flex flex-col w-full mt-12 px-5 max-md:mt-10"
+    >
+      <h2
+        class="text-zinc-900 text-base font-medium leading-[150%] uppercase self-stretch w-full -mr-5 font-anybody-bold"
+      >
+        Price Range
+      </h2>
+
+      <div class="flex flex-col justify-center w-full gap-y-4">
+        <p-slider
+          [(ngModel)]="rangeValues"
+          [range]="true"
+          class="w-full"
+        ></p-slider>
+        <div class="flex gap-3 w-full">
+          <div class="border border-gray-300 w-1/2 rounded-md p-1">
+            Min price: {{ rangeValues[0] }} K
+          </div>
+          <div class="border border-gray-300 w-1/2 rounded-md p-1">
+            Max price: {{ rangeValues[1] }} K
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="items-start self-stretch flex grow flex-col -mr-5 mt-4 gap-y-2"
+      >
+        <div
+          class="items-start self-stretch flex justify-between gap-x-2"
+          *ngFor="let price of prices"
+        >
+          <p-radioButton
+            name="price"
+            [value]="price"
+            [(ngModel)]="selectedPrice"
+            [inputId]="price.key"
+            class="border border-sunsetOrange-200 rounded-full"
+          ></p-radioButton>
+          <label
+            [for]="price.key"
+            class="text-zinc-900 text-sm font-medium self-stretch max-w-[305px] grow shrink-0 basis-auto"
+          >
+            {{ price.name }}
+          </label>
+        </div>
+      </div>
+      <!-- <span class="bg-red-500 w-max h-10 text-white">Category: {{selectedPrice.key}}</span> -->
+    </div>
+    <div
+      class="items-start self-stretch flex flex-col w-full mt-12 px-5 max-md:mt-10"
+    >
+      <h2
+        class="text-zinc-900 text-base font-medium leading-[150%] uppercase self-stretch w-full -mr-5 font-anybody-bold"
+      >
+        popular Brands
+      </h2>
+      <div class="items-start self-stretch flex grow flex-col -mr-5 mt-4">
+        <div
+          *ngFor="let brand of brands"
+          class="flex items-center justify-center gap-x-2"
+        >
+          <p-checkbox
+            name="group"
+            [value]="brand"
+            [(ngModel)]="selectedBrands"
+            [inputId]="brand.key"
+            class=""
+          ></p-checkbox>
+          <label [for]="brand.key" class="text-md">{{ brand.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="justify-center items-center rounded bg-white self-stretch flex w-full grow flex-col mt-6 px-5 py-8 border border-gray-200 shadow-md"
+    >
+      <a href="#">
+        <img
+          loading="lazy"
+          srcset="
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=100   100w,
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=200   200w,
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=400   400w,
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=800   800w,
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=1200 1200w,
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=1600 1600w,
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=2000 2000w,
+            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&
+          "
+          alt="Product"
+          class="aspect-square object-cover object-center w-[180px] overflow-hidden self-center max-w-full"
+        />
+      </a>
+      <div
+        class="justify-center items-center self-center flex w-[248px] max-w-full flex-col mt-6"
+      >
+        <div class="justify-center items-center self-stretch flex flex-col">
+          <a href="#">
+            <img
+              loading="lazy"
+              srcset="
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=100   100w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=200   200w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=400   400w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=800   800w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=1200 1200w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=1600 1600w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=2000 2000w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&
+              "
+              alt="Features"
+              class="aspect-[2.59] object-cover object-center w-[132px] overflow-hidden self-center max-w-full"
+            />
+          </a>
+          <h3
+            class="text-zinc-900 text-center text-2xl font-semibold leading-[133.333%] mt-2"
+          >
+            Heavy on Features. <br />
+            Light on Price.
+          </h3>
+        </div>
+        <div
+          class="justify-center items-start self-center flex w-[166px] max-w-full gap-2 mt-4"
+        >
+          <div
+            class="text-neutral-600 text-sm leading-[142.857%] self-center my-auto"
+          >
+            Only for:
+          </div>
+          <div
+            class="text-zinc-900 text-center text-base font-semibold items-center bg-amber-200 max-w-full px-3 py-1.5 rounded"
+          >
+            $299 USD
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="md:w-[85%] sm:w-full">
-    <p-dataView #dv [value]="products" [paginator]="true" [rows]="4" layout="grid">
-        <ng-template pTemplate="header">
-          <div class="flex w-full justify-end">
-            <p-dataViewLayoutOptions
-              class="bg-transparent"
-            ></p-dataViewLayoutOptions>
-          </div>
-        </ng-template>
-        <ng-template let-product pTemplate="listItem">
-          <div
-            class="relative flex w-full rounded-xl bg-[#f4f4f5] bg-clip-border text-gray-700 shadow-md border border-gray-200"
-          >
+    <p-dataView
+      #dv
+      [value]="products"
+      [paginator]="true"
+      [rows]="10"
+      layout="grid"
+    >
+      <ng-template pTemplate="header">
+        <div class="flex w-full justify-end">
+          <p-dataViewLayoutOptions
+            class="bg-transparent"
+          ></p-dataViewLayoutOptions>
+        </div>
+      </ng-template>
+      <ng-template let-product pTemplate="listItem">
+        <div
+          class="relative flex flex-col gap-y-4 w-[95%] rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border border-gray-200"
+        >
+          <div class="flex">
             <div
-              class="relative mx-2 mt-2 h-52 w-52 overflow-hidden rounded-xl bg-[#f4f4f5] bg-clip-border text-gray-700"
+              class="relative mx-2 mt-2 h-52 w-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
             >
               <img
                 src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
                 class="h-full w-full object-cover"
               />
             </div>
-            <div class="p-6">
+            <div class="p-6 relative">
               <div class="mb-2 flex items-center justify-between">
-                <p
-                  class="block font-anybody-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
+                <span
+                  class="block font-anybody-bold font-medium text-2xl leading-relaxed text-blue-gray-900 antialiased"
                 >
                   {{ product.name }}
-                </p>
-                <p
-                  class="block font-anybody-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
-                >
-                  $95.00
-                </p>
+                </span>
               </div>
               <p
-                class="block font-anybody-italic text-sm font-normal leading-normal text-gray-700 antialiased opacity-75"
+                class="block font-anybody-italic text-sm font-normal leading-normal text-gray-700 antialiased opacity-75 max-w-sm"
               >
-                With plenty of talk and listen time, voice-activated Siri access,
-                and an available wireless charging case.
-              </p>
+                With plenty of talk and listen time, voice-activated Siri
+                access, and an available wireless charging case.
+              </p>              
             </div>
-            <div class="p-6 pt-0">
-              <button
-                pRipple
-                class="block w-full select-none rounded-lg bg-sunsetOrange-200 py-3 px-6 text-center align-middle font-anybody-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
-                type="button"
+            <span
+                class="block font-anybody-bold text-2xl font-medium leading-relaxed text-blue-gray-900 antialiased absolute right-8 bottom-28"
               >
-                Add to Cart
-              </button>
-            </div>
+                $95.00
+            </span>
           </div>
-        </ng-template>
-    
-        <ng-template let-product pTemplate="gridItem">
-          <div
-            class="relative flex w-72 flex-col rounded-xl bg-[#f4f4f5] bg-clip-border text-gray-700 shadow-md border border-gray-200"
-          >
-            <div
-              class="relative mx-2 mt-2 h-52 overflow-hidden rounded-xl bg-[#f4f4f5] bg-clip-border text-gray-700"
+
+          <footer class="p-2 py-4 flex gap-2 items-center justify-center">
+            <button
+              pRipple
+              class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-anybody-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
+              type="button"
             >
-              <img
-                src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
-                class="h-full w-full object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <div class="mb-2 flex items-center justify-between">
-                <p
-                  class="block font-anybody-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
-                >
-                  {{ product.name }}
-                </p>
-                <p
-                  class="block font-anybody-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
-                >
-                  $95.00
-                </p>
-              </div>
-              <p
-                class="block font-anybody-italic text-sm font-normal leading-normal text-gray-700 antialiased opacity-75"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-heart"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                With plenty of talk and listen time, voice-activated Siri access,
-                and an available wireless charging case.
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+                ></path>
+              </svg>
+              Add to favorites
+            </button>
+            <button
+              pRipple
+              class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-anybody-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                <path d="M12.5 17h-6.5v-14h-2"></path>
+                <path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5"></path>
+                <path d="M16 19h6"></path>
+                <path d="M19 16v6"></path>
+              </svg>
+              Add to Cart
+            </button>
+          </footer>
+        </div>
+      </ng-template>
+
+      <ng-template let-product pTemplate="gridItem">
+        <div
+          class="relative flex w-72 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border border-gray-200"
+        >
+          <div
+            class="relative mx-2 mt-2 h-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <div class="mb-2 flex items-center justify-between">
+              <p
+                class="block font-anybody-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
+              >
+                {{ product.name }}
+              </p>
+              <p
+                class="block font-anybody-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
+              >
+                $95.00
               </p>
             </div>
-            <div class="p-6 pt-0">
-              <button
-                pRipple
-                class="block w-full select-none rounded-lg bg-sunsetOrange-200 py-3 px-6 text-center align-middle font-anybody-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button"
-              >
-                Add to Cart
-              </button>
-            </div>
+            <p
+              class="block font-anybody-italic text-sm font-normal leading-normal text-gray-700 antialiased opacity-75"
+            >
+              With plenty of talk and listen time, voice-activated Siri access,
+              and an available wireless charging case.
+            </p>
           </div>
-        </ng-template>
-      </p-dataView>
-  </div>  
-</div>
+          <div class="p-6 pt-0">
+            <button
+              pRipple
+              class="block w-full select-none rounded-lg bg-sunsetOrange-200 py-3 px-6 text-center text-white align-middle font-anybody-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              type="button"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+</aside>
 <style>
   ::ng-deep .p-dataview-header {
     background-color: transparent;
@@ -120,6 +336,10 @@
   ::ng-deep .p-dataview-list .p-dataview-content .grid {
     gap: 20px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
   }
 
   @media (min-width: 640px) {
@@ -137,13 +357,30 @@
   }
   @media (min-width: 1280px) {
     ::ng-deep .p-dataview-grid .p-dataview-content .grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 20rem));
       place-content: center;
     }
   }
 
   ::ng-deep .p-highlight {
-    background-color: #f2652280;
-    border-radius: 8px;
+    background-color: rgba(255, 68, 0, 0.76);
   }
+
+  ::ng-deep .p-slider-handle:hover,
+  ::ng-deep .p-slider-range {
+    background-color: orangered;
+  }
+
+  ::ng-deep .p-slider-handle {
+    background-color: whitesmoke;
+    border: 1px solid lightgrey;
+  }
+
+  ::ng-deep .p-checkbox-box {
+    border: 1px solid lightgrey;
+  }
+
+  /* ::ng-deep .p-ink-active {
+    background-color: rgba(255, 68, 0, 0.747);
+  } */
 </style>
