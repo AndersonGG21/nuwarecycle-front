@@ -15,6 +15,6 @@ export class ProductComponent implements OnInit {
       'https://th.bing.com/th/id/OIP.myISToIroJNoSvTdnMTw2AHaEK?pid=ImgDet&rs=1',
       'https://i.pinimg.com/originals/dc/ce/1f/dcce1fdad76826f14218f7911b935dfd.jpg',
       'https://th.bing.com/th/id/R.e18ca28729c06f66612f04af40dbfba9?rik=J0psD%2bbcAAS%2fnw&pid=ImgRaw&r=0',
-    ];
+    ];   
   }
 }

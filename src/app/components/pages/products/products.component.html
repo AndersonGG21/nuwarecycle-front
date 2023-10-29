@@ -1,5 +1,5 @@
 <aside class="w-full h-full flex justify-center">
-  <div class="w-[20%]">
+  <div class="w-[20%] hidden md:flex md:flex-col lg:flex lg:flex-col">
     <div class="items-start self-stretch flex flex-col w-full mt-7 px-5">
       <h2
         class="text-zinc-900 text-base font-medium leading-[150%] uppercase self-stretch w-full -mr-5 font-anybody-bold"
@@ -16,6 +16,7 @@
             [value]="category"
             [(ngModel)]="selectedCategory"
             [inputId]="category.key"
+            (onClick)="getCategory(category.key)"
             class="border border-sunsetOrange-200 rounded-full"
           ></p-radioButton>
           <label
@@ -65,6 +66,7 @@
             [(ngModel)]="selectedPrice"
             [inputId]="price.key"
             class="border border-sunsetOrange-200 rounded-full"
+            (onClick)="showPriceRange(price)"
           ></p-radioButton>
           <label
             [for]="price.key"
@@ -94,7 +96,7 @@
             [value]="brand"
             [(ngModel)]="selectedBrands"
             [inputId]="brand.key"
-            class=""
+            (onChange)="showBrands()"
           ></p-checkbox>
           <label [for]="brand.key" class="text-md">{{ brand.name }}</label>
         </div>
@@ -152,16 +154,16 @@
         <div
           class="justify-center items-start self-center flex w-[166px] max-w-full gap-2 mt-4"
         >
-          <div
+          <span
             class="text-neutral-600 text-sm leading-[142.857%] self-center my-auto"
           >
             Only for:
-          </div>
-          <div
+          </span>
+          <span
             class="text-zinc-900 text-center text-base font-semibold items-center bg-amber-200 max-w-full px-3 py-1.5 rounded"
           >
             $299 USD
-          </div>
+          </span>
         </div>
       </div>
     </div>
