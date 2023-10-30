@@ -21,6 +21,7 @@ import { SliderModule } from 'primeng/slider';
 import { CheckboxModule } from 'primeng/checkbox';
 import { GalleriaModule } from 'primeng/galleria';
 import { TabViewModule } from 'primeng/tabview';
+import { DialogModule } from 'primeng/dialog';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -65,7 +66,8 @@ import { ProductComponent } from './components/pages/product/product.component';
     SliderModule,
     CheckboxModule,
     GalleriaModule,
-    TabViewModule
+    TabViewModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
