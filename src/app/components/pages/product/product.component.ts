@@ -1,4 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+  stock: number;
+  image1: string;
+  image2: string;
+  image3: string;
+  image4: string;
+  brand: string;
+  rating: number;
+}
 
 @Component({
   selector: 'app-product',
@@ -7,6 +24,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
   images: string[] = [];
+  cartService = inject(ShoppingCartService);
+  product: Product = {
+    id: 1,
+    name: 'Producto de ejemplo',
+    description: 'Descripción del producto de ejemplo.',
+    price: 29.99,
+    image: 'producto.jpg',
+    category: 'Electrónica',
+    stock: 50,
+    image1: 'imagen1.jpg',
+    image2: 'imagen2.jpg',
+    image3: 'imagen3.jpg',
+    image4: 'imagen4.jpg',
+    brand: 'Ejemplo Brand',
+    rating: 4,
+  };
 
   ngOnInit(): void {
     this.images = [
@@ -15,6 +48,10 @@ export class ProductComponent implements OnInit {
       'https://th.bing.com/th/id/OIP.myISToIroJNoSvTdnMTw2AHaEK?pid=ImgDet&rs=1',
       'https://i.pinimg.com/originals/dc/ce/1f/dcce1fdad76826f14218f7911b935dfd.jpg',
       'https://th.bing.com/th/id/R.e18ca28729c06f66612f04af40dbfba9?rik=J0psD%2bbcAAS%2fnw&pid=ImgRaw&r=0',
-    ];   
+    ];
+  }
+
+  addProduct(product: Product) {
+    this.cartService.addToCart(product);
   }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 
 interface Product {
   id: number;
@@ -22,14 +23,16 @@ interface Product {
 export class ShoppingCartService {
   constructor() {}
 
+  private cartLength : Subject<string> = new Subject<string>();
+
+
   //Create an empty list of products
   cartProducts: Product[] = [];
 
   //Add product to the list
   addToCart(product: Product) {
     this.cartProducts.push(product);
-    console.log(product);
-    console.log(this.cartProducts);
+    this.cartLength.next(this.cartProducts.length.toString());
   }
 
   //Get the list of products
@@ -44,4 +47,13 @@ export class ShoppingCartService {
       this.cartProducts.splice(index, 1);
     }
   }
+
+  getCartLenght() : Observable<string>{
+    return this.cartLength.asObservable();
+  }
+
+  updateValue(newValue: string) {
+    this.cartLength.next(newValue);
+  }
+
 }

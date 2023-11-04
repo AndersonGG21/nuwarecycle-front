@@ -22,6 +22,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { GalleriaModule } from 'primeng/galleria';
 import { TabViewModule } from 'primeng/tabview';
 import { DialogModule } from 'primeng/dialog';
+import { BadgeModule } from 'primeng/badge';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -67,7 +68,8 @@ import { ProductComponent } from './components/pages/product/product.component';
     CheckboxModule,
     GalleriaModule,
     TabViewModule,
-    DialogModule
+    DialogModule,
+    BadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

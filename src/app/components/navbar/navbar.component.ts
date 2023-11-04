@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,17 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  
+  items: any[] = [];
+  menuItems: MenuItem[] | undefined;
+  selectedItem: any = {};
+  suggestions: any[] = [];
+  sidebarVisible: boolean = false;
+  visible: boolean = false;
+  private cartService = inject(ShoppingCartService);
+  badge$ = '0';
+  private cdr = inject(ChangeDetectorRef);
+
   ngOnInit(): void {
     this.menuItems = [
       {
@@ -26,16 +38,17 @@ export class NavbarComponent implements OnInit {
         // }
       },
     ];
+
+    this.cartService.getCartLenght().subscribe((res) => {
+      this.badge$ = res.toString();
+      this.cdr.detectChanges();
+    })
   }
-  items: any[] = [];
+  
 
-  menuItems: MenuItem[] | undefined;
-
-  selectedItem: any = {};
-
-  suggestions: any[] = [];
-
-  sidebarVisible: boolean = false;
+  showDialog() {
+    this.visible = true;
+  }
 
   search(event: AutoCompleteCompleteEvent) {
     this.suggestions = [...Array(10).keys()].map(

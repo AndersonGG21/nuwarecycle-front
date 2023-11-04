@@ -18,14 +18,16 @@
   </div>
   <div class="w-full lg:w-1/2 h-full flex flex-col justify-start gap-4 p-2">
     <div class="flex flex-col gap-1">
-      <span>Brand: Iphone</span>
-      <span>Model: XXXX</span>
-      <span>Availability: Only 2 in stock</span>
+      <span>Brand: {{ product.brand }}</span>
+      <span>Model: {{ product.id }}</span>
+      <span>Availability: Only {{ product.stock }} in stock</span>
     </div>
     <h2 class="font-anybody-bold text-3xl">
-      IPHONE 15 PRO MAX ULTRA MEGA HIPER XL
+      {{ product.name }}
     </h2>
-    <span class="font-anybody-bold text-2xl self-end mr-2">$999</span>
+    <span class="font-anybody-bold text-2xl self-end mr-2"
+      >${{ product.price }}</span
+    >
     <footer class="p-2 flex gap-2 items-center justify-center">
       <button
         pRipple
@@ -55,6 +57,7 @@
         pRipple
         class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-anybody-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
         type="button"
+        (click)="addProduct(product)"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -123,27 +126,27 @@
         <ng-template pTemplate="header">
           <div class="flex items-center gap-1">
             <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-users-group"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-            <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
-            <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-            <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
-            <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-            <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
-          </svg>
-          <span>Reviews</span>
-          </div>          
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-users-group"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+              <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
+              <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+              <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
+              <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+              <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
+            </svg>
+            <span>Reviews</span>
+          </div>
         </ng-template>
         <p>
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -154,7 +157,7 @@
           qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit,
           sed quia non numquam eius modi.
         </p>
-      </p-tabPanel>      
+      </p-tabPanel>
     </p-tabView>
   </div>
 </article>
