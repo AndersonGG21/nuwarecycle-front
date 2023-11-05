@@ -363,26 +363,26 @@
 
 <!-- Shopping Cart Modal -->
 <p-dialog
-  header="Header"
+  header="Your Shopping Cart"
   [(visible)]="visible"
   [modal]="true"
-  [style]="{ width: '50vw' }"
+  [style]="{ width: '40vw' }"
   [draggable]="false"
   [resizable]="false"
 >
-  <div class="flex w-full h-48 pl-0 items-center gap-4">
+  <div class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 rounded-lg shadow-sm">
     <img
       src="/src/assets/images/194shots_so.png"
       alt="Product{} thumbnail in Shopping cart"
-      width="75"
-      height="80"
+      width="90"
+      height="90"
       class="rounded-lg bg-white"
     />
-    <div class="flex flex-col h-full items-start gap-2">
+    <div class="flex flex-col h-full items-start justify-center gap-2">
       <h2 class="w-56 font-anybody-bold text-base line-height-4">
         Product Name
       </h2>
-      <span class="w-56 font-anybody-thin text-base line-height-4"
+      <span class="w-56 font-anybody-italic text-base line-height-4 text-gray-500"
         >Product short desc</span
       >
       <div class="flex flex-col">
@@ -403,7 +403,16 @@
         </p-inputNumber>
       </div>
     </div>
+    <div class="flex flex-col justify-around items-center h-full pr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="justify-self-start">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M18 6l-12 12"></path>
+        <path d="M6 6l12 12"></path>
+     </svg>
+     <span class="font-anybody-bold">$price</span>
+    </div>
   </div>
+  
 </p-dialog>
 
 <p-menu #menu [model]="menuItems" [popup]="true"></p-menu>
@@ -421,7 +430,6 @@
   }
 
   ::ng-deep .p-inputnumber-input {
-    width: 100px;
-    background-color: red;
+    width: 100px;    
   }
 </style>
