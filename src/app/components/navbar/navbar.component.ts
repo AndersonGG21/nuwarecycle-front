@@ -11,6 +11,7 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 export class NavbarComponent implements OnInit {
   
   items: any[] = [];
+  productAmount : number = 0;
   menuItems: MenuItem[] | undefined;
   selectedItem: any = {};
   suggestions: any[] = [];
@@ -44,7 +45,6 @@ export class NavbarComponent implements OnInit {
       this.cdr.detectChanges();
     })
   }
-  
 
   showDialog() {
     this.visible = true;
