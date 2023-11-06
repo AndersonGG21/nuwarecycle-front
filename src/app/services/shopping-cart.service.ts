@@ -56,4 +56,12 @@ export class ShoppingCartService {
     this.cartLength.next(newValue);
   }
 
+  //Detelete product from the list by id
+  deleteProductById(id: number) {
+    const index = this.cartProducts.findIndex((product) => product.id === id);
+    if (index !== -1) {
+      this.cartProducts.splice(index, 1);
+    }
+  }
+
 }
