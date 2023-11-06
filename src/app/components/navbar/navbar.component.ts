@@ -29,14 +29,14 @@ export class NavbarComponent implements OnInit {
         icon: 'pi pi-sign-in',
         escape: false,
         command: () => {
-          alert("Show Modal Login");
+          this.loginVisible = true;
         }
       },
       {
         label: 'Delete',
         icon: 'pi pi-times',
         command: () => {
-          this.loginVisible = true;
+          
         }
       },
     ];
