@@ -317,11 +317,14 @@
   header="Your Shopping Cart"
   [(visible)]="visible"
   [modal]="true"
-  [style]="{ width: '40vw' }"
+  [style]="{ width: '40vw', 'max-height': '100vh', 'overflow-y': 'scroll' }"
   [draggable]="false"
   [resizable]="false"
+  position="topright"
 >
-  <div class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 rounded-lg shadow-sm">
+  <div
+    class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 rounded-lg shadow-sm"
+  >
     <img
       src="/src/assets/images/194shots_so.png"
       alt="Product{} thumbnail in Shopping cart"
@@ -333,7 +336,8 @@
       <h2 class="w-56 font-anybody-bold text-base line-height-4">
         Product Name
       </h2>
-      <span class="w-56 font-anybody-italic text-base line-height-4 text-gray-500"
+      <span
+        class="w-56 font-anybody-italic text-base line-height-4 text-gray-500"
         >Product short desc</span
       >
       <div class="flex flex-col">
@@ -355,17 +359,80 @@
       </div>
     </div>
     <div class="flex flex-col justify-around items-center h-full pr-2">
-      <button class="cursor-pointer" (click)="deleteProduct(0)"> 
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <button class="cursor-pointer" (click)="deleteProduct(0)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-x"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M18 6l-12 12"></path>
           <path d="M6 6l12 12"></path>
         </svg>
       </button>
-     <span class="font-anybody-bold">$price</span>
+      <span class="font-anybody-bold">$price</span>
     </div>
   </div>
-  
+</p-dialog>
+
+<!-- Login Modal -->
+<p-dialog
+  header="Login"
+  [(visible)]="loginVisible"
+  [modal]="true"
+  [style]="{ width: '40vw', overflow: 'hidden', padding: '10px', height: 'auto'}"
+  [draggable]="false"
+  [resizable]="false"
+  [showHeader]="false"
+  [breakpoints]="{ '960px': '75vw' }"
+>
+  <div class="flex items-center justify-center w-full lg:p-0">
+    <div class="flex items-center">
+      <form
+        class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
+      >
+        <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">Sign In</h3>
+        <p class="mb-4 text-grey-700">Enter your email and password</p>                
+        <label for="email" class="mb-2 text-sm text-start text-grey-900"
+          >Email*</label
+        >
+        <input
+          id="email"
+          type="email"
+          placeholder="mail@loopple.com"
+          class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        />
+        <label for="password" class="mb-2 text-sm text-start text-grey-900"
+          >Password*</label
+        >
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter a password"
+          class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        />
+        
+        <button
+          class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
+        >
+          Sign In
+        </button>
+        <p class="text-sm leading-relaxed text-grey-900">
+          Not registered yet?
+          <a href="javascript:void(0)" class="font-bold text-grey-700"
+            >Create an Account</a
+          >
+        </p>
+      </form>
+    </div>
+  </div>
 </p-dialog>
 
 <p-menu #menu [model]="menuItems" [popup]="true"></p-menu>
@@ -383,6 +450,10 @@
   }
 
   ::ng-deep .p-inputnumber-input {
-    width: 100px;    
+    width: 100px;
+  }
+
+  ::ng-deep .p-dialog-content {
+    border-radius: 8px;
   }
 </style>

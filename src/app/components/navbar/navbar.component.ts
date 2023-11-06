@@ -17,9 +17,10 @@ export class NavbarComponent implements OnInit {
   suggestions: any[] = [];
   sidebarVisible: boolean = false;
   visible: boolean = false;
+  loginVisible: boolean = false;
   private cartService = inject(ShoppingCartService);
   badge$ = '0';
-  shoppingCartProducts: any[] = [];
+  shoppingCartProducts: any[] = [];  
 
   ngOnInit(): void {
     this.menuItems = [
@@ -34,9 +35,9 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Delete',
         icon: 'pi pi-times',
-        // command: () => {
-        //     this.delete();
-        // }
+        command: () => {
+          this.loginVisible = true;
+        }
       },
     ];
 
