@@ -36,6 +36,7 @@ import { LandingComponent } from './components/pages/landing/landing.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/pages/products/products.component';
 import { ProductComponent } from './components/pages/product/product.component';
+import { CartComponent } from './components/pages/cart/cart.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { ProductComponent } from './components/pages/product/product.component';
     FooterComponent,
     ProductsComponent,
     ProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
