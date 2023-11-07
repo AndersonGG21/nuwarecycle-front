@@ -20,6 +20,9 @@ module.exports = {
         'anybody-italic': ['AnybodyItalic'],
         'anybody-bold': ['AnybodyBold'],
         'anybody-thin': ['AnybodyThin'],
+        'geist': ['Geist'],
+        'geist-bold': ['Geist-Bold'],
+        'geist-thin': ['Geist-Thin']              
       },
       backgroundImage: {
         'gradient-green': "url('/assets/images/green-gradient.png')",

@@ -349,8 +349,7 @@
           inputId="horizontal"
           spinnerMode="horizontal"
           [step]="1"
-          decrementButtonClass="icon-minus"
-          incrementButtonClass="icon-plus"
+          incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
           [min]="0"
           [max]="100"
           class="w-9"
@@ -437,20 +436,10 @@
 
 <p-menu #menu [model]="menuItems" [popup]="true"></p-menu>
 <style>
-  ::ng-deep.icon-plus::before {
-    content: "+";
-    font-size: 30px;
-    color: green;
-  }
-
-  ::ng-deep.icon-minus::before {
-    content: "-";
-    font-size: 30px;
-    color: red;
-  }
-
   ::ng-deep .p-inputnumber-input {
-    width: 100px;
+    width: 40px;
+    height: 30px;
+    text-align: center;
   }
 
   ::ng-deep .p-dialog-content {

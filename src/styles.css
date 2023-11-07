@@ -29,10 +29,25 @@
   src: url('/src/assets/fonts/static/Anybody-Bold.ttf');
 }
 
+@font-face {
+  font-family: Geist;
+  src: url('/src/assets/fonts/static/Geist-Regular.otf');
+}
+
+@font-face {
+  font-family: Geist-Bold;
+  src: url('/src/assets/fonts/static/Geist-Bold.otf');
+}
+
+@font-face {
+  font-family: Geist-Thin;
+  src: url('/src/assets/fonts/static/Geist-Thin.otf');
+}
+
 @layer base {
   body {
     /* background-color: #F4F4F5; */
     overflow-x: hidden;
-    @apply font-anybody
+    @apply font-geist
   }
 }
