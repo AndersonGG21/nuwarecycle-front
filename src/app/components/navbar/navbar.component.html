@@ -323,7 +323,7 @@
   position="topright"
 >
   <div
-    class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 rounded-lg shadow-sm"
+    class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm"
   >
     <img
       src="/src/assets/images/194shots_so.png"
@@ -377,8 +377,15 @@
         </svg>
       </button>
       <span class="font-geist-bold">$price</span>
-    </div>
+    </div>  
   </div>
+  <button
+  class="w-full px-2 py-4 text-sm font-bold leading-none text-white md:w-24 rounded-lg  focus:ring-1 focus:ring-white bg-sunsetOrange-200 mt-2"
+  routerLink="cart"
+  (click)="visible = false"
+>
+  Go to cart
+</button>
 </p-dialog>
 
 <!-- Login Modal -->
@@ -442,7 +449,7 @@
     text-align: center;
   }
 
-  ::ng-deep .p-dialog-content {
+  ::ng-deep .p-dialog {
     border-radius: 8px;
   }
 </style>
