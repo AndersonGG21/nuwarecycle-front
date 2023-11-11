@@ -81,34 +81,34 @@ export class ProductsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.products = [
       {
-        name: 'Producto 1',
+        name: 'Iphone 15 Pro Max',
+        img: '/src/assets/images/iphon15.png',
+        price: 100,
+        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
+      },
+      {
+        name: 'Apple Watch Ultra',
+        img: '../../src/assets/images/sw.png',
+        price: 200,
+        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
+      },
+      {
+        name: 'Macbook Pro 2021',
+        img: '../../src/assets/images/macbook.png',
+        price: 300,
+        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
+      },
+      {
+        name: 'Smart TV LG 2021',
+        img: '../../src/assets/images/lg.png',
+        price: 400,
+        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
+      },
+      {
+        name: 'Airpods Pro',
         img: 'https://via.placeholder.com/150',
         price: 100,
-        description: 'Descripcion del producto 1',
-      },
-      {
-        name: 'Producto 2',
-        img: 'https://via.placeholder.com/150',
-        price: 200,
-        description: 'Descripcion del producto 2',
-      },
-      {
-        name: 'Producto 3',
-        img: 'https://via.placeholder.com/150',
-        price: 300,
-        description: 'No',
-      },
-      {
-        name: 'Producto 4',
-        img: 'https://via.placeholder.com/150',
-        price: 400,
-        description: 'No',
-      },
-      {
-        name: 'Producto 5',
-        img: 'https://via.placeholder.com/150',
-        price: 500,
-        description: 'No',
+        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
       },
     ];
 
