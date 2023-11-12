@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 // PrimeNG Modules
@@ -24,6 +25,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { DialogModule } from 'primeng/dialog';
 import { BadgeModule } from 'primeng/badge';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 //Components
@@ -54,6 +56,7 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
     ProductComponent,
     CartComponent,
     CheckoutComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,9 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
     TabViewModule,
     DialogModule,
     BadgeModule,
-    InputNumberModule
+    InputNumberModule,
+    DropdownModule,    
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
