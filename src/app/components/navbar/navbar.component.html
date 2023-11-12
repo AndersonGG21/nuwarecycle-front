@@ -324,6 +324,7 @@
 >
   <div
     class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm"
+    *ngFor="let product of shoppingCartProducts"
   >
     <img
       src="/src/assets/images/194shots_so.png"
@@ -334,11 +335,11 @@
     />
     <div class="flex flex-col h-full items-start justify-center gap-2">
       <h2 class="w-56 font-geist-bold text-base line-height-4">
-        Product Name
+        {{ product.name }}
       </h2>
       <span
         class="w-56 font-geist text-base line-height-4 text-gray-500"
-        >Product short desc</span
+        >{{ product.description.substring(0,50) }}...</span
       >
       <div class="flex flex-col">
         <label for="horizontal">Horizontal with Step</label>
@@ -359,24 +360,9 @@
     </div>
     <div class="flex flex-col justify-around items-center h-full pr-2">
       <button class="cursor-pointer" (click)="deleteProduct(0)">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-x"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-          <path d="M18 6l-12 12"></path>
-          <path d="M6 6l12 12"></path>
-        </svg>
+        <li class="pi pi-times"></li>
       </button>
-      <span class="font-geist-bold">$price</span>
+      <span class="font-geist-bold">{{product.price | currency: 'USD'}}</span>
     </div>  
   </div>
   <button

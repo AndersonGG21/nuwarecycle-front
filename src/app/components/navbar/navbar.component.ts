@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { Product } from 'src/app/type';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,7 @@ export class NavbarComponent implements OnInit {
   loginVisible: boolean = false;
   private cartService = inject(ShoppingCartService);
   badge$ = '0';
-  shoppingCartProducts: any[] = [];  
+  shoppingCartProducts: Product[] = [];    
 
   ngOnInit(): void {
     this.menuItems = [

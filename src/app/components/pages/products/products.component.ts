@@ -7,13 +7,8 @@ import {
   inject,
 } from '@angular/core';
 import { Params, Router } from '@angular/router';
-
-export type Product = {
-  name: string;
-  img: string;
-  price: number;
-  description: string;
-};
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { Product } from 'src/app/type';
 
 export type NameKey = {
   name: string;
@@ -42,6 +37,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   rangeValues: number[] = [20, 80];
   @Input() category?: string;
   private router = inject(Router);
+  private cartService = inject(ShoppingCartService);
 
   brands: NameKey[] = [
     { name: 'All', key: 'all' },
@@ -81,35 +77,50 @@ export class ProductsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.products = [
       {
-        name: 'Iphone 15 Pro Max',
-        img: '/src/assets/images/iphon15.png',
-        price: 100,
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
+        id: 1,
+        name: "Product 1",
+        description: "This is the description of Product 1",
+        price: 10.99,
+        image: "https://example.com/image1.jpg",
+        category: "Category 1",
+        stock: 20,
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg",
+        image3: "https://example.com/image3.jpg",
+        image4: "https://example.com/image4.jpg",
+        brand: "Brand 1",
+        rating: 4.5
       },
       {
-        name: 'Apple Watch Ultra',
-        img: '../../src/assets/images/sw.png',
-        price: 200,
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
+        id: 2,
+        name: "Product 2",
+        description: "This is the description of Product 2",
+        price: 19.99,
+        image: "https://example.com/image2.jpg",
+        category: "Category 2",
+        stock: 15,
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg",
+        image3: "https://example.com/image3.jpg",
+        image4: "https://example.com/image4.jpg",
+        brand: "Brand 2",
+        rating: 3.8
       },
       {
-        name: 'Macbook Pro 2021',
-        img: '../../src/assets/images/macbook.png',
-        price: 300,
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
-      },
-      {
-        name: 'Smart TV LG 2021',
-        img: '../../src/assets/images/lg.png',
-        price: 400,
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
-      },
-      {
-        name: 'Airpods Pro',
-        img: 'https://via.placeholder.com/150',
-        price: 100,
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem error ipsa quis doloremque asperiores magnam aperiam recusandae nisi quasi beatae quisquam non veritatis reiciendis, obcaecati ipsam, delectus minima tempore sit!',
-      },
+        id: 3,
+        name: "Product 3",
+        description: "This is the description of Product 3",
+        price: 7.99,
+        image: "https://example.com/image3.jpg",
+        category: "Category 1",
+        stock: 10,
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg",
+        image3: "https://example.com/image3.jpg",
+        image4: "https://example.com/image4.jpg",
+        brand: "Brand 1",
+        rating: 4.2
+      },      
     ];
 
     this.selectedCategory = this.categories[0];
@@ -147,5 +158,9 @@ export class ProductsComponent implements OnInit, OnChanges {
 
   showBrands() {
     //this.productService.get
+  }
+
+  addProduct(product : Product) {
+    this.cartService.addToCart(product);
   }
 }

@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-export interface Product {
-  name : string,
-  img : string,
-  price : number,
-  description : string
-}
+import { Component, OnInit, inject } from '@angular/core';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { Product } from 'src/app/type';
 
 @Component({
   selector: 'app-best-sellers',
@@ -14,12 +10,60 @@ export interface Product {
 export class BestSellersComponent implements OnInit{
   responsiveOptions: any[] | undefined;
   products : Product[] = [];
+  private cartService = inject(ShoppingCartService);
 
   ngOnInit() {
 
-    this.products = [{name : "Producto 1", img : "https://via.placeholder.com/150", price : 100, description : "Descripcion del producto 1"}, {name : "Producto 2", img : "https://via.placeholder.com/150", price : 200, description : "Descripcion del producto 2"},  {name : "Producto 3", img : "https://via.placeholder.com/150", price : 300, description : 'No'}, {name : "Producto 4", img : "https://via.placeholder.com/150", price : 400, description : 'No'}, {name : "Producto 5", img : "https://via.placeholder.com/150", price : 500, description : 'No'}]
-      
+    //Make this products Partial<Product[]> = []; an array of products
+    this.products = [
+      {
+        id: 1,
+        name: "Product 1",
+        description: "This is the description of Product 1",
+        price: 10.99,
+        image: "https://example.com/image1.jpg",
+        category: "Category 1",
+        stock: 20,
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg",
+        image3: "https://example.com/image3.jpg",
+        image4: "https://example.com/image4.jpg",
+        brand: "Brand 1",
+        rating: 4.5
+      },
+      {
+        id: 2,
+        name: "Product 2",
+        description: "This is the description of Product 2",
+        price: 19.99,
+        image: "https://example.com/image2.jpg",
+        category: "Category 2",
+        stock: 15,
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg",
+        image3: "https://example.com/image3.jpg",
+        image4: "https://example.com/image4.jpg",
+        brand: "Brand 2",
+        rating: 3.8
+      },
+      {
+        id: 3,
+        name: "Product 3",
+        description: "This is the description of Product 3",
+        price: 7.99,
+        image: "https://example.com/image3.jpg",
+        category: "Category 1",
+        stock: 10,
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg",
+        image3: "https://example.com/image3.jpg",
+        image4: "https://example.com/image4.jpg",
+        brand: "Brand 1",
+        rating: 4.2
+      },      
+    ];
     
+            
     this.responsiveOptions = [
       {
         breakpoint: '1199px',
@@ -38,4 +82,8 @@ export class BestSellersComponent implements OnInit{
       },
     ];
   }  
+
+  addProduct(product: Product) {
+    this.cartService.addToCart(product);
+  }
 }

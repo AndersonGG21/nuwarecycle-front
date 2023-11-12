@@ -1,8 +1,9 @@
-<!-- component -->
 <main class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
   <section class="container max-w-screen-lg mx-auto">
     <div>
-      <h2 class="font-semibold text-xl text-gray-600 mb-6">Complete your information</h2>      
+      <h2 class="font-semibold text-xl text-gray-600 mb-6">
+        Complete your information
+      </h2>
       <form
         class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6"
         [formGroup]="personalInfo"
@@ -17,7 +18,7 @@
           <div class="lg:col-span-2">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
               <div class="md:col-span-5">
-                <label for="name">Name</label>                
+                <label for="name">Name</label>
                 <input
                   type="text"
                   name="name"
@@ -26,17 +27,23 @@
                   value=""
                   required
                   formControlName="name"
-                />        
-                <ng-container *ngIf="personalInfo.get('name')?.errors?.['minlength']">
-                    <span class="text-red-400">Name must be at least 5 characters long.</span>
+                />
+                <ng-container
+                  *ngIf="personalInfo.get('name')?.errors?.['minlength']"
+                >
+                  <span class="text-red-400"
+                    >Name must be at least 5 characters long.</span
+                  >
                 </ng-container>
-                <ng-container *ngIf="personalInfo.get('name')?.errors?.['required']">
-                    <span class="text-red-400">Name is required</span>
+                <ng-container
+                  *ngIf="personalInfo.get('name')?.errors?.['required']"
+                >
+                  <span class="text-red-400">Name is required</span>
                 </ng-container>
               </div>
 
               <div class="md:col-span-5">
-                <label for="email">Email Address</label>                
+                <label for="email">Email Address</label>
                 <input
                   type="text"
                   name="email"
@@ -46,12 +53,16 @@
                   placeholder="email@domain.com"
                   required
                 />
-                <ng-container *ngIf="personalInfo.get('email')?.errors?.['email']">
-                    <span class="text-red-400">Please enter a valid email</span>
-                </ng-container> 
-                <ng-container *ngIf="personalInfo.get('email')?.errors?.['required']">
-                    <span class="text-red-400">Email is required</span>
-                </ng-container>               
+                <ng-container
+                  *ngIf="personalInfo.get('email')?.errors?.['email']"
+                >
+                  <span class="text-red-400">Please enter a valid email</span>
+                </ng-container>
+                <ng-container
+                  *ngIf="personalInfo.get('email')?.errors?.['required']"
+                >
+                  <span class="text-red-400">Email is required</span>
+                </ng-container>
               </div>
               <div class="md:col-span-3">
                 <label for="address">Address / Street</label>
@@ -62,16 +73,25 @@
                   class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                   formControlName="address"
                 />
-                <ng-container *ngIf="personalInfo.get('address')?.errors?.['required']">
-                    <span class="text-red-400">Address is required</span>
-                </ng-container> 
-                <ng-container *ngIf="personalInfo.get('address')?.errors?.['minlength']">
-                    <span class="text-red-400">Enter a valid address</span>
-                </ng-container>              
+                <ng-container
+                  *ngIf="personalInfo.get('address')?.errors?.['required']"
+                >
+                  <span class="text-red-400">Address is required</span>
+                </ng-container>
+                <ng-container
+                  *ngIf="personalInfo.get('address')?.errors?.['minlength']"
+                >
+                  <span class="text-red-400">Enter a valid address</span>
+                </ng-container>
               </div>
               <div class="md:col-span-2">
                 <label for="country">Country / Region</label>
-                <p-dropdown formControlName="selectedCity" [options]="cities" optionLabel="name" placeholder="Select a city"></p-dropdown>
+                <p-dropdown
+                  formControlName="selectedCity"
+                  [options]="cities"
+                  optionLabel="name"
+                  placeholder="Select a city"
+                ></p-dropdown>
               </div>
               <div class="md:col-span-1">
                 <label for="zipcode">Zipcode</label>
@@ -83,15 +103,20 @@
                   required
                   formControlName="zipcode"
                 />
-                <ng-container *ngIf="personalInfo.get('zipcode')?.errors?.['required']">
-                    <span class="text-red-400">Zipcode is required</span>
-                </ng-container>               
+                <ng-container
+                  *ngIf="personalInfo.get('zipcode')?.errors?.['required']"
+                >
+                  <span class="text-red-400">Zipcode is required</span>
+                </ng-container>
               </div>
             </div>
           </div>
-        </div>        
+        </div>
       </form>
-      <form class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6" [formGroup]="paymentInfo">
+      <form
+        class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6"
+        [formGroup]="paymentInfo"
+      >
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
           <div class="text-gray-600">
             <p class="font-medium text-lg">Payment Details</p>
@@ -110,12 +135,18 @@
                   required
                   formControlName="cardHolder"
                 />
-                <ng-container *ngIf="paymentInfo.get('cardHolder')?.errors?.['required']">
-                    <span class="text-red-400">Card Holder is required</span>
+                <ng-container
+                  *ngIf="paymentInfo.get('cardHolder')?.errors?.['required']"
+                >
+                  <span class="text-red-400">Card Holder is required</span>
                 </ng-container>
-                <ng-container *ngIf="paymentInfo.get('cardHolder')?.errors?.['minlength']">
-                    <span class="text-red-400">Card Holder must be at least 3 characters long.</span>
-                </ng-container>               
+                <ng-container
+                  *ngIf="paymentInfo.get('cardHolder')?.errors?.['minlength']"
+                >
+                  <span class="text-red-400"
+                    >Card Holder must be at least 3 characters long.</span
+                  >
+                </ng-container>
               </div>
 
               <div class="md:col-span-5">
@@ -127,14 +158,20 @@
                   class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                   placeholder="2222 2222 2222 2222"
                   required
-                  formControlName="cardNumber"   
-                  [maxLength]="12"             
+                  formControlName="cardNumber"
+                  [maxLength]="12"
                 />
-                <ng-container *ngIf="paymentInfo.get('cardNumber')?.errors?.['min']">
-                    <span class="text-red-400">Card number must be 12 digits long.</span>
-                </ng-container>                
-                <ng-container *ngIf="paymentInfo.get('cardNumber')?.errors?.['required']">
-                    <span class="text-red-400">Card number is required</span>
+                <ng-container
+                  *ngIf="paymentInfo.get('cardNumber')?.errors?.['min']"
+                >
+                  <span class="text-red-400"
+                    >Card number must be 12 digits long.</span
+                  >
+                </ng-container>
+                <ng-container
+                  *ngIf="paymentInfo.get('cardNumber')?.errors?.['required']"
+                >
+                  <span class="text-red-400">Card number is required</span>
                 </ng-container>
               </div>
               <div class="md:col-span-5">
@@ -146,13 +183,15 @@
                   class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                   placeholder="123"
                   required
-                  formControlName="cvc"                  
+                  formControlName="cvc"
                 />
-                <ng-container *ngIf="paymentInfo.get('cvc')?.errors?.['required']">
-                    <span class="text-red-400">CVC is required</span>
+                <ng-container
+                  *ngIf="paymentInfo.get('cvc')?.errors?.['required']"
+                >
+                  <span class="text-red-400">CVC is required</span>
                 </ng-container>
                 <ng-container *ngIf="paymentInfo.get('cvc')?.errors?.['min']">
-                    <span class="text-red-400">CVC must be 3 digits long</span>
+                  <span class="text-red-400">CVC must be 3 digits long</span>
                 </ng-container>
               </div>
             </div>

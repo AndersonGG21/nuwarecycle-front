@@ -109,16 +109,7 @@
       <a href="#">
         <img
           loading="lazy"
-          srcset="
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=100   100w,
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=200   200w,
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=400   400w,
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=800   800w,
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=1200 1200w,
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=1600 1600w,
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&width=2000 2000w,
-            https://cdn.builder.io/api/v1/image/assets/TEMP/f1b95107-5c77-4750-b5bb-26e72c5b9954?apiKey=09e439f936924f1e806c4b782bf152eb&
-          "
+          src="https://th.bing.com/th/id/OIP.S4cHwTWrfd6wpxawknqhGwHaH_?pid=ImgDet&rs=1"
           alt="Product"
           class="aspect-square object-cover object-center w-[180px] overflow-hidden self-center max-w-full"
         />
@@ -126,24 +117,7 @@
       <div
         class="justify-center items-center self-center flex w-[248px] max-w-full flex-col mt-6"
       >
-        <div class="justify-center items-center self-stretch flex flex-col">
-          <a href="#">
-            <img
-              loading="lazy"
-              srcset="
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=100   100w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=200   200w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=400   400w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=800   800w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=1200 1200w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=1600 1600w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&width=2000 2000w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/b6bad4d6-1966-44fe-b791-4af6a8073684?apiKey=09e439f936924f1e806c4b782bf152eb&
-              "
-              alt="Features"
-              class="aspect-[2.59] object-cover object-center w-[132px] overflow-hidden self-center max-w-full"
-            />
-          </a>
+        <div class="justify-center items-center self-stretch flex flex-col">          
           <h3
             class="text-zinc-900 text-center text-2xl font-semibold leading-[133.333%] mt-2"
           >
@@ -192,7 +166,7 @@
               class="relative mx-2 mt-2 h-52 w-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
             >
               <img
-                src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
+                src="{{product.image}}"
                 class="h-full w-full object-cover"
               />
             </div>
@@ -207,14 +181,13 @@
               <p
                 class="block font-geist text-sm font-normal leading-normal text-gray-700 antialiased opacity-75 max-w-sm"
               >
-                With plenty of talk and listen time, voice-activated Siri
-                access, and an available wireless charging case.
+                {{ product.description }}
               </p>              
             </div>
             <span
                 class="block font-geist-bold text-2xl font-medium leading-relaxed text-blue-gray-900 antialiased absolute right-8 bottom-28"
               >
-                $95.00
+              {{ product.price | currency: 'USD' }}
             </span>
           </div>
 
@@ -224,49 +197,16 @@
               class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
               type="button"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-heart"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                  d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
-                ></path>
-              </svg>
+              <li class="pi pi-heart"></li>
               Add to favorites
             </button>
             <button
               pRipple
               class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
               type="button"
+              (click)="addProduct(product)"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-shopping-cart-plus"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                <path d="M12.5 17h-6.5v-14h-2"></path>
-                <path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5"></path>
-                <path d="M16 19h6"></path>
-                <path d="M19 16v6"></path>
-              </svg>
+              <li class="pi pi-shopping-cart"></li>
               Add to Cart
             </button>
           </footer>
@@ -295,7 +235,7 @@
               <p
                 class="block font-geist-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
               >
-                ${{product.price}}
+              {{ product.price | currency: 'USD'  }}
               </p>
             </div>
             <p
@@ -307,9 +247,11 @@
           <div class="p-6 pt-0">
             <button
               pRipple
-              class="block w-full select-none rounded-lg bg-sunsetOrange-200 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              class="block w-full select-none rounded-lg bg-sunsetOrange-200 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
+              (click)="addProduct(product)"
             >
+              <li class="pi pi-shopping-cart"></li>
               Add to Cart
             </button>
           </div>
@@ -318,70 +260,4 @@
     </p-dataView>
   </div>
 </aside>
-<style>
-  ::ng-deep .p-dataview-header {
-    background-color: transparent;
-  }
 
-  ::ng-deep .p-dataview-grid .p-dataview-content .grid {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    column-gap: 1.5rem;
-    row-gap: 1.5rem;
-    place-items: center;
-    margin-bottom: 20px;
-  }
-
-  ::ng-deep .p-dataview-list .p-dataview-content .grid {
-    gap: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-  }
-
-  @media (min-width: 640px) {
-    ::ng-deep .p-dataview-grid .p-dataview-content .grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      place-content: center;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    ::ng-deep .p-dataview-grid .p-dataview-content .grid {
-      grid-template-columns: repeat(3, minmax(0, 20rem));
-      place-content: center;
-    }
-  }
-  @media (min-width: 1280px) {
-    ::ng-deep .p-dataview-grid .p-dataview-content .grid {
-      grid-template-columns: repeat(3, minmax(0, 20rem));
-      place-content: center;
-    }
-  }
-
-  ::ng-deep .p-highlight {
-    background-color: rgba(255, 68, 0, 0.76);
-  }
-
-  ::ng-deep .p-slider-handle:hover,
-  ::ng-deep .p-slider-range {
-    background-color: orangered;
-  }
-
-  ::ng-deep .p-slider-handle {
-    background-color: whitesmoke;
-    border: 1px solid lightgrey;
-  }
-
-  ::ng-deep .p-checkbox-box {
-    border: 1px solid lightgrey;
-  }
-
-  /* ::ng-deep .p-ink-active {
-    background-color: rgba(255, 68, 0, 0.747);
-  } */
-</style>
