@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
+
 
 
 // PrimeNG Modules
@@ -41,6 +43,8 @@ import { ProductsComponent } from './components/pages/products/products.componen
 import { ProductComponent } from './components/pages/product/product.component';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
+import { HttpInterceptor } from './shared/interceptors/http.interceptor';
+
 
 
 @NgModule({
@@ -85,7 +89,12 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

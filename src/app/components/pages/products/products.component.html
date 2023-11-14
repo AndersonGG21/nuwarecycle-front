@@ -147,7 +147,7 @@
       #dv
       [value]="products"
       [paginator]="true"
-      [rows]="10"
+      [rows]="6"
       layout="grid"
     >
       <ng-template pTemplate="header">
@@ -166,7 +166,7 @@
               class="relative mx-2 mt-2 h-52 w-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
             >
               <img
-                src="{{product.image}}"
+                src="{{product.image1}}"
                 class="h-full w-full object-cover"
               />
             </div>
@@ -221,7 +221,7 @@
             class="relative mx-2 mt-2 h-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
           >
             <img
-              src="{{product.img}}"
+              src="{{ product.image1 }}"
               class="h-full w-full object-cover"
             />
           </div>

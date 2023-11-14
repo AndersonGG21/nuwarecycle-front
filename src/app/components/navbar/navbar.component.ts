@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Product } from 'src/app/type';
 
@@ -21,9 +23,13 @@ export class NavbarComponent implements OnInit {
   loginVisible: boolean = false;
   private cartService = inject(ShoppingCartService);
   badge$ = '0';
-  shoppingCartProducts: Product[] = [];    
+  shoppingCartProducts: Product[] = [];  
+  private fb: FormBuilder = inject(FormBuilder);
+  credentials: FormGroup = this.fb.group({});  
+  private loginService = inject(LoginServiceService);
 
   ngOnInit(): void {
+    alert("NavbarComponent");
     this.menuItems = [
       {
         label: 'Login',
@@ -41,6 +47,11 @@ export class NavbarComponent implements OnInit {
         }
       },
     ];
+
+    this.credentials = this.fb.group({
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required]],
+    });
 
     this.cartService.getCartLenght().subscribe((res) => {
       this.badge$ = res.toString();      
@@ -62,5 +73,9 @@ export class NavbarComponent implements OnInit {
 
   deleteProduct(id: number) {
     this.cartService.deleteProductById(id);
+  }
+
+  submit() {
+    this.loginService.login(this.credentials.value.email, this.credentials.value.password);
   }
 }
