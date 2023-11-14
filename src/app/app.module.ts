@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 // PrimeNG Modules
@@ -81,7 +82,8 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
     BadgeModule,
     InputNumberModule,
     DropdownModule,    
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
