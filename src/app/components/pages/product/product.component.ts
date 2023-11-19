@@ -1,4 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 interface Product {
@@ -40,6 +41,8 @@ export class ProductComponent implements OnInit {
     brand: 'Ejemplo Brand',
     rating: 4,
   };
+  @Input() productName? : string;
+  private productService = inject(ProductsServiceService);
 
   ngOnInit(): void {
     this.images = [
@@ -49,6 +52,11 @@ export class ProductComponent implements OnInit {
       'https://i.pinimg.com/originals/dc/ce/1f/dcce1fdad76826f14218f7911b935dfd.jpg',
       'https://th.bing.com/th/id/R.e18ca28729c06f66612f04af40dbfba9?rik=J0psD%2bbcAAS%2fnw&pid=ImgRaw&r=0',
     ];
+
+    this.productService.getProductByName(this.productName!).subscribe((res) => {
+      this.product = res;
+    })
+    
   }
 
   addProduct(product: Product) {
