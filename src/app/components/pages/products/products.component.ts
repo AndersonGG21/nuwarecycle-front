@@ -29,28 +29,26 @@ type PriceRange = {
 })
 export class ProductsComponent implements OnInit, OnChanges {
   products: Product[] = [];
+  allProducts: Product[] = [];
   selectedCategory: any = null;
-  selectedPrice: NameKey = {
-    name: '',
-    key: '',
-  };
-  selectedBrands: NameKey[] = [];
-  rangeValues: number[] = [20, 80];
+  selectedPrice: any;
+  selectedBrands: string[] = [];
+  rangeValues: number[] = [0, 50];
   @Input() category?: string;
   private router = inject(Router);
   private cartService = inject(ShoppingCartService);
   private productService = inject(ProductsServiceService);
   layout: string = 'list';
 
-  brands: NameKey[] = [
-    { name: 'All', key: 'all' },
-    { name: 'Apple', key: 'apple' },
-    { name: 'Samsung', key: 'samsung' },
-    { name: 'Huawei', key: 'huawei' },
-    { name: 'Microsoft', key: 'microsoft' },
-    { name: 'Lenovo', key: 'lenovo' },
-    { name: 'Asus', key: 'asus' },
-    { name: 'Dell', key: 'dell' },
+  brands: string[] = [
+    'All',
+    'Apple',
+    'Samsung',
+    'Huawei',
+    'Microsoft',
+    'Lenovo',
+    'Asus',
+    'Dell',
   ];
 
   categories: any[] = [
@@ -65,20 +63,21 @@ export class ProductsComponent implements OnInit, OnChanges {
   ];
 
   prices: PriceRange[] = [
-    { name: 'All', key: 'all', min: 0 ,max: Number.MAX_VALUE},
+    { name: 'All', key: 'all', min: 0 ,max: 100000},
     { name: 'Under $50', key: 'under50', min: 0, max: 50},
     { name: '$50 - $100', key: '50to100', min: 50, max: 100 },
     { name: '$100 - $150', key: '100to150', min: 100, max: 150 },
     { name: '$150 - $300', key: '150to300', min: 150, max: 300 },
     { name: '$300 - $500', key: '300to500', min: 300, max: 500 },
     { name: '$500 - $1000', key: '500to1000', min: 500, max: 1000 },
-    { name: 'Over $1000', key: 'over1000', min: 1000, max: Number.MAX_VALUE },
+    { name: 'Over $1000', key: 'over1000', min: 1000, max: 100000 },
   ];
   
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((products) => {
       this.products = products;
+      this.allProducts = products;
     })
 
     this.selectedCategory = this.categories[0];
@@ -109,13 +108,42 @@ export class ProductsComponent implements OnInit, OnChanges {
     this.router.navigate(['/products'], { queryParams });
   }
 
-  showPriceRange(price : PriceRange) {
+  getProductsBetweenPrices(price : PriceRange) {
     let {min, max} = price;
-    console.log(min,max);
+    if (min == 0 && max == 100000) {
+      this.products = this.allProducts;
+    } else {
+      this.productService.getProductsBetweenPrices(min, max).subscribe((products) => {
+        this.products = products;           
+      });
+    }    
   }
 
-  showBrands() {
-    //this.productService.get
+  getProductsBetweenRange(min : number, max : number) {
+    min = min * 1000;
+    max = max * 1000;
+    if (min == 0 && max == 100000) {
+      this.products = this.allProducts;
+    } else {
+      this.productService.getProductsBetweenPrices(min, max).subscribe((products) => {
+        this.products = products;           
+      });
+    }    
+  }
+
+  getProductsByBrands() {
+    if (this.selectedBrands.length != 0) {
+      if (this.selectedBrands.includes('All')) {
+        this.products = this.allProducts;
+      } else {
+        this.productService.getProductsByBrands(this.selectedBrands).subscribe((products) => {
+          this.products = products;
+          console.log(products);
+        });
+      }  
+    }else {
+      this.products = this.allProducts;
+    }    
   }
 
   addProduct(product : Product) {

@@ -42,6 +42,7 @@
           [(ngModel)]="rangeValues"
           [range]="true"
           class="w-full"
+          (onChange)="getProductsBetweenRange(rangeValues[0], rangeValues[1])"
         ></p-slider>
         <div class="flex gap-3 w-full">
           <div class="border border-gray-300 w-1/2 rounded-md p-1">
@@ -66,7 +67,7 @@
             [(ngModel)]="selectedPrice"
             [inputId]="price.key"
             class="border border-sunsetOrange-200 rounded-full"
-            (onClick)="showPriceRange(price)"
+            (onClick)="getProductsBetweenPrices(price)"
           ></p-radioButton>
           <label
             [for]="price.key"
@@ -95,10 +96,10 @@
             name="group"
             [value]="brand"
             [(ngModel)]="selectedBrands"
-            [inputId]="brand.key"
-            (onChange)="showBrands()"
+            [inputId]="brand"
+            (onChange)="getProductsByBrands()"
           ></p-checkbox>
-          <label [for]="brand.key" class="text-md">{{ brand.name }}</label>
+          <label [for]="brand" class="text-md">{{ brand }}</label>
         </div>
       </div>
     </div>
