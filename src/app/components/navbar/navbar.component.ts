@@ -28,8 +28,7 @@ export class NavbarComponent implements OnInit {
   credentials: FormGroup = this.fb.group({});  
   private loginService = inject(LoginServiceService);
 
-  ngOnInit(): void {
-    alert("NavbarComponent");
+  ngOnInit(): void {    
     this.menuItems = [
       {
         label: 'Login',
