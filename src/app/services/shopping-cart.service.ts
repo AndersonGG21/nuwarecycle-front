@@ -32,12 +32,12 @@ export class ShoppingCartService {
   //Add product to the list
   addToCart(product: Product) {
     //Si el producto ya existe en el carrito, se suma la cantidad
-    const index = this.cartProducts.findIndex((prod) => prod.id === product.id);
+    const index = this.cartProducts.findIndex((prod) => prod.name === product.name);
     if (index !== -1) {
-      this.cartProducts[index].stock += 1;    
-      return;
+      this.cartProducts[index].stock += 1;          
+    }else {
+      this.cartProducts.push(product);
     }
-    this.cartProducts.push(product);
     this.cartLength.next(this.cartProducts.length.toString());
   }
 
