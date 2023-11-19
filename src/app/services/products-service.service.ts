@@ -23,7 +23,7 @@ export class ProductsServiceService {
   }
 
   getProductByName(name: string) : Observable<Product[]> {
-    return this.http.get<Product[]>(this.PRODUCTS_API_URL + "/" + name);
+    return this.http.get<Product[]>(`${this.PRODUCTS_API_URL}/${name}`);
   }
 
 }
