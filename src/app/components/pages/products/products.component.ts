@@ -11,11 +11,6 @@ import { ProductsServiceService } from 'src/app/services/products-service.servic
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Product } from 'src/app/type';
 
-export type NameKey = {
-  name: string;
-  key: string;
-};
-
 type PriceRange = {
   name: string;
   key: string;
@@ -49,17 +44,25 @@ export class ProductsComponent implements OnInit, OnChanges {
     'Lenovo',
     'Asus',
     'Dell',
+    'Sony',
+    'Cannon',
+    'Nintendo',
+    'Google',
+    'LG'
   ];
 
-  categories: any[] = [
-    { name: 'All', key: 'all' },
-    { name: 'Computers', key: 'computers' },
-    { name: 'SmartPhones', key: 'smartphones' },
-    { name: 'Headphones', key: 'headphone' },
-    { name: 'Gaming Consoles', key: 'consoles' },
-    { name: 'Cameras', key: 'cameras' },
-    { name: 'TVs', key: 'tv' },
-    { name: 'Smartwatches', key: 'smartwatch' },
+  categories: string[] = [
+    'All',
+    'Computers', 
+    'SmartPhones', 
+    'Headphones', 
+    'Gaming Consoles', 
+    'Cameras', 
+    'Televisions', 
+    'Wearable Tech', 
+    'Laptops',
+    'Speakers',
+    'Smart Home'
   ];
 
   prices: PriceRange[] = [
@@ -84,14 +87,12 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.category && this.category != 'all') {
-      this.products = this.products.filter(
-        (product) => product.description == 'No'
-      );
+    if (this.category && this.category != 'All') {
+      this.productService.getProductsByCategory(this.category).subscribe((products) => {
+        this.products = products;
+      });
     } else {
-      this.products = this.products.filter(
-        (product) => product.description != ''
-      );
+      this.products = this.allProducts;
     }    
   }
 
@@ -99,7 +100,7 @@ export class ProductsComponent implements OnInit, OnChanges {
     this.layout = this.layout === 'list' ? 'grid' : 'list';
   }
 
-  getCategory(string: string) {
+  getProductsByCategory(string: string) {
     let queryParams: Params = {};
     if (string != 'all') {
       queryParams['category'] = string;

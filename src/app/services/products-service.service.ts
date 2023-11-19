@@ -42,7 +42,7 @@ export class ProductsServiceService {
   getProductsByCategory(category: string) : Observable<Product[]> {
     let params = new HttpParams();
     params = params.append('category', category);
-    return this.http.get<Product[]>(`${this.PRODUCTS_API_URL}/category`);
+    return this.http.get<Product[]>(`${this.PRODUCTS_API_URL}/category`, { params: params });
   }
 
 }

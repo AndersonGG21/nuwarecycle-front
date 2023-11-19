@@ -15,15 +15,15 @@
             name="category"
             [value]="category"
             [(ngModel)]="selectedCategory"
-            [inputId]="category.key"
-            (onClick)="getCategory(category.key)"
+            [inputId]="category"
+            (onClick)="getProductsByCategory(category)"
             class="border border-sunsetOrange-200 rounded-full"
           ></p-radioButton>
           <label
-            [for]="category.key"
+            [for]="category"
             class="text-zinc-900 text-sm font-medium self-stretch max-w-[305px] grow shrink-0 basis-auto"
           >
-            {{ category.name }}
+            {{ category }}
           </label>
         </div>
       </div>
