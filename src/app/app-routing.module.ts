@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },        
     { path: 'home', component: LandingComponent},    
     { path: 'products', component: ProductsComponent},
-    { path: 'product/:id', component: ProductComponent},
+    { path: 'product/:name', component: ProductComponent},
     { path: 'cart', component: CartComponent},
     { path: 'checkout', component: CheckoutComponent},
 
