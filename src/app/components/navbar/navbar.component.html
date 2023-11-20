@@ -322,58 +322,66 @@
   [resizable]="false"
   position="topright"
 >
-  <div
-    class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm"
-    *ngFor="let product of shoppingCartProducts"
-  >
-    <img
-      src="{{product.image1}}"
-      alt="Product{} thumbnail in Shopping cart"
-      width="90"
-      height="90"
-      class="rounded-lg bg-white"
-    />
-    <div class="flex flex-col h-full items-start justify-center gap-2">
-      <h2 class="w-56 font-geist-bold text-base line-height-4">
-        {{ product.name }}
-      </h2>
-      <span class="w-56 font-geist text-base line-height-4 text-gray-500"
-        >{{ product.description.substring(0, 50) }}...</span
-      >
-      <div class="flex flex-col">
-        <label for="horizontal">Horizontal with Step</label>
-        <p-inputNumber
-          [(ngModel)]="product.stock"
-          [showButtons]="true"
-          buttonLayout="horizontal"
-          inputId="horizontal"
-          spinnerMode="horizontal"
-          [step]="1"
-          incrementButtonIcon="pi pi-plus"
-          decrementButtonIcon="pi pi-minus"
-          [min]="0"
-          [max]="100"
-          class="w-9"
+  <ng-container *ngIf="shoppingCartProducts.length > 0; else empty">
+    <div
+      class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm"
+      *ngFor="let product of shoppingCartProducts"
+    >
+      <img
+        src="{{ product.image1 }}"
+        alt="Product{} thumbnail in Shopping cart"
+        width="90"
+        height="90"
+        class="rounded-lg bg-white"
+      />
+      <div class="flex flex-col h-full items-start justify-center gap-2">
+        <h2 class="w-56 font-geist-bold text-base line-height-4">
+          {{ product.name }}
+        </h2>
+        <span class="w-56 font-geist text-base line-height-4 text-gray-500"
+          >{{ product.description.substring(0, 50) }}...</span
         >
-        </p-inputNumber>
+        <div class="flex flex-col">
+          <label for="horizontal">Horizontal with Step</label>
+          <p-inputNumber
+            [(ngModel)]="product.stock"
+            [showButtons]="true"
+            buttonLayout="horizontal"
+            inputId="horizontal"
+            spinnerMode="horizontal"
+            [step]="1"
+            incrementButtonIcon="pi pi-plus"
+            decrementButtonIcon="pi pi-minus"
+            [min]="0"
+            [max]="100"
+            class="w-9"
+          >
+          </p-inputNumber>
+        </div>
+      </div>
+      <div class="flex flex-col justify-around items-center h-full pr-2">
+        <button class="cursor-pointer" (click)="deleteProduct(0)">
+          <li class="pi pi-times"></li>
+        </button>
+        <span class="font-geist-bold">{{
+          product.price | currency : "USD"
+        }}</span>
       </div>
     </div>
-    <div class="flex flex-col justify-around items-center h-full pr-2">
-      <button class="cursor-pointer" (click)="deleteProduct(0)">
-        <li class="pi pi-times"></li>
-      </button>
-      <span class="font-geist-bold">{{
-        product.price | currency : "USD"
-      }}</span>
-    </div>
-  </div>
-  <button
-    class="w-full px-2 py-4 text-sm font-bold leading-none text-white md:w-24 rounded-lg focus:ring-1 focus:ring-white bg-sunsetOrange-200 mt-2"
-    routerLink="cart"
-    (click)="visible = false"
-  >
-    Go to cart
-  </button>
+    <button
+      class="w-full px-2 py-4 text-sm font-bold leading-none text-white md:w-24 rounded-lg focus:ring-1 focus:ring-white bg-sunsetOrange-200 mt-2"
+      routerLink="cart"
+      (click)="visible = false"
+    >
+      Go to cart
+    </button>
+  </ng-container>
+
+  <ng-template #empty>
+    <p class="mt-2 text-sunsetOrange-200">
+      You don't have any product in your cart
+    </p>              
+  </ng-template>
 </p-dialog>
 
 <!-- Login Modal -->
