@@ -23,15 +23,25 @@
   </div>
   <div class="hidden sm:block flex-shrink flex-grow-0 justify-start px-2">
     <div class="inline-block">
-      <div class="inline-flex items-center max-w-full">
+      <div class="inline-flex items-center max-w-full relative">   
+        <li class="pi pi-search absolute ml-4"></li>     
         <p-autoComplete
           placeholder="Search"
           [required]="true"
-          [(ngModel)]="selectedItem"
-          [suggestions]="suggestions"
-          (completeMethod)="search($event)"
+          [(ngModel)]="selectedProduct"
+          [suggestions]="filteredProds"     
+          (completeMethod)="filterProducts($event)"   
+          (onSelect)="redirectToProduct()"  
+          field="name"
           ngClass="ng-autocomplete block w-[40vw] p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 rounded-full"
-        ></p-autoComplete>
+        >        
+        <ng-template let-product pTemplate="item">
+          <div class="flex items-center gap-2">
+              <img src="{{product.image1}}" style="width: 58px"/>
+              <div>{{ product.name }}</div>
+          </div>
+      </ng-template>
+      </p-autoComplete>
       </div>
     </div>
   </div>
@@ -344,7 +354,7 @@
         <div class="flex flex-col">
           <label for="horizontal">Horizontal with Step</label>
           <p-inputNumber
-            [(ngModel)]="product.stock"
+            [(ngModel)]="product.amount"
             [showButtons]="true"
             buttonLayout="horizontal"
             inputId="horizontal"
