@@ -1,1 +1,6 @@
-<p>alert works!</p>
+<div *ngFor="let alert of alerts">
+    <ol>
+        <li class="flex w-80 p-3 items-center gap-4 rounded-lg bg-[#242C32] shadow-[0px_8px_10px_0px_rgba(0,0,0,0.20),0px_6px_30px_0px_rgba(0,0,0,0.12),0px_16px_24px_0px_rgba(0,0,0,0.14)]
+        ">{{alert.message}}</li>
+    </ol>    
+</div>

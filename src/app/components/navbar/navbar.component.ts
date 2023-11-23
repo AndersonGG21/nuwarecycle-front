@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
+import { AlertService } from 'src/app/services/alert.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
@@ -43,6 +44,7 @@ export class NavbarComponent implements OnInit {
   private loginService = inject(LoginServiceService);
   private productService = inject(ProductsServiceService);
   private router = inject(Router);
+  alertService = inject(AlertService);
 
   ngOnInit(): void {
     this.menuItems = [
