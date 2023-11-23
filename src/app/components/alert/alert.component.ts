@@ -25,31 +25,24 @@ export class AlertComponent implements OnInit, OnDestroy {
         }
         this.alerts.push(alert);
 
-        setTimeout(() => this.removeAlert(alert), 3000);
+        // setTimeout(() => this.removeAlert(alert), 3000);
+        setTimeout(() => {
+          this.classes.push('animate-fade-left');
+          this.classes.push('animate-reverse');
+          console.log("sui");
+          this.removeAlert(alert);
+        }, 3000);
       });
   }
 
   removeAlert(alert: Alert) {
     if (!this.alerts.includes(alert)) return;
-
-    this.classes.push('animate-fade-down');
-    this.classes.push('animate-reverse');
+    
     const timeout = 3000;
-    setTimeout(() => {
-      //Remove alert from array after fade out
+    setTimeout(() => {      
       this.alerts = this.alerts.filter((x) => x !== alert);
-      this.classes = this.classes.filter((x) => x !== 'animate-fade-down' && x !== 'animate-reverse');
+      this.classes = this.classes.filter((x) => x !== 'animate-fade-left' && x !== 'animate-reverse');
     }, timeout);    
-  }
-
-  cssClass(alert: Alert) {
-    const classes = ['animate-fade-up'];
-
-    if (alert.fade) {
-      classes.push('');
-    }
-
-    return classes.join(' ');
   }
 
   ngOnDestroy(): void {
