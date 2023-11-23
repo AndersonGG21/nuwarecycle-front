@@ -44,6 +44,7 @@ import { ProductComponent } from './components/pages/product/product.component';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { HttpInterceptor } from './shared/interceptors/http.interceptor';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 
@@ -61,6 +62,7 @@ import { HttpInterceptor } from './shared/interceptors/http.interceptor';
     ProductComponent,
     CartComponent,
     CheckoutComponent,
+    AlertComponent,
 
   ],
   imports: [
