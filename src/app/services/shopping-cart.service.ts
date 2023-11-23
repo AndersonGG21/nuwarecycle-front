@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
+import { AlertService } from './alert.service';
 
 interface Product {
   id: number;
@@ -24,14 +25,12 @@ export class ShoppingCartService {
   constructor() {}
 
   private cartLength : Subject<string> = new Subject<string>();
-
-
-  //Create an empty list of products
+  private alertService = inject(AlertService);
   cartProducts: Product[] = [];
 
-  //Add product to the list
+  
   addToCart(product: Product) {
-    //Si el producto ya existe en el carrito, se suma la cantidad
+    
     const index = this.cartProducts.findIndex((prod) => prod.name === product.name);
     if (index !== -1) {
       this.cartProducts[index].stock += 1;          
@@ -39,14 +38,15 @@ export class ShoppingCartService {
       this.cartProducts.push(product);
     }
     this.cartLength.next(this.cartProducts.length.toString());
+    this.alertService.success('Product added to your cart')
   }
 
-  //Get the list of products
+  
   getCartProducts() {
     return this.cartProducts;
   }
 
-  //delete product from the list
+  
   deleteProduct(product: Product) {
     const index = this.cartProducts.indexOf(product);
     if (index !== -1) {
@@ -62,7 +62,6 @@ export class ShoppingCartService {
     this.cartLength.next(newValue);
   }
 
-  //Detelete product from the list by id
   deleteProductById(id: number) {
     const index = this.cartProducts.findIndex((product) => product.id === id);
     if (index !== -1) {
