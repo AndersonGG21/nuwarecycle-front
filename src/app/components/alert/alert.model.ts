@@ -1,7 +1,8 @@
 export type Alert = {
     id?: string;
     type?: AlertType;
-    message?: string;    
+    message?: string;  
+    fade?: boolean;  
 }
 
 export enum AlertType {
