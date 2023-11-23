@@ -81,7 +81,7 @@
       </button>
 
       <button (click)="menu.toggle($event)" class="ml-6">
-        <p-avatar label="A"></p-avatar>
+        <p-avatar icon="pi pi-user"></p-avatar>
       </button>
     </div>
   </div>
@@ -395,7 +395,7 @@
 
 <!-- Login Modal -->
 <p-dialog
-  header="Login"
+  header="Welcome"
   [(visible)]="loginVisible"
   [modal]="true"
   [style]="{
@@ -405,8 +405,7 @@
     height: 'auto'
   }"
   [draggable]="false"
-  [resizable]="false"
-  [showHeader]="false"
+  [resizable]="false"  
   [breakpoints]="{ '960px': '75vw' }"
 >
   <div class="flex items-center justify-center w-full lg:p-0">
