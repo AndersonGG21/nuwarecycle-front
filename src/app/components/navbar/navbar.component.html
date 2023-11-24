@@ -79,9 +79,9 @@
       <button (click)="sidebarVisible = true">
         <li class="pi pi-bars text-lg"></li>
       </button>
-
+      
       <button (click)="menu.toggle($event)" class="ml-6">
-        <p-avatar icon="pi pi-user"></p-avatar>
+        <p-avatar [icon]="cookie.get('Bearer') != '' ? cookie.get('profileImg') : 'pi pi-user'"></p-avatar>
       </button>
     </div>
   </div>

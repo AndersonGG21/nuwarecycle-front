@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { MenuItem } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { AlertService } from 'src/app/services/alert.service';
@@ -45,23 +46,37 @@ export class NavbarComponent implements OnInit {
   private productService = inject(ProductsServiceService);
   private router = inject(Router);
   alertService = inject(AlertService);
+  cookie = inject(CookieService);
+  logedIn = this.cookie.get('Bearer') != '';
 
   ngOnInit(): void {
-    this.menuItems = [
-      {
-        label: 'Login',
-        icon: 'pi pi-sign-in',
-        escape: false,
-        command: () => {
-          this.loginVisible = true;
+    if (this.logedIn) {
+      this.menuItems = [
+        {
+          label: 'Logout',
+          icon: 'pi pi-sign-out',
+          escape: false,
+          command: () => {
+            this.cookie.deleteAll();
+            this.alertService.success('You have been logged out');
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+          },
         },
-      },
-      {
-        label: 'Delete',
-        icon: 'pi pi-times',
-        command: () => {},
-      },
-    ];
+      ];
+    }else{
+      this.menuItems = [
+        {
+          label: 'Login',
+          icon: 'pi pi-sign-in',
+          escape: false,
+          command: () => {
+            this.loginVisible = true;            
+          },
+        },
+      ];
+    }
 
     this.productService.getAllProducts().subscribe((res) => {
       this.filteredProds = res;
@@ -92,6 +107,11 @@ export class NavbarComponent implements OnInit {
       this.credentials.value.email,
       this.credentials.value.password
     );
+    this.loginVisible = false;
+    this.alertService.success('You have been logged in');
+    setTimeout(() => {
+      window.location.reload();
+    }, 3100);
   }
 
   filterProducts(event: AutoCompleteCompleteEvent) {
@@ -108,8 +128,8 @@ export class NavbarComponent implements OnInit {
     this.filteredProds = filtered;
   }
 
-  redirectToProduct() : void {
-    const productName = this.selectedProduct?.name
-    this.router.navigate([`/product/${productName}`])
+  redirectToProduct(): void {
+    const productName = this.selectedProduct?.name;
+    this.router.navigate([`/product/${productName}`]);
   }
 }
