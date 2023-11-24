@@ -11,14 +11,16 @@
   >
     <ng-template let-product pTemplate="item">
       <div
-        class="relative flex w-72 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+        class="relative flex w-72 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border border-gray-200
+        hover:scale-105 transition-all hover:shadow-xl"
       >
         <div
           class="relative mx-2 mt-2 h-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
         >
           <img
             src="{{ product.image1 }}"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover cursor-pointer"
+            routerLink="/product/{{ product.name }}"
           />
         </div>
         <div class="p-6">
