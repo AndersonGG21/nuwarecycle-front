@@ -12,7 +12,7 @@ export class BestSellersComponent implements OnInit{
   responsiveOptions: any[] | undefined;
   products : Product[] = [];
   private cartService = inject(ShoppingCartService);
-  private productService = inject(ProductsServiceService);
+  private productService = inject(ProductsServiceService);  
 
   ngOnInit() {
 
@@ -41,5 +41,19 @@ export class BestSellersComponent implements OnInit{
 
   addProduct(product: Product) {
     this.cartService.addToCart(product);
+  }
+
+  likeProduct(product : Product) {
+    const liked = {
+      product : {
+        idProd: product.id
+      },
+      user : {
+        id: 1
+      }
+    }
+    this.productService.likeProduct(liked).subscribe((response) => {
+      console.log(response);
+    });
   }
 }
