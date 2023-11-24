@@ -54,4 +54,9 @@ export class ProductsServiceService {
     return this.http.post<any>(`${this.LIKED_PRODUCTS_API_URL}`, product);
   }
 
+  getLikedProducts() : Observable<Product[]> {
+    const userId = this.cookie.get('uid');
+    return this.http.get<Product[]>(`${this.LIKED_PRODUCTS_API_URL}/${userId}`);
+  }
+
 }

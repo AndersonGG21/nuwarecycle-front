@@ -50,16 +50,15 @@ export class BestSellersComponent implements OnInit{
   likeProduct(product : Product) {
     const liked = {
       product : {
-        idProd: 5
+        idProd: product.idProd
       },
       user : {
         id: Number(this.cookie.get('uid'))
       }
     }
-    console.log(product.idProd);
-    // this.productService.likeProduct(liked).subscribe((response) => {
-    //   console.log(response);
-    //   this.alertService.success('Product added to your wishlist');
-    // });
+    
+    this.productService.likeProduct(liked).subscribe((response) => {
+      this.alertService.success('Product added to your wishlist');
+    });
   }
 }

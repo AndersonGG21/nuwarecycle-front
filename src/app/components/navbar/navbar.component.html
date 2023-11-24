@@ -54,7 +54,7 @@
             class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative"
           >
             <div class="flex items-center h-5">
-              <button (click)="likedVisible = true">
+              <button (click)="showLikedModal()">
                 <li class="pi pi-heart text-lg"></li>              
               </button>                            
             </div>
@@ -499,7 +499,7 @@
 
   <ng-template #empty>
     <p class="mt-2 text-sunsetOrange-200">
-      You don't have any product in your cart
+      You don't have any product in your Wishlist
     </p>              
   </ng-template>
 </p-dialog>

@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit {
     this.productService.getAllProducts().subscribe((res) => {
       this.filteredProds = res;
     });
-
+    
     this.credentials = this.fb.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]],
@@ -133,5 +133,13 @@ export class NavbarComponent implements OnInit {
   redirectToProduct(): void {
     const productName = this.selectedProduct?.name;
     this.router.navigate([`/product/${productName}`]);
+  }
+
+  showLikedModal(){
+    this.likedVisible = true;
+    this.productService.getLikedProducts().subscribe((res) => {
+      this.likedProducts = res;
+      console.log(this.likedProducts);
+    });
   }
 }
