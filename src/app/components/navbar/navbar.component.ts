@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   items: any[] = [];
   menuItems: MenuItem[] | undefined;
   selectedProduct: Product = {
-    id: 0,
+    idProd: 0,
     name: '',
     description: '',
     price: 0,
@@ -34,12 +34,14 @@ export class NavbarComponent implements OnInit {
     rating: 0,
   };
   sidebarVisible: boolean = false;
+  likedVisible: boolean = false;
   visible: boolean = false;
   loginVisible: boolean = false;
   private cartService = inject(ShoppingCartService);
   badge$ = '0';
   filteredProds: Product[] = [];
   shoppingCartProducts: Product[] = [];
+  likedProducts : Product[] = [];
   private fb: FormBuilder = inject(FormBuilder);
   credentials: FormGroup = this.fb.group({});
   private loginService = inject(LoginServiceService);

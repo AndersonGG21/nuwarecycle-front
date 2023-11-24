@@ -54,7 +54,7 @@
             class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative"
           >
             <div class="flex items-center h-5">
-              <button>
+              <button (click)="likedVisible = true">
                 <li class="pi pi-heart text-lg"></li>              
               </button>                            
             </div>
@@ -453,6 +453,55 @@
       </form>
     </div>
   </div>
+</p-dialog>
+
+<!-- Liked Products Modal -->
+
+<p-dialog
+  header="Wishlist"
+  [(visible)]="likedVisible"
+  [modal]="true"
+  [style]="{ width: '40vw', 'max-height': '100vh', 'overflow-y': 'scroll' }"
+  [draggable]="false"
+  [resizable]="false"
+  position="topright"
+>
+  <ng-container *ngIf="likedProducts.length > 0; else empty">
+    <div
+      class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm"
+      *ngFor="let product of likedProducts"
+    >
+      <img
+        src="{{ product.image1 }}"
+        alt="Product{} thumbnail in Shopping cart"
+        width="90"
+        height="90"
+        class="rounded-lg bg-white"
+      />
+      <div class="flex flex-col h-full items-start justify-center gap-2">
+        <h2 class="w-56 font-geist-bold text-base line-height-4">
+          {{ product.name }}
+        </h2>
+        <span class="w-56 font-geist text-base line-height-4 text-gray-500"
+          >{{ product.description.substring(0, 50) }}...</span
+        >        
+      </div>
+      <div class="flex flex-col justify-around items-center h-full pr-2">
+        <button class="cursor-pointer" (click)="deleteProduct(0)">
+          <li class="pi pi-times"></li>
+        </button>
+        <span class="font-geist-bold">{{
+          product.price | currency : "USD"
+        }}</span>
+      </div>
+    </div>    
+  </ng-container>
+
+  <ng-template #empty>
+    <p class="mt-2 text-sunsetOrange-200">
+      You don't have any product in your cart
+    </p>              
+  </ng-template>
 </p-dialog>
 
 <p-menu #menu [model]="menuItems" [popup]="true"></p-menu>

@@ -1,4 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { AlertService } from 'src/app/services/alert.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Product } from 'src/app/type';
@@ -13,6 +15,8 @@ export class BestSellersComponent implements OnInit{
   products : Product[] = [];
   private cartService = inject(ShoppingCartService);
   private productService = inject(ProductsServiceService);  
+  private cookie = inject(CookieService);
+  private alertService = inject(AlertService);
 
   ngOnInit() {
 
@@ -46,14 +50,16 @@ export class BestSellersComponent implements OnInit{
   likeProduct(product : Product) {
     const liked = {
       product : {
-        idProd: product.id
+        idProd: 5
       },
       user : {
-        id: 1
+        id: Number(this.cookie.get('uid'))
       }
     }
-    this.productService.likeProduct(liked).subscribe((response) => {
-      console.log(response);
-    });
+    console.log(product.idProd);
+    // this.productService.likeProduct(liked).subscribe((response) => {
+    //   console.log(response);
+    //   this.alertService.success('Product added to your wishlist');
+    // });
   }
 }

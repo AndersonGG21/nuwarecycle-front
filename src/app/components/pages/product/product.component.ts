@@ -12,7 +12,7 @@ export class ProductComponent implements OnInit, AfterViewChecked{
   images: any[] | undefined;
   cartService = inject(ShoppingCartService);
   product: Product = {
-    id: 0,
+    idProd: 0,
     name: '',
     description: '',
     price: 0,

@@ -1,22 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { AlertService } from './alert.service';
+import { Product } from '../type';
 
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-  stock: number;
-  image1: string;
-  image2: string;
-  image3: string;
-  image4: string;
-  brand: string;
-  rating: number;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -63,7 +49,7 @@ export class ShoppingCartService {
   }
 
   deleteProductById(id: number) {
-    const index = this.cartProducts.findIndex((product) => product.id === id);
+    const index = this.cartProducts.findIndex((product) => product.idProd === id);
     if (index !== -1) {
       this.cartProducts.splice(index, 1);
     }
