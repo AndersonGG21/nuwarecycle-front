@@ -46,8 +46,6 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
 import { HttpInterceptor } from './shared/interceptors/http.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
