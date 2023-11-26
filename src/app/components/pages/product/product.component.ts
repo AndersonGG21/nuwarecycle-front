@@ -8,7 +8,7 @@ import { Product } from 'src/app/type';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
-export class ProductComponent implements OnInit, AfterViewChecked{
+export class ProductComponent implements OnInit{
   images: any[] | undefined;
   cartService = inject(ShoppingCartService);
   product: Product = {
@@ -31,17 +31,14 @@ export class ProductComponent implements OnInit, AfterViewChecked{
 
   ngOnInit(): void {
     this.productService.getProductByName(this.name!).subscribe((res) => {
-      this.product = res;      
+      this.product = res;    
+      this.images = [
+        this.product.image1,
+        this.product.image2,
+        this.product.image3,
+        this.product.image4
+     ]  
     })
-  }
-
-  ngAfterViewChecked(): void {
-    this.images = [
-      this.product.image1,
-      this.product.image2,
-      this.product.image3,
-      this.product.image4
-   ]
   }
 
   addProduct(product: Product) {
