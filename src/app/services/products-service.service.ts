@@ -63,4 +63,8 @@ export class ProductsServiceService {
     return this.http.get<any>(`${this.PRODUCTS_API_URL}/${produtId}/comments`);
   }
 
+  commentProduct(produtId : number, comment: any) : Observable<any> {
+    return this.http.post<any>(`${this.PRODUCTS_API_URL}/${produtId}/comments`, comment);
+  }
+
 }
