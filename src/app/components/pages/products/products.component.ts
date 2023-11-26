@@ -83,7 +83,15 @@ export class ProductsComponent implements OnInit, OnChanges {
       this.allProducts = products;
     })
 
-    this.selectedCategory = this.categories[0];
+    if (!this.category) {
+      this.selectedCategory = this.categories[0];  
+    }else{
+      this.selectedCategory = this.category;
+      this.productService.getProductsByCategory(this.category).subscribe((products) => {
+        this.products = products;
+      });
+    }
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
