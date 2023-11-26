@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../type';
+import { Comment, Product } from '../type';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpParams } from '@angular/common/http';
 
@@ -59,11 +59,11 @@ export class ProductsServiceService {
     return this.http.get<Product[]>(`${this.LIKED_PRODUCTS_API_URL}/${userId}`);
   }
 
-  getProductComments(produtId : number) : Observable<any> {
-    return this.http.get<any>(`${this.PRODUCTS_API_URL}/${produtId}/comments`);
+  getProductComments(produtId : number) : Observable<Comment[]> {    
+    return this.http.get<Comment[]>(`${this.PRODUCTS_API_URL}/${produtId}/comments`);
   }
 
-  commentProduct(produtId : number, comment: any) : Observable<any> {
+  commentProduct(produtId : number,comment: Comment) : Observable<any> {
     return this.http.post<any>(`${this.PRODUCTS_API_URL}/${produtId}/comments`, comment);
   }
 

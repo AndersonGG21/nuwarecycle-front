@@ -14,3 +14,12 @@ export interface Product {
   rating: number;
   amount?: number;
 };
+
+export interface Comment {
+  id?: number;
+  comment: string,
+  date?: string,
+  product: any,
+  user : any,  
+};
+

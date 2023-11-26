@@ -58,7 +58,7 @@
         </ng-template>
 
         <section class="flex flex-col items-center justify-center max-h-96 overflow-y-scroll gap-3 mb-5">
-          <ng-container>
+          <ng-container *ngFor="let comment of comments">
             <article class="p-6 text-base bg-white rounded-lg shadow-md border w-4/5">
               <footer class="flex justify-between items-center mb-2">
                 <div class="flex items-center">
@@ -67,21 +67,19 @@
                   >
                     <img
                       class="mr-2 w-6 h-6 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                      alt="Michael Gough"
-                    />Michael Gough
+                      src="{{comment.user.profileImg}}"
+                      alt="{{comment.user.username}}"
+                    />{{comment.user.username}}
                   </p>
                   <p class="text-sm text-gray-600 ">
                     <time pubdate datetime="2022-02-08" title="February 8th, 2022"
-                      >Feb. 8, 2022</time
+                      >{{comment.date}}</time
                     >
                   </p>
                 </div>    
               </footer>
               <p class="text-gray-500 ">
-                Very straight-to-point article. Really worth time reading. Thank you! But
-                tools are just the instruments for the UX designers. The knowledge of the
-                design tools are as important as the creation of the design strategy.
+                {{comment.comment}}
               </p>  
             </article>
           </ng-container>
@@ -94,10 +92,13 @@
               rows="1"
               class="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-sunsetOrange-50"
               placeholder="Your review..."
+              [(ngModel)]="comment"
+              name="comment"
             ></textarea>
             <button
               type="submit"
               class="inline-flex justify-center p-2 text-sunsetOrange-200 rounded-full cursor-pointer hover:bg-sunsetOrange-50"
+              (click)="commentProduct()"
             >
               <i class="pi pi-send"></i>
               <span class="sr-only">Send message</span>
@@ -108,8 +109,64 @@
     </p-tabView>
   </div>
 </article>
-<article class="flex flex-col items-center w-screen">
+<article class="w-screen p-6 ">  
   <h2 class="font-geist-bold text-xl">Related Products</h2>
+  <p-carousel
+    [value]="relatedProducts"
+    [numVisible]="3"
+    [numScroll]="3"
+    [circular]="false"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div
+        class="relative flex w-72 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border border-gray-200
+        hover:scale-105 transition-all hover:shadow-xl"
+      >                
+        <div
+          class="relative mx-2 mt-2 h-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
+        >
+          <img
+            src="{{ product.image1 }}"
+            class="h-full w-full object-cover cursor-pointer"
+            routerLink="/product/{{ product.name }}"
+          />
+        </div>
+        <div class="p-6">
+          <div class="mb-2 flex items-center justify-between">
+            <p
+              class="block font-geist-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
+            >
+              {{ product.name }}
+            </p>
+            <p
+              class="block font-geist-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
+            >
+              {{ product.price | currency: 'USD'  }}
+            </p>
+          </div>
+          <p
+            class="block font-geist text-sm font-normal leading-normal text-gray-700 antialiased opacity-75"
+          >
+            {{ product.description }}
+          </p>
+        </div>
+        <div class="p-6 pt-0 flex align-content-center gap-1">
+          <button class="backdrop-blur z-10 rounded-full bg-sunsetOrange-100 p-4" (click)="likeProduct(product)">
+            <i class="pi pi-heart"></i>
+          </button>
+          <button
+            pRipple
+            class="block w-full select-none rounded-lg bg-sunsetOrange-200 py-3 px-6 text-center align-middle font-geist-bold text-xs font-bold uppercase text-white transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            (click)="addProduct(product)"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
 </article>
 
 <style>
