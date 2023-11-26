@@ -59,4 +59,8 @@ export class ProductsServiceService {
     return this.http.get<Product[]>(`${this.LIKED_PRODUCTS_API_URL}/${userId}`);
   }
 
+  getProductComments(produtId : number) : Observable<any> {
+    return this.http.get<any>(`${this.PRODUCTS_API_URL}/${produtId}/comments`);
+  }
+
 }
