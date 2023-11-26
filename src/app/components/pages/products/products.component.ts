@@ -7,6 +7,8 @@ import {
   inject,
 } from '@angular/core';
 import { Params, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { AlertService } from 'src/app/services/alert.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Product } from 'src/app/type';
@@ -33,6 +35,8 @@ export class ProductsComponent implements OnInit, OnChanges {
   private router = inject(Router);
   private cartService = inject(ShoppingCartService);
   private productService = inject(ProductsServiceService);
+  private cookie = inject(CookieService);
+  private alertService = inject(AlertService);
   layout: string = 'list';
 
   brands: string[] = [
@@ -157,5 +161,20 @@ export class ProductsComponent implements OnInit, OnChanges {
 
   addProduct(product : Product) {
     this.cartService.addToCart(product);
+  }
+
+  likeProduct(product : Product) {
+    const liked = {
+      product : {
+        idProd: product.idProd
+      },
+      user : {
+        id: Number(this.cookie.get('uid'))
+      }
+    }
+    
+    this.productService.likeProduct(liked).subscribe((response) => {
+      this.alertService.success('Product added to your wishlist');
+    });
   }
 }

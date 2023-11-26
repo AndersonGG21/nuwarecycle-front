@@ -198,6 +198,7 @@
               pRipple
               class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
               type="button"
+              (click)="likeProduct(product)"
             >
               <li class="pi pi-heart"></li>
               Add to favorites
@@ -247,7 +248,10 @@
               {{product.description}}
             </p>
           </div>
-          <div class="p-6 pt-0">
+          <div class="p-4 pt-0 flex gap-2">
+            <button class="backdrop-blur z-10 rounded-full bg-sunsetOrange-100 p-4" (click)="likeProduct(product)">
+              <i class="pi pi-heart"></i>
+            </button>
             <button
               pRipple
               class="block w-full select-none rounded-lg bg-sunsetOrange-200 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
