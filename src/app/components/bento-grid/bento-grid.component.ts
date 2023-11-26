@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bento-grid',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class BentoGridComponent {
 
+  private router = inject(Router);
+  navigateToCategory(category: string): void {
+    this.router.navigate(['/products'], { queryParams: { category: category } });
+  }
 }

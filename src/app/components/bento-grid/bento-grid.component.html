@@ -5,15 +5,16 @@
         class="rounded-lg w-full h-1/6 bg-gradient-nuwa bg-cover flex justify-center items-center shadow-xl gap-0 cursor-pointer hover:scale-95 transition-all ease-in-out"
       >
         <span
-          class="font-geist-bold text-2xl bg-gradient-to-r from-slate-50 to-gray-300 bg-clip-text text-transparent uppercase"
+          class="font-geist-bold text-2xl bg-gradient-to-r from-slate-50 to-gray-300 bg-clip-text text-transparent uppercase"          
           >Explore all categories</span
         >
       </div>
       <div
         class="rounded-lg w-full h-1/3 bg-gradient-black bg-cover flex flex-col items-center justify-center gap-0 shadow-xl relative cursor-pointer hover:scale-95 transition-all ease-in-out"
+        (click)="navigateToCategory('SmartPhones')"
       >
         <span
-          class="font-geist-bold text-2xl bg-gradient-to-r from-slate-50 to-gray-300 bg-clip-text text-transparent absolute top-4 uppercase"
+          class="font-geist-bold text-2xl bg-gradient-to-r from-slate-50 to-gray-300 bg-clip-text text-transparent absolute top-4 uppercase"          
           >Mobile Phones</span
         >
         <img
@@ -25,6 +26,7 @@
       </div>
       <div
         class="rounded-lg w-full h-1/2 bg-gradient-purple bg-cover flex flex-col items-center justify-center gap-0 shadow-xl relative cursor-pointer hover:scale-95 transition-all ease-in-out"
+        (click)="navigateToCategory('Laptops')"
       >
         <img
           src="/src/assets/images/383shots_so.png"
@@ -40,6 +42,7 @@
     <div class="h-full w-2/3 flex flex-col items-center gap-2">
       <div
         class="w-full h-2/3 bg-gradient-orange bg-cover rounded-lg flex flex-col items-center justify-center cursor-pointer shadow-xl hover:scale-95 transition-all ease-in-out"
+        (click)="navigateToCategory('Wearable Tech')"
       >
         <img
           src="/src/assets/images/194shots_so.png"
@@ -71,6 +74,7 @@
       </div>
       <div
         class="h-1/3 w-full bg-gradient-nuwa bg-cover rounded-lg flex items-center justify-center cursor-pointer hover:scale-95 transition-all ease-in-out shadow-xl"
+        routerLink="/products"
       >
         <p
           class="font-geist-bold text-6xl bg-gradient-to-r from-slate-50 to-gray-300 bg-clip-text text-transparent uppercase"
