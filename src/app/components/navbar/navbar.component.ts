@@ -74,7 +74,7 @@ export class NavbarComponent implements OnInit {
             this.cookie.deleteAll();
             this.alertService.success('You have been logged out');
             setTimeout(() => {
-              window.location.reload();
+              this.router.navigate(['/home']);
             }, 1000);
           },
         },
@@ -154,11 +154,6 @@ export class NavbarComponent implements OnInit {
         this.register = false;     
       });
     })
-
-
-    
-  
-    
   }
 
   filterProducts(event: AutoCompleteCompleteEvent) {

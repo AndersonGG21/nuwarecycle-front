@@ -1,4 +1,4 @@
-<div class="w-screen">
+<section class="w-screen">
   <p-table
     #dt
     [value]="products"
@@ -60,7 +60,7 @@
       </tr>
     </ng-template>    
   </p-table>
-</div>
+</section>
 
 <p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Product Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
@@ -78,7 +78,7 @@
             <label for="inventoryStatus">Inventory Status</label>
             <!-- <p-dropdown [(ngModel)]="product.stock" inputId="inventoryStatus" [options]="statuses">
                 <ng-template pTemplate="selectedItem">
-                    <p-tag [value]="product.inventoryStatus.toUpperCase()" [severity]="getSeverity(product.inventoryStatus.toUpperCase())"></p-tag>
+                    <p-tag [value]="product.inventoryStatus.toUppserCase()" [severity]="getSeverity(product.inventoryStatus.toUpperCase())"></p-tag>
                 </ng-template>
                 <ng-template let-option pTemplate="item">
                     <p-tag [value]="option.label" [severity]="getSeverity(option.label)"></p-tag>
