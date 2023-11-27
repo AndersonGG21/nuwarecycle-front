@@ -47,6 +47,7 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
 import { HttpInterceptor } from './shared/interceptors/http.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.component';
+import { ProductsTableComponent } from './components/products-table/products-table.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.com
     CheckoutComponent,
     AlertComponent,
     AdminDashComponent,
-
+    ProductsTableComponent
   ],
   imports: [
     BrowserModule,
