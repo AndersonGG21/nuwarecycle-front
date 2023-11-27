@@ -45,6 +45,7 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { HttpInterceptor } from './shared/interceptors/http.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
+import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AlertComponent } from './components/alert/alert.component';
     CartComponent,
     CheckoutComponent,
     AlertComponent,
+    AdminDashComponent,
 
   ],
   imports: [

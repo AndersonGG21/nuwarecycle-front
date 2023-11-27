@@ -5,6 +5,7 @@ import { ProductsComponent } from './components/pages/products/products.componen
 import { ProductComponent } from './components/pages/product/product.component';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
+import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },        
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'product/:name', component: ProductComponent},
     { path: 'cart', component: CartComponent},
     { path: 'checkout', component: CheckoutComponent},
+    { path: 'dashboard', component: AdminDashComponent}
 
 ];
 
