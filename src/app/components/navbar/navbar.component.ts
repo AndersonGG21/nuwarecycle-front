@@ -142,4 +142,12 @@ export class NavbarComponent implements OnInit {
       console.log(this.likedProducts);
     });
   }
+
+  redirectToLikedProduct(product: Product): void {
+    const productName = product?.name;
+    this.likedVisible = false;
+    this.router.navigate([`/product/${productName}`]).then(() => {
+      location.reload();
+    });
+  }
 }
