@@ -74,7 +74,9 @@ export class NavbarComponent implements OnInit {
             this.cookie.deleteAll();
             this.alertService.success('You have been logged out');
             setTimeout(() => {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/home']).then(() => {
+                location.reload();
+              });
             }, 1000);
           },
         },
@@ -86,7 +88,7 @@ export class NavbarComponent implements OnInit {
           icon: 'pi pi-sign-in',
           escape: false,
           command: () => {
-            this.loginVisible = true;            
+            this.loginVisible = true;                        
           },
         },
       ];
