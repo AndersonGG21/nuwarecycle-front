@@ -2,14 +2,8 @@
   <p-table
     #dt
     [value]="products"
-    [rows]="10"
+    [rows]="5"
     [paginator]="true"
-    [globalFilterFields]="[
-      'name',
-      'country.name',
-      'representative.name',
-      'status'
-    ]"
     [tableStyle]="{ 'min-width': '75rem' }"
     [(selection)]="selectedProducts"
     [rowHover]="true"
@@ -18,110 +12,316 @@
     [showCurrentPageReport]="true"
   >
     <ng-template pTemplate="caption">
-      <div class="flex align-items-center justify-content-between">
+      <div class="flex flex-col align-items-center justify-content-between">
         <h5 class="m-0">Manage Products</h5>
+        <button
+          pRipple
+          class="w-40 flex items-center justify-center select-none rounded-lg bg-green-500 py-3 px-3 gap-2 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          (click)="newProductDialog = true"
+        >
+          <i class="pi pi-plus"></i>
+          New Product
+        </button>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
-        <tr>
-            
-            <th style="min-width:15rem">Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th style="min-width:10rem">Category</th>
-            <th>Reviews</th>
-            <th style="min-width:10rem">Status </th>
-            <th></th>
-        </tr>
+      <tr>
+        <th style="min-width: 15rem">Name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th style="min-width: 10rem">Category</th>
+        <th>Stock</th>
+        <th style="min-width: 10rem">Status</th>
+        <th></th>
+      </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
-      <tr>
-        <td>{{ product.name }}</td>
+      <tr class="border-b">
+        <td class="font-geist-bold">{{ product.name }}</td>
         <td><img src="{{ product.image1 }}" width="50" class="shadow-4" /></td>
         <td>{{ product.price | currency : "USD" }}</td>
         <td>{{ product.category }}</td>
-        <td>Stock</td>
-        <td>
+        <td>{{ product.stock }}</td>
+        <td class="flex gap-2">
           <button
             pButton
             pRipple
             icon="pi pi-pencil"
-            class="p-button-rounded p-button-success mr-2"
+            class="rounded-full bg-green-500 p-2 text-white h-8 w-8"
             (click)="editProduct(product)"
           ></button>
           <button
             pButton
             pRipple
             icon="pi pi-trash"
-            class="p-button-rounded p-button-warning"
+            class="rounded-full bg-red-500 p-2 text-white h-8 w-8"
             (click)="deleteProduct(product)"
           ></button>
         </td>
       </tr>
-    </ng-template>    
+    </ng-template>
   </p-table>
 </section>
 
-<p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Product Details" [modal]="true" styleClass="p-fluid">
-    <ng-template pTemplate="content">
-        <img src="{{product.image1}}" class="block m-auto pb-3 rounded-md w-full h-2/3" *ngIf="product.image1" />
-        <div class="field">
-            <label for="name">Name</label>
-            <input type="text" pInputText id="name" [(ngModel)]="product.name" required autofocus />            
-        </div>
-        <div class="field">
-            <label for="description">Description</label>
-            <textarea id="description" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
-        </div>
+<p-dialog
+  [(visible)]="productDialog"
+  [style]="{ width: '450px' }"
+  header="Product Details"
+  [modal]="true"
+>
+  <ng-template pTemplate="content">
+    <img
+      src="{{ product.image1 }}"
+      class="block m-auto pb-3 rounded-md w-full h-2/3"
+      *ngIf="product.image1"
+    />
+    <div class="field">
+      <label for="pName" class="mb-2 text-sm text-start text-grey-900"
+        >Name</label
+      >
+      <input
+        id="pName"
+        type="text"
+        placeholder="Iphone 13 Pro Max Ultra HD"
+        [(ngModel)]="product.name"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="pDesc" class="mb-2 text-sm text-start text-grey-900"
+        >Description</label
+      >
+      <textarea
+        id="description"
+        pInputTextarea
+        [(ngModel)]="product.description"
+        required
+        rows="3"
+        cols="20"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+      ></textarea>
+    </div>
 
-        <div class="field">
-            <label for="inventoryStatus">Inventory Status</label>
-            <!-- <p-dropdown [(ngModel)]="product.stock" inputId="inventoryStatus" [options]="statuses">
-                <ng-template pTemplate="selectedItem">
-                    <p-tag [value]="product.inventoryStatus.toUppserCase()" [severity]="getSeverity(product.inventoryStatus.toUpperCase())"></p-tag>
-                </ng-template>
-                <ng-template let-option pTemplate="item">
-                    <p-tag [value]="option.label" [severity]="getSeverity(option.label)"></p-tag>
-                </ng-template>
-            </p-dropdown> -->
-        </div>
+    <div class="mb-4 flex flex-col gap-3">
+      <label for="pStock" class="mb-2 text-sm text-start text-grey-900"
+        >Inventory Status</label
+      >
+      <p-inputNumber
+        [(ngModel)]="product.stock"
+        [showButtons]="true"
+        buttonLayout="horizontal"
+        id="pStock"
+        spinnerMode="horizontal"
+        [step]="1"
+        incrementButtonIcon="pi pi-plus"
+        decrementButtonIcon="pi pi-minus"
+        [min]="0"
+        [max]="100"
+        class="w-9"
+      >
+      </p-inputNumber>
+    </div>
 
-        <div class="field">
-            <label class="mb-3">Category</label>
-            <div class="formgrid grid">
-                <div class="field-radiobutton col-6">
-                    <p-radioButton id="category1" name="category" value="Accessories" [(ngModel)]="product.category"></p-radioButton>
-                    <label for="category1">Accessories</label>
-                </div>
-                <div class="field-radiobutton col-6">
-                    <p-radioButton id="category2" name="category" value="Clothing" [(ngModel)]="product.category"></p-radioButton>
-                    <label for="category2">Clothing</label>
-                </div>
-                <div class="field-radiobutton col-6">
-                    <p-radioButton id="category3" name="category" value="Electronics" [(ngModel)]="product.category"></p-radioButton>
-                    <label for="category3">Electronics</label>
-                </div>
-                <div class="field-radiobutton col-6">
-                    <p-radioButton id="category4" name="category" value="Fitness" [(ngModel)]="product.category"></p-radioButton>
-                    <label for="category4">Fitness</label>
-                </div>
+    <div class="mb-4">
+      <span class="mb-2 text-sm text-start text-grey-900">Category</span>
+      <div class="flex items-center gap-3" *ngFor="let category of categories">
+        <p-radioButton
+          name="category"
+          [value]="category"
+          [(ngModel)]="product.category"
+          [inputId]="category"
+          class="border border-sunsetOrange-200 rounded-full"
+        ></p-radioButton>
+        <label
+          [for]="category"
+          class="text-zinc-900 text-sm font-medium self-stretch max-w-[305px] grow shrink-0 basis-auto"
+        >
+          {{ category }}
+        </label>
+      </div>
+    </div>
+
+    <div class="formgrid grid">
+      <div class="field col">
+        <label for="price">Price</label>
+        <p-inputNumber
+          id="price"
+          [(ngModel)]="product.price"
+          mode="currency"
+          currency="USD"
+          locale="en-US"
+          class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        ></p-inputNumber>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div class="flex gap-2 mt-2 self-end">
+      <button
+        pButton
+        pRipple
+        label="Cancel"
+        icon="pi pi-times"
+        class="block select-none rounded-lg bg-red-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        (click)="hideDialog()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        label="Save"
+        icon="pi pi-check"
+        class="flex items-center justify-center select-none rounded-lg bg-green-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        (click)="saveProduct()"
+      ></button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+<!-- New Product Modal -->
+<p-dialog
+  [(visible)]="newProductDialog"
+  [style]="{ width: '450px' }"
+  header="Add Product"
+  [modal]="true"
+>
+  <ng-template pTemplate="content">
+    <div class="grid grid-cols-1 space-y-2">
+      <label class="text-sm font-bold text-gray-500 tracking-wide"
+        >Upload 4 product's images</label
+      >
+      <div class="flex items-center justify-center w-full">
+        <label
+          class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center"
+        >
+          <div
+            class="h-full w-full text-center flex flex-col justify-center items-center"
+          > 
+            <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
+              <img
+                class="has-mask h-36 object-center"
+                src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
+                alt="freepik image"
+              />
             </div>
-        </div>
+            <button class="pointer-none text-gray-500" (click)="pImagesInput.click()">              
+              <span class="text-blue-600 hover:underline"
+                >Select the images from your computer</span
+              >              
+            </button>
+          </div>
+          <input type="file" class="hidden" accept="image/*" multiple #pImagesInput (change)="handleFileInputChange($event)"/>                                            
+        </label>
+      </div>
+    </div>   
+    <div class="flex gap-2 flex-wrap my-2">
+      <ng-container *ngFor="let thum of imagesThumbnails">
+        <img
+          class="w-24 h-24 rounded-md"
+          [src]="thum"
+          alt="Profile image"
+      />
+      </ng-container>
+    </div> 
+    <div class="field">
+      <label for="pName" class="mb-2 text-sm text-start text-grey-900"
+        >Name</label
+      >
+      <input
+        id="pName"
+        type="text"
+        placeholder="Iphone 13 Pro Max Ultra HD"
+        [(ngModel)]="product.name"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="pDesc" class="mb-2 text-sm text-start text-grey-900"
+        >Description</label
+      >
+      <textarea
+        id="description"
+        pInputTextarea
+        [(ngModel)]="product.description"
+        required
+        rows="3"
+        cols="20"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+      ></textarea>
+    </div>
 
-        <div class="formgrid grid">
-            <div class="field col">
-                <label for="price">Price</label>
-                <p-inputNumber id="price" [(ngModel)]="product.price" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
-            </div>
-            <div class="field col">
-                <label for="quantity">Quantity</label>
-                <p-inputNumber id="quantity" [(ngModel)]="product.stock"></p-inputNumber>
-            </div>
-        </div>
-    </ng-template>
+    <div class="mb-4 flex flex-col gap-3">
+      <label for="pStock" class="mb-2 text-sm text-start text-grey-900"
+        >Inventory Status</label
+      >
+      <p-inputNumber
+        [(ngModel)]="product.stock"
+        [showButtons]="true"
+        buttonLayout="horizontal"
+        id="pStock"
+        spinnerMode="horizontal"
+        [step]="1"
+        incrementButtonIcon="pi pi-plus"
+        decrementButtonIcon="pi pi-minus"
+        [min]="0"
+        [max]="100"
+        class="w-9"
+      >
+      </p-inputNumber>
+    </div>
 
-    <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
-    </ng-template>
+    <div class="mb-4">
+      <span class="mb-2 text-sm text-start text-grey-900">Category</span>
+      <div class="flex items-center gap-3" *ngFor="let category of categories">
+        <p-radioButton
+          name="category"
+          [value]="category"
+          [(ngModel)]="product.category"
+          [inputId]="category"
+          class="border border-sunsetOrange-200 rounded-full"
+        ></p-radioButton>
+        <label
+          [for]="category"
+          class="text-zinc-900 text-sm font-medium self-stretch max-w-[305px] grow shrink-0 basis-auto"
+        >
+          {{ category }}
+        </label>
+      </div>
+    </div>
+
+    <div class="formgrid grid">
+      <div class="field col">
+        <label for="price">Price</label>
+        <p-inputNumber
+          id="price"
+          [(ngModel)]="product.price"
+          mode="currency"
+          currency="USD"
+          locale="en-US"
+          class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        ></p-inputNumber>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div class="flex gap-2 mt-2 self-end">
+      <button
+        pButton
+        pRipple
+        label="Cancel"
+        icon="pi pi-times"
+        class="block select-none rounded-lg bg-red-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        (click)="hideDialog()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        label="Save"
+        icon="pi pi-check"
+        class="flex items-center justify-center select-none rounded-lg bg-green-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        (click)="saveProduct()"
+      ></button>
+    </div>
+  </ng-template>
 </p-dialog>

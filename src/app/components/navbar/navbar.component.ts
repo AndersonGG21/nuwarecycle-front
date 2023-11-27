@@ -137,7 +137,6 @@ export class NavbarComponent implements OnInit {
   }
 
   createUser() {
-
     const role = "USER";
     this.mediaService.uploadFile(this.userFormData).subscribe((res) => {
       this.profileImg = res.url;          
@@ -193,8 +192,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  handleFileInputChange(event: Event): void {
-    // Puedes manejar el cambio en el input de tipo archivo aquí si es necesario
+  handleFileInputChange(event: Event): void {    
     const input = event.target as HTMLInputElement;
     const files = input.files;
     if (files) {      
