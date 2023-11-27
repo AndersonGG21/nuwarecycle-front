@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { AlertService } from 'src/app/services/alert.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
@@ -17,6 +17,7 @@ export class BestSellersComponent implements OnInit{
   private productService = inject(ProductsServiceService);  
   private cookie = inject(CookieService);
   private alertService = inject(AlertService);
+  @Input() title = '';
 
   ngOnInit() {
 
