@@ -6,6 +6,7 @@ import { MenuItem } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { AlertService } from 'src/app/services/alert.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { MediaService } from 'src/app/services/media.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Product } from 'src/app/type';
@@ -55,6 +56,8 @@ export class NavbarComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   profileImg = '';
   previewImg = '';
+  private mediaService = inject(MediaService);
+  userFormData = new FormData();
 
   triggerFileInput(): void {    
     this.fileInput.nativeElement.click();
@@ -133,18 +136,29 @@ export class NavbarComponent implements OnInit {
 
   createUser() {
 
+    const role = "USER";
+    this.mediaService.uploadFile(this.userFormData).subscribe((res) => {
+      this.profileImg = res.url;          
+    }, error => {
+      this.alertService.success('Error uploading image');
+    }, () => {
+      this.loginService.createUser(
+        this.newUser.value.username,
+        this.newUser.value.userMail,
+        this.newUser.value.userPass,
+        this.profileImg,
+        role
+        
+      ).subscribe((res) => {     
+        this.alertService.success('You have been registered, please login');
+        this.register = false;     
+      });
+    })
+
+
     
-    this.loginService.createUser(
-      this.newUser.value.username,
-      this.newUser.value.userMail,
-      this.newUser.value.userPass,
-      this.profileImg
-    );
-    this.register = false;
-    this.alertService.success('You have been registered, please login');
-    setTimeout(() => {
-      window.location.reload();
-    }, 3100);
+  
+    
   }
 
   filterProducts(event: AutoCompleteCompleteEvent) {
@@ -186,9 +200,9 @@ export class NavbarComponent implements OnInit {
     // Puedes manejar el cambio en el input de tipo archivo aquí si es necesario
     const input = event.target as HTMLInputElement;
     const files = input.files;
-    if (files) {
-      const formData = new FormData();
-      formData.append('file', files[0]);          
+    if (files) {      
+      this.userFormData.append('file', files[0]); 
+      this.alertService.success('Image uploaded successfully');         
       const reader = new FileReader();
       reader.onload = (e) => (this.previewImg = e.target?.result as string);
       reader.readAsDataURL(files[0]);      

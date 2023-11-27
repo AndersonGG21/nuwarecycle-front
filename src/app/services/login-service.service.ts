@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 
 interface User {
   id : number,
@@ -45,8 +46,17 @@ export class LoginServiceService {
     )
   }
 
-  createUser(username: string, email: string, password: string, profileImg: string){
-    this.http.post<any>(this.USERS_API_URL, {username, email, password, profileImg});
+  createUser(username: string, email: string, password: string, profileImg: string, rol : string) : Observable<any>{
+    const user = {
+      username : username,
+      email : email,
+      password : password,      
+      rol : rol,
+      profileImg : profileImg,
+    }
+
+    console.log(user);
+    return this.http.post<any>(this.USERS_API_URL, user);
   }
   
 }
