@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AlertService } from 'src/app/services/alert.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
@@ -17,6 +18,7 @@ export class BestSellersComponent implements OnInit{
   private productService = inject(ProductsServiceService);  
   private cookie = inject(CookieService);
   private alertService = inject(AlertService);
+  private router = inject(Router);
   @Input() title = '';
 
   ngOnInit() {
@@ -60,6 +62,13 @@ export class BestSellersComponent implements OnInit{
     
     this.productService.likeProduct(liked).subscribe((response) => {
       this.alertService.success('Product added to your wishlist');
+    });
+  }
+
+  redirectToProduct(product: Product): void {
+    const productName = product?.name;    
+    this.router.navigate([`/product/${productName}`]).then(() => {
+      location.reload();
     });
   }
 }

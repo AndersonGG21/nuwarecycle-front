@@ -20,7 +20,7 @@
           <img
             src="{{ product.image1 }}"
             class="h-full w-full object-cover cursor-pointer"
-            routerLink="/product/{{ product.name }}"
+            (click)="redirectToProduct(product)"
           />
         </div>
         <div class="p-6">
