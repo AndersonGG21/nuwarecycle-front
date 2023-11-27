@@ -29,6 +29,7 @@ import { DialogModule } from 'primeng/dialog';
 import { BadgeModule } from 'primeng/badge';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
 
 
 //Components
@@ -89,7 +90,8 @@ import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.com
     InputNumberModule,
     DropdownModule,    
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule
   ],
   providers: [CookieService, {
     provide: HTTP_INTERCEPTORS,
