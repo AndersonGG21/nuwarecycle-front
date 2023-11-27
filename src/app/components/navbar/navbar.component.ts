@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -44,12 +44,21 @@ export class NavbarComponent implements OnInit {
   likedProducts : Product[] = [];
   private fb: FormBuilder = inject(FormBuilder);
   credentials: FormGroup = this.fb.group({});
+  newUser : FormGroup = this.fb.group({});
   private loginService = inject(LoginServiceService);
   private productService = inject(ProductsServiceService);
   private router = inject(Router);
   alertService = inject(AlertService);
   cookie = inject(CookieService);
   logedIn = this.cookie.get('Bearer') != '';
+  register = false;
+  @ViewChild('fileInput') fileInput!: ElementRef;
+  profileImg = '';
+  previewImg = '';
+
+  triggerFileInput(): void {    
+    this.fileInput.nativeElement.click();
+  }
 
   ngOnInit(): void {
     if (this.logedIn) {
@@ -89,6 +98,12 @@ export class NavbarComponent implements OnInit {
       password: ['', [Validators.required]],
     });
 
+    this.newUser = this.fb.group({
+      username: ['', [Validators.required]],
+      userMail: ['', [Validators.email, Validators.required]],
+      userPass: ['', [Validators.required]],      
+    })
+
     this.cartService.getCartLenght().subscribe((res) => {
       this.badge$ = res.toString();
     });
@@ -111,6 +126,22 @@ export class NavbarComponent implements OnInit {
     );
     this.loginVisible = false;
     this.alertService.success('You have been logged in');
+    setTimeout(() => {
+      window.location.reload();
+    }, 3100);
+  }
+
+  createUser() {
+
+    
+    this.loginService.createUser(
+      this.newUser.value.username,
+      this.newUser.value.userMail,
+      this.newUser.value.userPass,
+      this.profileImg
+    );
+    this.register = false;
+    this.alertService.success('You have been registered, please login');
     setTimeout(() => {
       window.location.reload();
     }, 3100);
@@ -149,5 +180,18 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([`/product/${productName}`]).then(() => {
       location.reload();
     });
+  }
+
+  handleFileInputChange(event: Event): void {
+    // Puedes manejar el cambio en el input de tipo archivo aquí si es necesario
+    const input = event.target as HTMLInputElement;
+    const files = input.files;
+    if (files) {
+      const formData = new FormData();
+      formData.append('file', files[0]);          
+      const reader = new FileReader();
+      reader.onload = (e) => (this.previewImg = e.target?.result as string);
+      reader.readAsDataURL(files[0]);      
+    }
   }
 }

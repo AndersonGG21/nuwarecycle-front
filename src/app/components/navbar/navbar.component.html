@@ -22,25 +22,25 @@
   </div>
   <div class="hidden sm:block flex-shrink flex-grow-0 justify-start px-2">
     <div class="inline-block">
-      <div class="inline-flex items-center max-w-full relative">   
-        <li class="pi pi-search absolute ml-4"></li>     
+      <div class="inline-flex items-center max-w-full relative">
+        <li class="pi pi-search absolute ml-4"></li>
         <p-autoComplete
           placeholder="Search"
           [required]="true"
           [(ngModel)]="selectedProduct"
-          [suggestions]="filteredProds"     
-          (completeMethod)="filterProducts($event)"   
-          (onSelect)="redirectToProduct()"  
+          [suggestions]="filteredProds"
+          (completeMethod)="filterProducts($event)"
+          (onSelect)="redirectToProduct()"
           field="name"
           ngClass="ng-autocomplete block w-[40vw] p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 rounded-full"
-        >        
-        <ng-template let-product pTemplate="item">
-          <div class="flex items-center gap-2">
-              <img src="{{product.image1}}" style="width: 58px"/>
+        >
+          <ng-template let-product pTemplate="item">
+            <div class="flex items-center gap-2">
+              <img src="{{ product.image1 }}" style="width: 58px" />
               <div>{{ product.name }}</div>
-          </div>
-      </ng-template>
-      </p-autoComplete>
+            </div>
+          </ng-template>
+        </p-autoComplete>
       </div>
     </div>
   </div>
@@ -55,8 +55,8 @@
           >
             <div class="flex items-center h-5">
               <button (click)="showLikedModal()">
-                <li class="pi pi-heart text-lg"></li>              
-              </button>                            
+                <li class="pi pi-heart text-lg"></li>
+              </button>
             </div>
           </button>
         </div>
@@ -79,9 +79,13 @@
       <button (click)="sidebarVisible = true">
         <li class="pi pi-bars text-lg"></li>
       </button>
-      
+
       <button (click)="menu.toggle($event)" class="ml-6">
-        <p-avatar [icon]="cookie.get('Bearer') != '' ? cookie.get('profileImg') : 'pi pi-user'"></p-avatar>
+        <p-avatar
+          [icon]="
+            cookie.get('Bearer') != '' ? cookie.get('profileImg') : 'pi pi-user'
+          "
+        ></p-avatar>
       </button>
     </div>
   </div>
@@ -389,7 +393,7 @@
   <ng-template #empty>
     <p class="mt-2 text-sunsetOrange-200">
       You don't have any product in your cart
-    </p>              
+    </p>
   </ng-template>
 </p-dialog>
 
@@ -405,58 +409,151 @@
     height: 'auto'
   }"
   [draggable]="false"
-  [resizable]="false"  
+  [resizable]="false"
   [breakpoints]="{ '960px': '75vw' }"
 >
-  <div class="flex items-center justify-center w-full lg:p-0">
-    <div class="flex items-center">
-      <form
-        [formGroup]="credentials"
-        (ngSubmit)="submit()"
-        class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
+  <div class="flex items-center justify-center w-full lg:p-0" *ngIf="!register">
+    <form
+      [formGroup]="credentials"
+      (ngSubmit)="submit()"
+      class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
+    >
+      <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">Sign In</h3>
+      <p class="mb-4 text-grey-700">Enter your email and password</p>
+      <label for="email" class="mb-2 text-sm text-start text-grey-900"
+        >Email*</label
       >
-        <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">Sign In</h3>
-        <p class="mb-4 text-grey-700">Enter your email and password</p>
-        <label for="email" class="mb-2 text-sm text-start text-grey-900"
-          >Email*</label
-        >
-        <input
-          id="email"
-          type="email"
-          placeholder="mail@loopple.com"
-          class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
-          formControlName="email"
-        />
-        <label for="password" class="mb-2 text-sm text-start text-grey-900"
-          >Password*</label
-        >
-        <input
-          id="password"
-          type="password"
-          placeholder="Enter a password"
-          class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
-          formControlName="password"
-        />
+      <input
+        id="email"
+        type="email"
+        placeholder="mail@loopple.com"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        formControlName="email"
+      />
+      <label for="password" class="mb-2 text-sm text-start text-grey-900"
+        >Password*</label
+      >
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter a password"
+        class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        formControlName="password"
+      />
 
-        <button
-          class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
-          type="submit"
+      <button
+        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
+        type="submit"
+      >
+        Sign In
+      </button>
+      <p class="text-sm leading-relaxed text-grey-900">
+        Not registered yet?
+        <a
+          (click)="register = true"
+          class="font-bold text-grey-700 cursor-pointer"
+          >Create an Account</a
         >
-          Sign In
-        </button>
-        <p class="text-sm leading-relaxed text-grey-900">
-          Not registered yet?
-          <a href="javascript:void(0)" class="font-bold text-grey-700"
-            >Create an Account</a
-          >
-        </p>
-      </form>
-    </div>
+      </p>
+    </form>
   </div>
+
+  <ng-container *ngIf="register">
+    <form
+      [formGroup]="newUser"
+      class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
+    >
+      <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">
+        Create an account
+      </h3>
+      <div class="w-full h-28">
+        <input
+          type="file"
+          id="imageUpload"
+          name="imageUpload"
+          accept="image/*"
+          class="hidden"          
+          (change)="handleFileInputChange($event)"
+          #fileInput
+        />
+        <div class="mx-auto w-24 text-center">
+          <div class="relative w-24">
+            <span
+              class="w-24 h-24 rounded-full absolute flex items-center justify-center"
+              *ngIf="previewImg == '';else prev"
+              >Upload a photo
+              </span>
+              <ng-template #prev>
+                <img
+                  class="w-24 h-24 rounded-full absolute"
+                  [src]="previewImg"
+                  alt="Profile image"
+                />
+              </ng-template>
+            <button
+              class="w-24 h-24 group hover:bg-gray-200 opacity-100 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500
+              border shadow-md"
+              (click)="triggerFileInput()"
+            >
+              <img
+                class="hidden group-hover:block w-8 absolute"
+                src="https://www.svgrepo.com/show/33565/upload.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>      
+      <label for="email" class="mb-2 text-sm text-start text-grey-900"
+        >Name*</label
+      >
+      <input
+        id="username"
+        type="text"
+        placeholder="Jhon Doe"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        formControlName="username"
+      />
+      <label for="email" class="mb-2 text-sm text-start text-grey-900"
+        >Email*</label
+      >
+      <input
+        id="email"
+        type="email"
+        placeholder="mail@loopple.com"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        formControlName="userMail"
+      />
+      <label for="password" class="mb-2 text-sm text-start text-grey-900"
+        >Password*</label
+      >
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter a password"
+        class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+        formControlName="userPass"
+      />
+
+      <button
+        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
+        type="submit"
+      >
+        Sign In
+      </button>
+      <p class="text-sm leading-relaxed text-grey-900">
+        Not registered yet?
+        <a
+          (click)="register = true"
+          class="font-bold text-grey-700 cursor-pointer"
+          >Create an Account</a
+        >
+      </p>
+    </form>
+  </ng-container>
 </p-dialog>
 
 <!-- Liked Products Modal -->
-
 <p-dialog
   header="Wishlist"
   [(visible)]="likedVisible"
@@ -477,7 +574,7 @@
         alt="Product{} thumbnail in Shopping cart"
         width="90"
         height="90"
-        class="rounded-lg bg-white"        
+        class="rounded-lg bg-white"
       />
       <div class="flex flex-col h-full items-start justify-center gap-2">
         <h2 class="w-56 font-geist-bold text-base line-height-4">
@@ -485,20 +582,20 @@
         </h2>
         <span class="w-56 font-geist text-base line-height-4 text-gray-500"
           >{{ product.description.substring(0, 50) }}...</span
-        >        
+        >
       </div>
-      <div class="flex flex-col justify-around items-center h-full pr-2">        
+      <div class="flex flex-col justify-around items-center h-full pr-2">
         <span class="font-geist-bold">{{
           product.price | currency : "USD"
         }}</span>
       </div>
-    </div>    
+    </div>
   </ng-container>
 
   <ng-template #empty>
     <p class="mt-2 text-sunsetOrange-200">
       You don't have any product in your Wishlist
-    </p>              
+    </p>
   </ng-template>
 </p-dialog>
 

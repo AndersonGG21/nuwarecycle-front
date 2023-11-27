@@ -44,5 +44,9 @@ export class LoginServiceService {
       }
     )
   }
+
+  createUser(username: string, email: string, password: string, profileImg: string){
+    this.http.post<any>(this.USERS_API_URL, {username, email, password, profileImg});
+  }
   
 }
