@@ -8,8 +8,8 @@
         <h2 class="text-gray-600 ml-0.5">ADMINISTRATOR DASHBOARD</h2>
       </div>      
     </div>
-    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+    <section class="flex flex-wrap gap-6">
+      <div class="flex items-centern p-8 bg-white shadow-md rounded-lg border w-max">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6"
         >
@@ -20,19 +20,19 @@
           <span class="block text-gray-500">Users</span>
         </div>
       </div>
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+      <div class="flex items-center p-8 bg-white shadow-md rounded-lg border w-max">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6"
         >
           <i class="pi pi-chart-line text-2xl"></i>
         </div>
         <div>
-          <span class="block text-2xl font-bold">6.8</span>
+          <span class="block text-2xl font-bold">20</span>
           <span class="block text-gray-500">Sales</span>
         </div>
       </div>
       
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+      <div class="flex items-center p-8 bg-white shadow-md rounded-lg border w-max">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6"
         >
@@ -46,22 +46,7 @@
     </section>
    
     <app-products-table></app-products-table>
-   
-    <section class="text-right font-semibold text-gray-500">
-      <a href="#" class="text-purple-600 hover:underline"
-        >Recreated on Codepen</a
-      >
-      with
-      <a href="https://tailwindcss.com/" class="text-teal-400 hover:underline"
-        >Tailwind CSS</a
-      >
-      by Azri Kahar,
-      <a
-        href="https://dribbble.com/shots/10711741-Free-UI-Kit-for-Figma-Online-Courses-Dashboard"
-        class="text-purple-600 hover:underline"
-        >original design</a
-      >
-      made by Chili Labs
-    </section>
+    <app-users-table></app-users-table>
+      
   </main>
 </div>

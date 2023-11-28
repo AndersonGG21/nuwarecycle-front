@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
@@ -20,6 +21,7 @@ export class LoginServiceService {
   private USERS_API_URL = "http://localhost:8080/api/v1/users";
   private http = inject(HttpClient);
   private cookie = inject(CookieService);
+  private router = inject(Router);
   private options = {
     observe : 'response' as const,
     headers : new HttpHeaders()
@@ -41,9 +43,13 @@ export class LoginServiceService {
           this.cookie.set("username", user.username);
           this.cookie.set("rol", user.rol);
           this.cookie.set("profileImg", user.profileImg);                    
-        })
+
+          if (this.cookie.get("rol") == "ADMIN"){
+            this.router.navigate(['/dashboard']);                      
+          }
+        })        
       }
-    )
+    )    
   }
 
   createUser(username: string, email: string, password: string, profileImg: string, rol : string) : Observable<any>{

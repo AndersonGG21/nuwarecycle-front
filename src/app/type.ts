@@ -23,3 +23,13 @@ export interface Comment {
   user : any,  
 };
 
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  registrationDate: string;
+  profileImage: string;
+  role: string;
+}
+

@@ -37,7 +37,7 @@
     <ng-template pTemplate="body" let-product>
       <tr class="border-b">
         <td class="font-geist-bold">{{ product.name }}</td>
-        <td><img src="{{ product.image1 }}" width="50" class="shadow-4" /></td>
+        <td><img src="{{ product.image1 }}" class="shadow-md w-20 h-14 rounded-md" /></td>
         <td>{{ product.price | currency : "USD" }}</td>
         <td>{{ product.category }}</td>
         <td>{{ product.stock }}</td>
