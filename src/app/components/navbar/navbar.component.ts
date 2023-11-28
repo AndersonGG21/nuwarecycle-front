@@ -138,6 +138,7 @@ export class NavbarComponent implements OnInit {
 
   createUser() {
     const role = "USER";
+    console.log(this.userFormData);
     this.mediaService.uploadFile(this.userFormData).subscribe((res) => {
       this.profileImg = res.url;          
     }, error => {

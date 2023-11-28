@@ -15,7 +15,11 @@ export class ProductsServiceService {
   private cookie = inject(CookieService);
   
   constructor(private http: HttpClient) { }
-  
+
+  addProduct(newProduct: Product) : Observable<Product>{
+    return this.http.post<Product>(this.PRODUCTS_API_URL, newProduct);
+  }
+
   getAllProducts() : Observable<Product[]> {  
     return this.http.get<Product[]>(this.PRODUCTS_API_URL);
   }
@@ -65,6 +69,10 @@ export class ProductsServiceService {
 
   commentProduct(produtId : number,comment: Comment) : Observable<any> {
     return this.http.post<any>(`${this.PRODUCTS_API_URL}/${produtId}/comments`, comment);
+  }
+
+  deleteProductById(id: number) : Observable<Product> {
+    return this.http.delete<Product>(`${this.PRODUCTS_API_URL}/${id}`);
   }
 
 }

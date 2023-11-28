@@ -5,7 +5,6 @@
     [rows]="5"
     [paginator]="true"
     [tableStyle]="{ 'min-width': '75rem' }"
-    [(selection)]="selectedProducts"
     [rowHover]="true"
     dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -55,7 +54,7 @@
             pRipple
             icon="pi pi-trash"
             class="rounded-full bg-red-500 p-2 text-white h-8 w-8"
-            (click)="deleteProduct(product)"
+            (click)="deleteProduct(product.idProd)"
           ></button>
         </td>
       </tr>
@@ -172,7 +171,7 @@
         label="Save"
         icon="pi pi-check"
         class="flex items-center justify-center select-none rounded-lg bg-green-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        (click)="saveProduct()"
+        (click)="updateProduct()"
       ></button>
     </div>
   </ng-template>
@@ -196,7 +195,7 @@
         >
           <div
             class="h-full w-full text-center flex flex-col justify-center items-center"
-          > 
+          >
             <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
               <img
                 class="has-mask h-36 object-center"
@@ -204,45 +203,71 @@
                 alt="freepik image"
               />
             </div>
-            <button class="pointer-none text-gray-500" (click)="pImagesInput.click()">              
+            <button
+              class="pointer-none text-gray-500"
+              (click)="pImagesInput.click()"
+            >
               <span class="text-blue-600 hover:underline"
                 >Select the images from your computer</span
-              >              
+              >
             </button>
           </div>
-          <input type="file" class="hidden" accept="image/*" multiple #pImagesInput (change)="handleFileInputChange($event)"/>                                            
+          <input
+            type="file"
+            class="hidden"
+            accept="image/*"
+            multiple
+            #pImagesInput
+            (change)="handleFileInputChange($event)"
+          />
         </label>
       </div>
-    </div>   
+    </div>
     <div class="flex gap-2 flex-wrap my-2">
       <ng-container *ngFor="let thum of imagesThumbnails">
-        <img
-          class="w-24 h-24 rounded-md"
-          [src]="thum"
-          alt="Profile image"
-      />
+        <img class="w-24 h-24 rounded-md" [src]="thum" alt="Profile image" />
       </ng-container>
-    </div> 
+    </div>
+    <button
+      pButton
+      pRipple
+      label="Confirm Images"
+      icon="pi pi-check"
+      class="flex items-center justify-center select-none rounded-lg bg-green-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+      (click)="confirmImages()"
+    ></button>
     <div class="field">
-      <label for="pName" class="mb-2 text-sm text-start text-grey-900"
+      <label for="npName" class="mb-2 text-sm text-start text-grey-900"
         >Name</label
       >
       <input
-        id="pName"
+        id="npName"
         type="text"
         placeholder="Iphone 13 Pro Max Ultra HD"
-        [(ngModel)]="product.name"
+        [(ngModel)]="newProduct.name"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
+      />
+    </div>
+    <div class="field">
+      <label for="npBrand" class="mb-2 text-sm text-start text-grey-900"
+        >Brand</label
+      >
+      <input
+        id="npBrand"
+        type="text"
+        placeholder="Huawei"
+        [(ngModel)]="newProduct.brand"
         class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
       />
     </div>
     <div class="mb-4">
-      <label for="pDesc" class="mb-2 text-sm text-start text-grey-900"
+      <label for="npDesc" class="mb-2 text-sm text-start text-grey-900"
         >Description</label
       >
       <textarea
-        id="description"
+        id="npDesc"
         pInputTextarea
-        [(ngModel)]="product.description"
+        [(ngModel)]="newProduct.description"
         required
         rows="3"
         cols="20"
@@ -251,14 +276,14 @@
     </div>
 
     <div class="mb-4 flex flex-col gap-3">
-      <label for="pStock" class="mb-2 text-sm text-start text-grey-900"
+      <label for="npStock" class="mb-2 text-sm text-start text-grey-900"
         >Inventory Status</label
       >
       <p-inputNumber
-        [(ngModel)]="product.stock"
+        [(ngModel)]="newProduct.stock"
         [showButtons]="true"
         buttonLayout="horizontal"
-        id="pStock"
+        id="npStock"
         spinnerMode="horizontal"
         [step]="1"
         incrementButtonIcon="pi pi-plus"
@@ -276,7 +301,7 @@
         <p-radioButton
           name="category"
           [value]="category"
-          [(ngModel)]="product.category"
+          [(ngModel)]="newProduct.category"
           [inputId]="category"
           class="border border-sunsetOrange-200 rounded-full"
         ></p-radioButton>
@@ -291,10 +316,10 @@
 
     <div class="formgrid grid">
       <div class="field col">
-        <label for="price">Price</label>
+        <label for="npPrice">Price</label>
         <p-inputNumber
-          id="price"
-          [(ngModel)]="product.price"
+          id="npPrice"
+          [(ngModel)]="newProduct.price"
           mode="currency"
           currency="USD"
           locale="en-US"
@@ -311,8 +336,8 @@
         pRipple
         label="Cancel"
         icon="pi pi-times"
-        class="block select-none rounded-lg bg-red-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        (click)="hideDialog()"
+        class="block select-none rounded-lg bg-red-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"      
+        (click)="newProductDialog = false"
       ></button>
       <button
         pButton
