@@ -48,6 +48,7 @@ import { HttpInterceptor } from './shared/interceptors/http.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ProductsTableComponent } from './components/products-table/products-tab
     CheckoutComponent,
     AlertComponent,
     AdminDashComponent,
-    ProductsTableComponent
+    ProductsTableComponent,
+    UsersTableComponent
   ],
   imports: [
     BrowserModule,
