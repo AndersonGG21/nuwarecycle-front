@@ -98,7 +98,17 @@ export class ProductsTableComponent implements OnInit {
   }
 
   updateProduct() {
-    console.log('save');
+    this.productService.updateProduct(this.product).subscribe({
+      next: (res) => {        
+        this.alertService.success('Product updated successfully');
+      },
+      complete: () => {   
+        this.productDialog = false;             
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }
+    })
   }
 
   saveProduct() {
