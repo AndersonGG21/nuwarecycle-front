@@ -6,6 +6,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        suraBlue: {
+          50: '#E5F6FF',
+          100: '#CFEEFF',
+          200: '#A9DCFF',
+          300: '#75C1FF',
+          400: '#3F95FF',
+          500: '#1468FF',
+          600: '#0053FF',
+          700: '#0054FF',
+          800: '#004BE3',
+          900: '#0030A4',
+          950: '#001B66'
+        },
         sunsetOrange : {
           50: '#f2652260',
           100: '#f2652280',
