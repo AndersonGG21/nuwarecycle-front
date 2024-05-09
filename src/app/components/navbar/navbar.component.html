@@ -124,7 +124,7 @@
         </li>        
         <li class="cursor-pointer" (click)="redirectT('dashboard')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-table"></i>
@@ -135,7 +135,7 @@
 
         <li class="cursor-pointer" (click)="redirectT('home')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-home"></i>
@@ -145,7 +145,7 @@
         </li>
         <li class="cursor-pointer" (click)="redirectT('products')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-desktop"></i>
@@ -155,7 +155,7 @@
         </li>
         <li class="cursor-pointer" (click)="redirectT('cart')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-shopping-cart"></i>
@@ -165,7 +165,7 @@
         </li>
         <li class="cursor-pointer" (click)="likedVisible = true">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-heart"></i>
@@ -205,7 +205,7 @@
 
 <!-- Shopping Cart Modal -->
 <p-dialog
-  header="Tu Carrito"
+  header="Tu carrito de compras"
   [(visible)]="visible"
   [modal]="true"
   [style]="{ width: '40vw', 'max-height': '100vh', 'overflow-y': 'scroll' }"
@@ -269,15 +269,15 @@
   </ng-container>
 
   <ng-template #empty>
-    <p class="mt-2 text-blue-500">
-      No has agregado productos a tu carrito
+    <p class="mt-2 text-[#E3E829]">
+      No tienes ningun producto en tu carrito.
     </p>
   </ng-template>
 </p-dialog>
 
 <!-- Login Modal -->
 <p-dialog
-  header="Welcome"
+  header="Bienvendio a Sura!"
   [(visible)]="loginVisible"
   [modal]="true"
   [style]="{
@@ -296,10 +296,10 @@
       (ngSubmit)="submit()"
       class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
     >
-      <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">Sign In</h3>
-      <p class="mb-4 text-grey-700">Enter your email and password</p>
+      <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">Inicio de Sesión</h3>
+      <p class="mb-4 text-grey-700">Ingresa tu correo y contraseña</p>
       <label for="email" class="mb-2 text-sm text-start text-grey-900"
-        >Email*</label
+        >Correo*</label
       >
       <input
         id="email"
@@ -309,7 +309,7 @@
         formControlName="email"
       />
       <label for="password" class="mb-2 text-sm text-start text-grey-900"
-        >Password*</label
+        >Contraseña*</label
       >
       <input
         id="password"
@@ -323,14 +323,14 @@
         class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
         type="submit"
       >
-        Sign In
+        Iniciar Sesión
       </button>
       <p class="text-sm leading-relaxed text-grey-900">
-        Not registered yet?
+        ¿No estás registrado?
         <a
           (click)="register = true"
           class="font-bold text-grey-700 cursor-pointer"
-          >Create an Account</a
+          >Crea una cuenta</a
         >
       </p>
     </form>
@@ -342,7 +342,7 @@
       class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
     >
       <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">
-        Create an account
+        Crear una cuenta
       </h3>
       <div class="w-full h-28">
         <input
@@ -359,7 +359,7 @@
             <span
               class="w-24 h-24 rounded-full absolute flex items-center justify-center"
               *ngIf="previewImg == ''; else prev"
-              >Upload a photo
+              >Sube una foto
             </span>
             <ng-template #prev>
               <img
@@ -382,7 +382,7 @@
         </div>
       </div>
       <label for="email" class="mb-2 text-sm text-start text-grey-900"
-        >Name*</label
+        >Nombre*</label
       >
       <input
         id="username"
@@ -392,7 +392,7 @@
         formControlName="username"
       />
       <label for="email" class="mb-2 text-sm text-start text-grey-900"
-        >Email*</label
+        >Correo*</label
       >
       <input
         id="email"
@@ -402,7 +402,7 @@
         formControlName="userMail"
       />
       <label for="password" class="mb-2 text-sm text-start text-grey-900"
-        >Password*</label
+        >Contraseña*</label
       >
       <input
         id="password"
@@ -417,14 +417,14 @@
         type="submit"
         (click)="createUser()"
       >
-        Create account
+        Crear cuenta
       </button>
       <p class="text-sm leading-relaxed text-grey-900">
-        Al ready register?
+        ¿Ya estás registrado?
         <a
           (click)="register = false"
           class="font-bold text-grey-700 cursor-pointer"
-          >Sign in</a
+          >Inicia Sesión</a
         >
       </p>
     </form>
