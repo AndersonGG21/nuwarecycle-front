@@ -43,12 +43,12 @@
 }
 
 ::ng-deep .p-highlight {
-  background-color: rgba(255, 68, 0, 0.76);
+  background-color: #E3E829
 }
 
 ::ng-deep .p-slider-handle:hover,
 ::ng-deep .p-slider-range {
-  background-color: orangered;
+  background-color: #E3E829
 }
 
 ::ng-deep .p-slider-handle {

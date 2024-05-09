@@ -82,41 +82,27 @@ export class ProductsComponent implements OnInit, OnChanges {
   ];
   
 
-  ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((products) => {
-      this.products = products;
-      this.allProducts = products;
-    })
+  ngOnInit(): void {    
 
     this.products = this.productService.getProductsJson();
-    this.allProducts = this.products;
+    this.filteredProducts  = this.products;
 
 
 
     if (!this.category) {
-      this.selectedCategory = this.categories[0];  
+      this.selectedCategory = this.categories[0]
     }else{
-      this.selectedCategory = this.category;
-      
-      this.filteredProducts = this.products.filter((product) => product.category === this.category);
-      
-
-      // this.productService.getProductsByCategory(this.category).subscribe((products) => {
-      //   this.products = products;
-      // });      
-      
+      this.selectedCategory = this.category;      
+      this.filteredProducts = this.products.filter((product) => product.category === this.category);            
     }
     
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.category && this.category != 'All') {
-      // this.productService.getProductsByCategory(this.category).subscribe((products) => {
-      //   this.products = products;
-      // });      
+    if (this.category && this.category != 'All') {      
       this.filteredProducts = this.products.filter((product) => product.category === this.category);
     } else {
-      this.filteredProducts = this.allProducts;
+      this.filteredProducts = this.products;
     }    
   }
 

@@ -17,7 +17,7 @@
     </p-galleria>
   </div>
   <div class="w-full lg:w-1/2 h-full flex flex-col justify-start gap-4 p-2">
-    <span class="text-sm">Brand: {{ product.brand }}</span>
+    <span class="text-sm">Marca: {{ product.brand }}</span>
     <h2 class="font-geist-bold text-3xl">
       {{ product.name }}
     </h2>
@@ -28,27 +28,27 @@
     <footer class="p-2 flex gap-2 items-center justify-center">
       <button
         pRipple
-        class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
+        class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-[#E3E829] p-2 text-center align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-black"
         type="button"
       >
         <li class="pi pi-heart"></li>
-        Add to favorites
+        Añadir a favoritos
       </button>
       <button
         pRipple
-        class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-sunsetOrange-200 p-2 text-center align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-white"
+        class="flex items-center justify-center gap-x-2 w-1/2 select-none rounded-lg bg-[#E3E829] p-2 text-center align-middle font-geist-bold text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-black"
         type="button"
         (click)="addProduct(product)"
       >
         <li class="pi pi-shopping-cart"></li>
-        Add to Cart
+        Añadir al carrito
       </button>
     </footer>
   </div>
 </main>
 <article class="mt-24 lg:flex lg:justify-center">
   <div class="card w-4/5">
-    <p-tabView styleClass="tabview-custom">
+    <p-tabView>
       <p-tabPanel header="Reviews">
         <ng-template pTemplate="header">
           <div class="flex items-center gap-1">
@@ -85,23 +85,23 @@
           </ng-container>
         </section>
         <form class="flex flex-col items-center justify-center">
-          <label for="chat" class="sr-only">Your review</label>
+          <label for="chat" class="sr-only">Tu opinión</label>
           <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 w-4/5">
             <textarea
               id="chat"
               rows="1"
               class="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-sunsetOrange-50"
-              placeholder="Your review..."
+              placeholder="Tu opinión ... "
               [(ngModel)]="comment"
               name="comment"
             ></textarea>
             <button
               type="submit"
-              class="inline-flex justify-center p-2 text-sunsetOrange-200 rounded-full cursor-pointer hover:bg-sunsetOrange-50"
+              class="inline-flex justify-center p-2 text-[#E3E829] rounded-full cursor-pointer hover:bg-sunsetOrange-50"
               (click)="commentProduct()"
             >
               <i class="pi pi-send"></i>
-              <span class="sr-only">Send message</span>
+              <span class="sr-only">Enviar Mensaje</span>
             </button>
           </div>
         </form>
@@ -135,6 +135,6 @@
   }
 
   ::ng-deep .p-highlight a {
-    border-top: 1px solid orangered;
+    border-top: 1px solid #E3E829;
   }
 </style>
