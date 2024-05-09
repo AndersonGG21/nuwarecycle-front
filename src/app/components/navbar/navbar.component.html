@@ -124,7 +124,7 @@
           <div class="text-sm font-light tracking-wide text-gray-500">Menu</div>
         </li>
         <ng-container *ngIf="isAdmin">
-          <li class="cursor-pointer" (click)="redirectT('dashboard')">
+          <li class="cursor-pointer" (click)="likedVisible = true">
             <a
               class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
             >
@@ -136,7 +136,7 @@
           </li>
         </ng-container>
 
-        <li class="cursor-pointer" (click)="redirectT('home')">
+        <li class="cursor-pointer">
           <a
             class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
           >
@@ -146,7 +146,7 @@
             <span class="ml-2 text-sm tracking-wide truncate">Home</span>
           </a>
         </li>
-        <li class="cursor-pointer" (click)="redirectT('products')">
+        <li class="cursor-pointer">
           <a
             class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
           >
@@ -156,7 +156,7 @@
             <span class="ml-2 text-sm tracking-wide truncate">Products</span>
           </a>
         </li>
-        <li class="cursor-pointer" (click)="redirectT('cart')">
+        <li class="cursor-pointer">
           <a
             class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-sunsetOrange-200 pr-6"
           >

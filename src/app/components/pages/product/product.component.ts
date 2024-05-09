@@ -46,44 +46,26 @@ export class ProductComponent implements OnInit {
   private cookie = inject(CookieService);
 
   ngOnInit(): void {
-    // this.productService.getProductByName(this.name!).subscribe((res) => {
-    //   this.product = res;
-    //   this.images = [
-    //     this.product.image1,
-    //     this.product.image2,
-    //     this.product.image3,
-    //     this.product.image4,
-    //   ];
-
-    //   this.productService
-    //     .getProductComments(this.product.idProd!)
-    //     .subscribe((comments) => {
-    //       this.comments = comments;
-    //       console.log(this.comments);
-    //     });
-    // });
-
-    const products : Product[] = this.productService.getProductsJson();
-    
-    const product = products.find((product) => product.name === this.name);
-    
-    if (product) {      
-      this.product = product;
+    this.productService.getProductByName(this.name!).subscribe((res) => {
+      this.product = res;
       this.images = [
         this.product.image1,
         this.product.image2,
         this.product.image3,
         this.product.image4,
       ];
-    } else {      
-      console.error(`No se encontró el producto con el nombre ${this.name}`);
-    }
-    
 
-    
-    // this.productService.getRadnomProducts().subscribe((res) => {
-    //   this.relatedProducts = res;
-    // })
+      this.productService
+        .getProductComments(this.product.idProd!)
+        .subscribe((comments) => {
+          this.comments = comments;
+          console.log(this.comments);
+        });
+    });
+
+    this.productService.getRadnomProducts().subscribe((res) => {
+      this.relatedProducts = res;
+    })
 
     this.responsiveOptions = [
       {

@@ -49,9 +49,6 @@ import { AlertComponent } from './components/alert/alert.component';
 import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLink } from 'apollo-angular/http';
-import { InMemoryCache } from '@apollo/client/core';
 
 @NgModule({
   declarations: [
@@ -97,16 +94,14 @@ import { InMemoryCache } from '@apollo/client/core';
     DropdownModule,    
     ReactiveFormsModule,
     HttpClientModule,
-    TableModule,
-    ApolloModule    
+    TableModule
   ],
   providers: [CookieService, {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpInterceptor,
-    multi: true,
+    multi: true
   }],
-  bootstrap: [AppComponent],
-  
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 
