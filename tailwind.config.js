@@ -25,11 +25,11 @@ module.exports = {
         'geist-thin': ['Geist-Thin']              
       },
       backgroundImage: {
-        'gradient-green': "url('/assets/images/green-gradient.png')",
-        'gradient-purple': "url('/assets/images/purple-gradient.png')",
-        'gradient-black': "url('/assets/images/black-gradient.png')",
-        'gradient-orange': "url('/assets/images/orange-gradient.png')",
-        'gradient-nuwa': "url('/assets/images/nuwa-gradient.png')",
+        // 'gradient-green': "url('/assets/images/green-gradient.png')",
+        'gradient-green': "url('/assets/images/green-gradient-sura.png')",
+        'gradient-yellow': "url('/assets/images/yellow-gradient-sura.png')",
+        'gradient-purple': "url('/assets/images/purple-gradient-sura.png')",
+        'gradient-sura': "url('/assets/images/sura-gradient.png')",
         'gradient-mixed': "url('/assets/images/mixed-gradient.png')",
       }
     },
