@@ -75,7 +75,7 @@ export class NavbarComponent implements OnInit {
     if (this.logedIn) {
       this.menuItems = [
         {
-          label: 'Logout',
+          label: 'Cerra sesión',
           icon: 'pi pi-sign-out',
           escape: false,
           command: () => {this.logout()},
@@ -84,7 +84,7 @@ export class NavbarComponent implements OnInit {
     } else {
       this.menuItems = [
         {
-          label: 'Login',
+          label: 'Inicia sesión',
           icon: 'pi pi-sign-in',
           escape: false,
           command: () => {
