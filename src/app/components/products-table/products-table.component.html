@@ -28,10 +28,9 @@
         <th style="min-width: 15rem">Name</th>
         <th>Image</th>
         <th>Price</th>
-        <th style="min-width: 10rem">Category</th>
-        <th>Stock</th>
-        <th style="min-width: 10rem">Status</th>
-        <th></th>
+        <th>Category</th>        
+        <!-- <th style="min-width: 10rem">Status</th> -->
+        <th>Actions</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
@@ -39,8 +38,7 @@
         <td class="font-geist-bold">{{ product.name }}</td>
         <td><img src="{{ product.image1 }}" class="shadow-md w-20 h-14 rounded-md" /></td>
         <td>{{ product.price | currency : "USD" }}</td>
-        <td>{{ product.category }}</td>
-        <td>{{ product.stock }}</td>
+        <td>{{ product.category }}</td>        
         <td class="flex gap-2">
           <button
             pButton
@@ -77,12 +75,12 @@
     <div class="field">
       <label for="pName" class="mb-2 text-sm text-start text-grey-900"
         >Name</label
-      >
+      >      
       <input
         id="pName"
         type="text"
         placeholder="Iphone 13 Pro Max Ultra HD"
-        [(ngModel)]="product.name"
+        [(ngModel)]="eidtableProduct.name"
         class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
       />
     </div>
@@ -93,7 +91,7 @@
       <textarea
         id="description"
         pInputTextarea
-        [(ngModel)]="product.description"
+        [(ngModel)]="eidtableProduct.description"
         required
         rows="3"
         cols="20"
@@ -106,7 +104,7 @@
         >Inventory Status</label
       >
       <p-inputNumber
-        [(ngModel)]="product.stock"
+        [(ngModel)]="eidtableProduct.stock"
         [showButtons]="true"
         buttonLayout="horizontal"
         id="pStock"
@@ -127,7 +125,7 @@
         <p-radioButton
           name="category"
           [value]="category"
-          [(ngModel)]="product.category"
+          [(ngModel)]="eidtableProduct.category"
           [inputId]="category"
           class="border border-sunsetOrange-200 rounded-full"
         ></p-radioButton>
@@ -145,10 +143,11 @@
         <label for="price">Price</label>
         <p-inputNumber
           id="price"
-          [(ngModel)]="product.price"
+          [(ngModel)]="eidtableProduct.price"
           mode="currency"
           currency="USD"
           locale="en-US"
+          [inputStyle]="{ width: '100%' }"
           class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
         ></p-inputNumber>
       </div>
@@ -323,6 +322,7 @@
           mode="currency"
           currency="USD"
           locale="en-US"
+          [inputStyle]="{ width: '100%' }"
           class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
         ></p-inputNumber>
       </div>

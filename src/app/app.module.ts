@@ -49,6 +49,9 @@ import { AlertComponent } from './components/alert/alert.component';
 import { AdminDashComponent } from './components/pages/admin-dash/admin-dash.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache } from '@apollo/client/core';
 
 @NgModule({
   declarations: [
@@ -94,14 +97,27 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
     DropdownModule,    
     ReactiveFormsModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    ApolloModule    
   ],
   providers: [CookieService, {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpInterceptor,
-    multi: true
+    multi: true,
+  }, {
+    provide: APOLLO_OPTIONS,
+    useFactory: (httpLink: HttpLink) => {
+      return {
+        cache: new InMemoryCache(),
+        link: httpLink.create({
+          uri: 'http://localhost:8080/graphql',
+        }),
+      };
+    },
+    deps: [HttpLink]
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
 

@@ -219,4 +219,8 @@ export class NavbarComponent implements OnInit {
       });
     }, 1000);
   }
+
+  redirectT(route : string){
+    this.router.navigate([`/${route}`])
+  }
 }
