@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Observable, catchError, forkJoin, of } from 'rxjs';
 import { AlertService } from 'src/app/services/alert.service';
-import { GraphQLService } from 'src/app/services/graph-ql.service';
+// import { GraphQLService } from 'src/app/services/graph-ql.service';
 import { MediaService } from 'src/app/services/media.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { Product } from 'src/app/type';
@@ -69,14 +69,14 @@ export class ProductsTableComponent implements OnInit {
   private alertService = inject(AlertService);
   private mediaService = inject(MediaService);
   eidtableProduct!: Product;
-  constructor(private graphQLService: GraphQLService) {}
+  // constructor(private graphQLService: GraphQLService) {}
 
   ngOnInit(): void {
     this.products = this.productService.getProductsJson();
 
-    this.graphQLService.products$.subscribe((products) => {
-      this.products = products;      
-    });
+    // this.graphQLService.products$.subscribe((products) => {
+    //   this.products = products;      
+    // });
   }
 
   editProduct(product: Product) {
@@ -97,7 +97,7 @@ export class ProductsTableComponent implements OnInit {
     //   },
     // });
 
-    this.graphQLService.deleteProduct(productId);
+    // this.graphQLService.deleteProduct(productId);
     this.products = this.products.filter(
       (product) => product.idProd !== productId
     );
@@ -119,7 +119,7 @@ export class ProductsTableComponent implements OnInit {
     //     }, 3000);
     //   },
     // });
-    this.graphQLService.updateProduct(this.eidtableProduct);
+    // this.graphQLService.updateProduct(this.eidtableProduct);
     this.productDialog = false;
     setTimeout(() => {
       location.reload();
@@ -153,7 +153,7 @@ export class ProductsTableComponent implements OnInit {
     //     location.reload();
     //   },
     // });    
-    this.graphQLService.addNewProduct(this.newProduct);
+    // this.graphQLService.addNewProduct(this.newProduct);
     this.newProduct = {
       name: '',
       description: '',
