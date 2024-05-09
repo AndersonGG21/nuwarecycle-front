@@ -42,8 +42,7 @@ export class LoginServiceService {
           this.cookie.set("uid", user.id.toString());
           this.cookie.set("username", user.username);
           this.cookie.set("rol", user.rol);
-          this.cookie.set("profileImg", user.profileImg);   
-          this.cookie.set("email", user.email);                 
+          this.cookie.set("profileImg", user.profileImg);                    
 
           if (this.cookie.get("rol") == "ADMIN"){
             this.router.navigate(['/dashboard']);                      
@@ -64,10 +63,6 @@ export class LoginServiceService {
 
     console.log(user);
     return this.http.post<any>(this.USERS_API_URL, user);
-  }
-
-  isAdmid() : boolean{
-    return this.cookie.get("rol") == "ADMIN";
   }
   
 }

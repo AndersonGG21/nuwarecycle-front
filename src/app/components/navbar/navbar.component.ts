@@ -1,11 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  inject,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -49,17 +42,16 @@ export class NavbarComponent implements OnInit {
   badge$ = '0';
   filteredProds: Product[] = [];
   shoppingCartProducts: Product[] = [];
-  likedProducts: Product[] = [];
+  likedProducts : Product[] = [];
   private fb: FormBuilder = inject(FormBuilder);
   credentials: FormGroup = this.fb.group({});
-  newUser: FormGroup = this.fb.group({});
+  newUser : FormGroup = this.fb.group({});
   private loginService = inject(LoginServiceService);
   private productService = inject(ProductsServiceService);
   private router = inject(Router);
   alertService = inject(AlertService);
   cookie = inject(CookieService);
   logedIn = this.cookie.get('Bearer') != '';
-  isAdmin = this.loginService.isAdmid();
   register = false;
   @ViewChild('fileInput') fileInput!: ElementRef;
   profileImg = '';
@@ -67,7 +59,7 @@ export class NavbarComponent implements OnInit {
   private mediaService = inject(MediaService);
   userFormData = new FormData();
 
-  triggerFileInput(): void {
+  triggerFileInput(): void {    
     this.fileInput.nativeElement.click();
   }
 
@@ -78,17 +70,25 @@ export class NavbarComponent implements OnInit {
           label: 'Logout',
           icon: 'pi pi-sign-out',
           escape: false,
-          command: () => {this.logout()},
+          command: () => {
+            this.cookie.deleteAll();
+            this.alertService.success('You have been logged out');
+            setTimeout(() => {
+              this.router.navigate(['/home']).then(() => {
+                location.reload();
+              });
+            }, 1000);
+          },
         },
       ];
-    } else {
+    }else{
       this.menuItems = [
         {
           label: 'Login',
           icon: 'pi pi-sign-in',
           escape: false,
           command: () => {
-            this.loginVisible = true;
+            this.loginVisible = true;                        
           },
         },
       ];
@@ -97,7 +97,7 @@ export class NavbarComponent implements OnInit {
     this.productService.getAllProducts().subscribe((res) => {
       this.filteredProds = res;
     });
-
+    
     this.credentials = this.fb.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]],
@@ -106,8 +106,8 @@ export class NavbarComponent implements OnInit {
     this.newUser = this.fb.group({
       username: ['', [Validators.required]],
       userMail: ['', [Validators.email, Validators.required]],
-      userPass: ['', [Validators.required]],
-    });
+      userPass: ['', [Validators.required]],      
+    })
 
     this.cartService.getCartLenght().subscribe((res) => {
       this.badge$ = res.toString();
@@ -137,30 +137,25 @@ export class NavbarComponent implements OnInit {
   }
 
   createUser() {
-    const role = 'USER';
+    const role = "USER";
     console.log(this.userFormData);
-    this.mediaService.uploadFile(this.userFormData).subscribe(
-      (res) => {
-        this.profileImg = res.url;
-      },
-      (error) => {
-        this.alertService.success('Error uploading image');
-      },
-      () => {
-        this.loginService
-          .createUser(
-            this.newUser.value.username,
-            this.newUser.value.userMail,
-            this.newUser.value.userPass,
-            this.profileImg,
-            role
-          )
-          .subscribe((res) => {
-            this.alertService.success('You have been registered, please login');
-            this.register = false;
-          });
-      }
-    );
+    this.mediaService.uploadFile(this.userFormData).subscribe((res) => {
+      this.profileImg = res.url;          
+    }, error => {
+      this.alertService.success('Error uploading image');
+    }, () => {
+      this.loginService.createUser(
+        this.newUser.value.username,
+        this.newUser.value.userMail,
+        this.newUser.value.userPass,
+        this.profileImg,
+        role
+        
+      ).subscribe((res) => {     
+        this.alertService.success('You have been registered, please login');
+        this.register = false;     
+      });
+    })
   }
 
   filterProducts(event: AutoCompleteCompleteEvent) {
@@ -182,7 +177,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([`/product/${productName}`]);
   }
 
-  showLikedModal() {
+  showLikedModal(){
     this.likedVisible = true;
     this.productService.getLikedProducts().subscribe((res) => {
       this.likedProducts = res;
@@ -198,25 +193,15 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  handleFileInputChange(event: Event): void {
+  handleFileInputChange(event: Event): void {    
     const input = event.target as HTMLInputElement;
     const files = input.files;
-    if (files) {
-      this.userFormData.append('file', files[0]);
-      this.alertService.success('Image uploaded successfully');
+    if (files) {      
+      this.userFormData.append('file', files[0]); 
+      this.alertService.success('Image uploaded successfully');         
       const reader = new FileReader();
       reader.onload = (e) => (this.previewImg = e.target?.result as string);
-      reader.readAsDataURL(files[0]);
+      reader.readAsDataURL(files[0]);      
     }
-  }
-
-  logout() {
-    this.cookie.deleteAll();
-    this.alertService.success('You have been logged out');
-    setTimeout(() => {
-      this.router.navigate(['/home']).then(() => {
-        location.reload();
-      });
-    }, 1000);
   }
 }
