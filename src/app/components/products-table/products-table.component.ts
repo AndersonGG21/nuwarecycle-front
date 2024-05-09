@@ -72,9 +72,7 @@ export class ProductsTableComponent implements OnInit {
   constructor(private graphQLService: GraphQLService) {}
 
   ngOnInit(): void {
-    // this.productService.getAllProducts().subscribe((products) => {
-    //   this.products = products;
-    // });
+    this.products = this.productService.getProductsJson();
 
     this.graphQLService.products$.subscribe((products) => {
       this.products = products;      

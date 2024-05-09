@@ -13,6 +13,7 @@ export interface Product {
   brand: string;
   rating: number;
   amount?: number;
+  comments?: Comment[];
 };
 
 export interface Comment {

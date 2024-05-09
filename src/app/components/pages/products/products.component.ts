@@ -26,6 +26,7 @@ type PriceRange = {
 })
 export class ProductsComponent implements OnInit, OnChanges {
   products: Product[] = [];
+  filteredProducts: Product[] = [];
   allProducts: Product[] = [];
   selectedCategory: any = null;
   selectedPrice: any;
@@ -87,24 +88,35 @@ export class ProductsComponent implements OnInit, OnChanges {
       this.allProducts = products;
     })
 
+    this.products = this.productService.getProductsJson();
+    this.allProducts = this.products;
+
+
+
     if (!this.category) {
       this.selectedCategory = this.categories[0];  
     }else{
       this.selectedCategory = this.category;
-      this.productService.getProductsByCategory(this.category).subscribe((products) => {
-        this.products = products;
-      });
+      
+      this.filteredProducts = this.products.filter((product) => product.category === this.category);
+      
+
+      // this.productService.getProductsByCategory(this.category).subscribe((products) => {
+      //   this.products = products;
+      // });      
+      
     }
     
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.category && this.category != 'All') {
-      this.productService.getProductsByCategory(this.category).subscribe((products) => {
-        this.products = products;
-      });
+      // this.productService.getProductsByCategory(this.category).subscribe((products) => {
+      //   this.products = products;
+      // });      
+      this.filteredProducts = this.products.filter((product) => product.category === this.category);
     } else {
-      this.products = this.allProducts;
+      this.filteredProducts = this.allProducts;
     }    
   }
 

@@ -143,10 +143,10 @@
       </div>
     </div>
   </aside>
-  <div class="md:w-[85%] sm:w-full" *ngIf="products.length > 0;else empty">
+  <div class="md:w-[85%] sm:w-full" *ngIf="filteredProducts.length > 0;else empty">
     <p-dataView
       #dv
-      [value]="products"
+      [value]="filteredProducts"
       [paginator]="true"
       [rows]="6"
       layout="grid"
