@@ -57,29 +57,28 @@ export class ProductsComponent implements OnInit, OnChanges {
   ];
 
   categories: string[] = [
-    'All',
-    'Computers', 
-    'SmartPhones', 
-    'Headphones', 
-    'Gaming Consoles', 
-    'Cameras', 
-    'Televisions', 
-    'Wearable Tech', 
-    'Laptops',
-    'Speakers',
-    'Smart Home'
+    'todo', 
+    'cultura', 
+    'deportiva', 
+    'bodega y servicios',
+    'gifs',
+    'tecnologia'
   ];
 
   prices: PriceRange[] = [
-    { name: 'All', key: 'all', min: 0 ,max: 100000},
-    { name: 'Under $50', key: 'under50', min: 0, max: 50},
-    { name: '$50 - $100', key: '50to100', min: 50, max: 100 },
-    { name: '$100 - $150', key: '100to150', min: 100, max: 150 },
-    { name: '$150 - $300', key: '150to300', min: 150, max: 300 },
-    { name: '$300 - $500', key: '300to500', min: 300, max: 500 },
-    { name: '$500 - $1000', key: '500to1000', min: 500, max: 1000 },
-    { name: 'Over $1000', key: 'over1000', min: 1000, max: 100000 },
+    { name: 'Arriba de $3000', key: 'min', min: 0 ,max: 10000},
+    { name: 'Entre $10.000 a $80.000', key: 'medium', min: 10000, max: 80000},
+    { name: 'Mas de $80.000', key: 'max', min: 80000, max: 100000000 },
   ];
+
+  helps: string[] = [
+    '¿Necesitas Ayuda?',
+    '¿Como Puedo Comprar?', 
+    '¿Metodo de Pago?', 
+    '¿Problemas Con el Envio?', 
+    'Terminos y Condiciones'
+  ]
+Math: any;
   
 
   ngOnInit(): void {
@@ -188,5 +187,22 @@ export class ProductsComponent implements OnInit, OnChanges {
     this.productService.likeProduct(liked).subscribe((response) => {
       this.alertService.success('Product added to your wishlist');
     });
+    
   }
+
+  formatNumber(price: number): string {
+    return Math.floor(price).toLocaleString('es-CO');
+  }
+
+  getProductsByCategorySura(category: string) {
+    if (category === 'todo') {
+      this.products = this.allProducts;
+    } else {
+      this.products = this.allProducts.filter(product => product.category === category);
+    }
+  }
+
+
+  
 }
+
