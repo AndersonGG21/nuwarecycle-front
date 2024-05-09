@@ -16,6 +16,8 @@ export class CheckoutComponent implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
   personalInfo: FormGroup = this.fb.group({});
   paymentInfo: FormGroup = this.fb.group({});
+  shipInfo: FormGroup = this.fb.group({});
+
 
   ngOnInit() {
     //Generate colombian cities
@@ -32,9 +34,13 @@ export class CheckoutComponent implements OnInit {
 
     this.personalInfo = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],
+      lastName: ['', [Validators.required, Validators.minLength(5)]],
+      cellphone: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
+    });
+
+    this.shipInfo = this.fb.group({
       address: ['', [Validators.required, Validators.minLength(5)]],
-      zipcode: ['', [Validators.required]],      
       selectedCity: new FormControl<City | null>(null),
     });
 

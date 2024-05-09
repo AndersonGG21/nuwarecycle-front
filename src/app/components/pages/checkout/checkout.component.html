@@ -2,7 +2,7 @@
   <section class="container max-w-screen-lg mx-auto">
     <div>
       <h2 class="font-semibold text-xl text-gray-600 mb-6">
-        Complete your information
+        Facturación
       </h2>
       <form
         class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6"
@@ -11,14 +11,15 @@
       >
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
           <div class="text-gray-600">
-            <p class="font-medium text-lg">Personal Details</p>
-            <p>Please fill out all the fields.</p>
+            <p class="font-medium text-lg">Información Personal</p>
+            <p>Por favor, llene todos los campos</p>
           </div>
 
           <div class="lg:col-span-2">
-            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-              <div class="md:col-span-5">
-                <label for="name">Name</label>
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-4">
+
+              <div class="md:col-span-2">
+                <label for="name">Nombre</label>
                 <input
                   type="text"
                   name="name"
@@ -32,58 +33,108 @@
                   *ngIf="personalInfo.get('name')?.errors?.['minlength']"
                 >
                   <span class="text-red-400"
-                    >Name must be at least 5 characters long.</span
+                    >El nombre debe tener al menos 5 caracteres.</span
                   >
                 </ng-container>
                 <ng-container
                   *ngIf="personalInfo.get('name')?.errors?.['required']"
                 >
-                  <span class="text-red-400">Name is required</span>
+                  <span class="text-red-400">El nombre es requerido.</span>
                 </ng-container>
               </div>
 
-              <div class="md:col-span-5">
-                <label for="email">Email Address</label>
+              <div class="md:col-span-2">
+                <label for="lastName">Apellido</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  value=""
+                  required
+                  formControlName="lastName"
+                />
+                <ng-container
+                  *ngIf="personalInfo.get('lastName')?.errors?.['minlength']"
+                >
+                  <span class="text-red-400"
+                    >El apellido debe tener al menos 5 caracteres.</span
+                  >
+                </ng-container>
+                <ng-container
+                  *ngIf="personalInfo.get('lastName')?.errors?.['required']"
+                >
+                  <span class="text-red-400">El apellido es requerido.</span>
+                </ng-container>
+              </div>
+
+              <div class="md:col-span-2">
+                <label for="cellphone">Telefono</label>
+                <input
+                  type="text"
+                  name="cellphone"
+                  id="cellphone"
+                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  value=""
+                  required
+                  formControlName="cellphone"
+                />
+                <ng-container
+                  *ngIf="personalInfo.get('cellphone')?.errors?.['minlength']"
+                >
+                  <span class="text-red-400"
+                    >El telefono debe tener al menos 8 caracteres.</span
+                  >
+                </ng-container>
+                <ng-container
+                  *ngIf="personalInfo.get('cellphone')?.errors?.['required']"
+                >
+                  <span class="text-red-400">El telefono es requerido.</span>
+                </ng-container>
+              </div>
+
+              <div class="md:col-span-2">
+                <label for="email">Correo electronico</label>
                 <input
                   type="text"
                   name="email"
                   id="email"
                   class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                  formControlName="email"
-                  placeholder="email@domain.com"
+                  value=""
                   required
+                  formControlName="email"
                 />
                 <ng-container
                   *ngIf="personalInfo.get('email')?.errors?.['email']"
                 >
-                  <span class="text-red-400">Please enter a valid email</span>
+                  <span class="text-red-400"
+                    >Ingrese un correo valido</span
+                  >
                 </ng-container>
                 <ng-container
                   *ngIf="personalInfo.get('email')?.errors?.['required']"
                 >
-                  <span class="text-red-400">Email is required</span>
+                  <span class="text-red-400">El correo es requerido.</span>
                 </ng-container>
               </div>
-              <div class="md:col-span-3">
-                <label for="address">Address / Street</label>
-                <input
-                  type="text"
-                  name="address"
-                  id="address"
-                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                  formControlName="address"
-                />
-                <ng-container
-                  *ngIf="personalInfo.get('address')?.errors?.['required']"
-                >
-                  <span class="text-red-400">Address is required</span>
-                </ng-container>
-                <ng-container
-                  *ngIf="personalInfo.get('address')?.errors?.['minlength']"
-                >
-                  <span class="text-red-400">Enter a valid address</span>
-                </ng-container>
-              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <form
+        class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6"
+        [formGroup]="shipInfo"
+        (Submit)="submit()"
+      >
+        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+          <div class="text-gray-600">
+            <p class="font-medium text-lg">Información de Envio</p>
+            <p>Por favor, llene todos los campos</p>
+          </div>
+
+          <div class="lg:col-span-2">
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-4">
               <div class="md:col-span-2">
                 <label for="country">Country / Region</label>
                 <p-dropdown
@@ -113,6 +164,7 @@
           </div>
         </div>
       </form>
+
       <form
         class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6"
         [formGroup]="paymentInfo"
