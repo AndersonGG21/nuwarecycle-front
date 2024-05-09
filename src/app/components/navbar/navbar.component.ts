@@ -94,9 +94,7 @@ export class NavbarComponent implements OnInit {
       ];
     }
 
-    this.productService.getAllProducts().subscribe((res) => {
-      this.filteredProds = res;
-    });
+    this.filteredProds = this.productService.getProductsJson();    
 
     this.credentials = this.fb.group({
       email: ['', [Validators.email, Validators.required]],
@@ -165,8 +163,9 @@ export class NavbarComponent implements OnInit {
 
   filterProducts(event: AutoCompleteCompleteEvent) {
     let filtered: any[] = [];
+    this.filteredProds = this.productService.getProductsJson();
     let query = event.query;
-
+    
     for (let i = 0; i < (this.filteredProds as any[]).length; i++) {
       let product = (this.filteredProds as any[])[i];
       if (product.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
@@ -174,7 +173,7 @@ export class NavbarComponent implements OnInit {
       }
     }
 
-    this.filteredProds = filtered;
+    this.filteredProds = filtered;    
   }
 
   redirectToProduct(): void {
