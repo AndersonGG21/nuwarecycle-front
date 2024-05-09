@@ -104,17 +104,6 @@ import { InMemoryCache } from '@apollo/client/core';
     provide: HTTP_INTERCEPTORS,
     useClass: HttpInterceptor,
     multi: true,
-  }, {
-    provide: APOLLO_OPTIONS,
-    useFactory: (httpLink: HttpLink) => {
-      return {
-        cache: new InMemoryCache(),
-        link: httpLink.create({
-          uri: 'http://localhost:8080/graphql',
-        }),
-      };
-    },
-    deps: [HttpLink]
   }],
   bootstrap: [AppComponent],
   
