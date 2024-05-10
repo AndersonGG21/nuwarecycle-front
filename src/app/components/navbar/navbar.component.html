@@ -97,11 +97,10 @@
         <a class="_o6689fn" href="/"
           ><div class="hidden md:flex items-center justify-center gap-2">
             <img
-              src="/src/assets/images/logo.png"
-              alt="NuwaRecycle Logo"
-              width="50"
+              src="/src/assets/images/sura-logo.png"
+              alt="Sura Logo"
+              width="100"
             />
-            <strong class="font-geist text-xl sm:text-base">NuwaRecycle</strong>
           </div>
           <div class="block md:hidden">
             <img
@@ -129,7 +128,7 @@
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-table"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Administrador</span>
           </a>
         </li>
 
@@ -140,7 +139,7 @@
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-home"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Home</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Inicio</span>
           </a>
         </li>
         <li class="cursor-pointer" (click)="redirectT('products')">
@@ -150,7 +149,7 @@
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-desktop"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Products</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Productos</span>
           </a>
         </li>
         <li class="cursor-pointer" (click)="redirectT('cart')">
@@ -160,7 +159,7 @@
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-shopping-cart"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Cart</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Carrito</span>
           </a>
         </li>
         <li class="cursor-pointer" (click)="likedVisible = true">
@@ -260,7 +259,7 @@
       </div>
     </div>
     <button
-      class="w-full px-2 py-4 text-sm font-bold leading-none text-white md:w-24 rounded-lg focus:ring-1 focus:ring-white bg-sunsetOrange-200 mt-2"
+      class="w-full px-2 py-4 text-sm font-bold leading-none text-white md:w-24 rounded-lg focus:ring-1 focus:ring-white bg-blue-500 mt-2"
       routerLink="cart"
       (click)="visible = false"
     >
@@ -269,8 +268,8 @@
   </ng-container>
 
   <ng-template #empty>
-    <p class="mt-2 text-[#E3E829]">
-     No tienes ningun producto en tu carrito.
+    <p class="mt-2 text-blue-500">
+      No tienes ningun producto en tu carrito.
     </p>
   </ng-template>
 </p-dialog>
@@ -320,7 +319,7 @@
       />
 
       <button
-        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
+        class="mx-auto w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-blue-500"
         type="submit"
       >
         Iniciar Sesión
@@ -413,7 +412,7 @@
       />
 
       <button
-        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
+        class="mx-auto w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-blue-500"
         type="submit"
         (click)="createUser()"
       >

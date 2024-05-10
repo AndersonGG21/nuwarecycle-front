@@ -72,8 +72,6 @@ Math: any;
     this.products = this.productService.getProductsJson();
     this.filteredProducts  = this.products;
 
-
-
     if (!this.category) {
       this.selectedCategory = this.categories[0]
     }else{
@@ -105,25 +103,23 @@ Math: any;
   }
 
   getProductsBetweenPrices(price : PriceRange) {
+    this.filteredProducts = this.allProducts;
     let {min, max} = price;
     if (min == 0 && max == 100000) {
-      this.products = this.allProducts;
-    } else {
-      this.productService.getProductsBetweenPrices(min, max).subscribe((products) => {
-        this.products = products;           
-      });
+      this.filteredProducts = this.allProducts;
+    } else {      
+      this.filteredProducts = this.products.filter((product) => product.price >= min && product.price <= max);
     }    
   }
 
   getProductsBetweenRange(min : number, max : number) {
+    this.filteredProducts = this.allProducts;
     min = min * 1000;
     max = max * 1000;
     if (min == 0 && max == 100000) {
-      this.products = this.allProducts;
+      this.filteredProducts = this.allProducts;
     } else {
-      this.productService.getProductsBetweenPrices(min, max).subscribe((products) => {
-        this.products = products;           
-      });
+      this.filteredProducts = this.products.filter((product) => product.price >= min && product.price <= max);
     }    
   }
 

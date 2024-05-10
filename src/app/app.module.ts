@@ -30,6 +30,7 @@ import { BadgeModule } from 'primeng/badge';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 
 //Components
@@ -52,6 +53,7 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
+import { FloatingChatbotComponent } from './components/floating-chatbot/floating-chatbot.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,8 @@ import { InMemoryCache } from '@apollo/client/core';
     AlertComponent,
     AdminDashComponent,
     ProductsTableComponent,
-    UsersTableComponent
+    UsersTableComponent,
+    FloatingChatbotComponent    
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,8 @@ import { InMemoryCache } from '@apollo/client/core';
     ReactiveFormsModule,
     HttpClientModule,
     TableModule,
-    ApolloModule    
+    ApolloModule,
+    OverlayPanelModule
   ],
   providers: [CookieService, {
     provide: HTTP_INTERCEPTORS,

@@ -1,0 +1,65 @@
+.floatingButtonWrap {
+    position: fixed;
+    bottom: 25px;
+    right: 45px;
+    z-index: 99999;
+}
+
+.floatingButtonInner {
+    display: flex;
+    align-items: center;
+}
+
+.floatingButton {
+    display: inline-block;
+    padding: 18px 40px; /* Ajusta el padding para alargar y achatarr el botón */
+    background-color: #0030a4;
+    color: #fff;
+    border-radius: 30px; /* Ajusta el radio de borde para hacerlo más redondeado */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 3px solid #E3E829; /* Agrega un borde de 2px sólido con el color especificado */
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+}
+
+.floatingButton:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-3px);
+}
+
+.floatingMenu {    
+    list-style: none;            
+    border-radius: 5px;    
+}
+
+.floatingMenu li {
+    margin-bottom: 10px;
+}
+
+.floatingMenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.floatingMenu li a:hover {
+    background-color: #f0f0f0;
+}
+
+::ng-deep .p-overlaypanel {
+    background-color: transparent;
+    border: none;
+    width: 250px;
+    z-index: 99999;        
+}	
+
+::ng-deep .p-overlaypanel-content {
+    padding: 0;    
+    z-index: 99999;
+}
