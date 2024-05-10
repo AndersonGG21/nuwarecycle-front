@@ -37,17 +37,51 @@ export class ProductsTableComponent implements OnInit {
   selectedCategory: any = null;
   productDialog = false;
   newProductDialog = false;
-  categories: string[] = [
-    'Computers',
-    'SmartPhones',
-    'Headphones',
-    'Gaming Consoles',
-    'Cameras',
-    'Televisions',
-    'Wearable Tech',
-    'Laptops',
-    'Speakers',
-    'Smart Home',
+  categories: any[] = [
+    {
+      name: 'Todos',
+      value: 'All'
+    },
+    {
+      name: 'Ropa',
+      value: 'Computers'
+    },
+    {
+      name: 'Celulares',
+      value: 'SmartPhones'
+    },
+    {
+      name: 'Audifonos',
+      value: 'Headphones'
+    },
+    {
+      name: 'Consolas',
+      value: 'Gaming Consoles'
+    },
+    {
+      name: 'Camaras',
+      value: 'Cameras'
+    },
+    {
+      name: 'Cultural',
+      value: 'Televisions'
+    },
+    {
+      name: 'Tecnologia Vestible',
+      value: 'Wearable Tech'
+    },
+    {
+      name: 'Laptops',
+      value: 'Laptops'
+    },
+    {
+      name: 'Bocinas',
+      value: 'Speakers'
+    },
+    {
+      name: 'Hogar Inteligente',
+      value: 'Smart Home'
+    }   
   ];
   product: Product = {
     name: '',

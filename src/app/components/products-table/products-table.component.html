@@ -12,25 +12,25 @@
   >
     <ng-template pTemplate="caption">
       <div class="flex flex-col align-items-center justify-content-between">
-        <h5 class="m-0">Manage Products</h5>
+        <h5 class="m-0">Gestionar Productos</h5>
         <button
           pRipple
           class="w-40 flex items-center justify-center select-none rounded-lg bg-green-500 py-3 px-3 gap-2 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           (click)="newProductDialog = true"
         >
           <i class="pi pi-plus"></i>
-          New Product
+          Nuevo Producto
         </button>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th style="min-width: 15rem">Name</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Category</th>        
+        <th style="min-width: 15rem">Nombre</th>
+        <th>Imagen</th>
+        <th>Precio</th>
+        <th>Categoria</th>        
         <!-- <th style="min-width: 10rem">Status</th> -->
-        <th>Actions</th>
+        <th>Acciones</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
@@ -180,13 +180,13 @@
 <p-dialog
   [(visible)]="newProductDialog"
   [style]="{ width: '450px' }"
-  header="Add Product"
+  header="Añadir Producto"
   [modal]="true"
 >
   <ng-template pTemplate="content">
     <div class="grid grid-cols-1 space-y-2">
       <label class="text-sm font-bold text-gray-500 tracking-wide"
-        >Upload 4 product's images</label
+        >Sube 4 imagenes del producto</label
       >
       <div class="flex items-center justify-center w-full">
         <label
@@ -207,7 +207,7 @@
               (click)="pImagesInput.click()"
             >
               <span class="text-blue-600 hover:underline"
-                >Select the images from your computer</span
+                >Seleccionar desde tu computadora</span
               >
             </button>
           </div>
@@ -230,14 +230,14 @@
     <button
       pButton
       pRipple
-      label="Confirm Images"
+      label="Confirmar imagenes"
       icon="pi pi-check"
       class="flex items-center justify-center select-none rounded-lg bg-green-500 py-3 px-6 text-center text-white align-middle font-geist-bold text-xs uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
       (click)="confirmImages()"
     ></button>
     <div class="field">
       <label for="npName" class="mb-2 text-sm text-start text-grey-900"
-        >Name</label
+        >Nombre</label
       >
       <input
         id="npName"
@@ -249,7 +249,7 @@
     </div>
     <div class="field">
       <label for="npBrand" class="mb-2 text-sm text-start text-grey-900"
-        >Brand</label
+        >Marca</label
       >
       <input
         id="npBrand"
@@ -261,7 +261,7 @@
     </div>
     <div class="mb-4">
       <label for="npDesc" class="mb-2 text-sm text-start text-grey-900"
-        >Description</label
+        >Descripción</label
       >
       <textarea
         id="npDesc"
@@ -276,7 +276,7 @@
 
     <div class="mb-4 flex flex-col gap-3">
       <label for="npStock" class="mb-2 text-sm text-start text-grey-900"
-        >Inventory Status</label
+        >Stock</label
       >
       <p-inputNumber
         [(ngModel)]="newProduct.stock"
@@ -299,23 +299,23 @@
       <div class="flex items-center gap-3" *ngFor="let category of categories">
         <p-radioButton
           name="category"
-          [value]="category"
+          [value]="category.value"
           [(ngModel)]="newProduct.category"
-          [inputId]="category"
+          [inputId]="category.value"
           class="border border-sunsetOrange-200 rounded-full"
         ></p-radioButton>
         <label
-          [for]="category"
+          [for]="category.value"
           class="text-zinc-900 text-sm font-medium self-stretch max-w-[305px] grow shrink-0 basis-auto"
         >
-          {{ category }}
+          {{ category.name }}
         </label>
       </div>
     </div>
 
     <div class="formgrid grid">
       <div class="field col">
-        <label for="npPrice">Price</label>
+        <label for="npPrice">Precio</label>
         <p-inputNumber
           id="npPrice"
           [(ngModel)]="newProduct.price"
