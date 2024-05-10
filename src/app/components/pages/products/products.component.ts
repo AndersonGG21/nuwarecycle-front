@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   selectedPrice: any;
   selectedBrands: string[] = [];
   rangeValues: number[] = [0, 50];
+  nameTitle: string = 'Todos los articulos'
   @Input() category?: string;
   private router = inject(Router);
   private cartService = inject(ShoppingCartService);
@@ -39,6 +40,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   private cookie = inject(CookieService);
   private alertService = inject(AlertService);
   layout: string = 'list';
+  
 
 
 
@@ -52,8 +54,8 @@ export class ProductsComponent implements OnInit, OnChanges {
   ];
 
   prices: PriceRange[] = [
-    { name: 'Arriba de $3000', key: 'min', min: 0 ,max: 10000},
-    { name: 'Entre $10.000 a $80.000', key: 'medium', min: 10000, max: 80000},
+    { name: 'Hasta $10000', key: 'min', min: 0 ,max: 10000},
+    { name: '10.000 a $80.000', key: 'medium', min: 10000, max: 80000},
     { name: 'Mas de $80.000', key: 'max', min: 80000, max: 100000000 },
   ];
 
@@ -65,12 +67,14 @@ export class ProductsComponent implements OnInit, OnChanges {
     'Terminos y Condiciones'
   ]
 Math: any;
+categoryName: any;
   
 
   ngOnInit(): void {    
 
     this.products = this.productService.getProductsJson();
     this.filteredProducts  = this.products;
+  
 
     if (!this.category) {
       this.selectedCategory = this.categories[0]
@@ -163,15 +167,21 @@ Math: any;
   }
 
   getProductsByCategorySura(category: string) {
+    this.nameTitle = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
     if (category === 'todo') {
-      console.log('test')
-      this.products = this.allProducts;
+      this.filteredProducts = this.products;
+    
     } else {
-      this.products = this.allProducts.filter(product => product.category === category);
-    }
+      this.filteredProducts = this.products.filter(product => product.category === category);
   }
-
-
-  
 }
 
+filterProductsByPrice(priceRange: PriceRange): void {
+  this.nameTitle = priceRange.name.charAt(0).toUpperCase() + priceRange.name.slice(1).toLowerCase();
+  this.filteredProducts = this.products.filter(product =>
+    product.price >= priceRange.min && product.price <= priceRange.max
+  );
+}
+
+
+}

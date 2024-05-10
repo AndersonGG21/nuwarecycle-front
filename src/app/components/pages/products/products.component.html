@@ -5,7 +5,7 @@
       <div class="flex flex-wrap gap-2 mt-6">
         <button
           *ngFor="let category of categories"
-          class="flex bg-[#004BE3] text-white px-2 py-1 items-center rounded-full text-sm uppercase"
+          class="flex bg-[#004BE3] text-white p-2 items-center rounded-full text-xs  uppercase"
           [ngClass]="{
             'hover:bg-[#60F8FF] hover:text-[#004BE3]':
               selectedCategory !== category
@@ -23,7 +23,7 @@
     >
       <h2 class="text-2xl">Precio</h2>
       <div class="flex flex-col gap-2 mt-4">
-        <button *ngFor="let price of prices" class="text-sm text-start">
+        <button *ngFor="let price of prices" class="text-sm text-start hover:text-[#004BE3]"  (click)="filterProductsByPrice(price)">
           {{ price.name }}
         </button>
       </div>
@@ -34,7 +34,7 @@
     >
       <h2 class="text-sm font-light">Soporte</h2>
       <div class="flex flex-col gap-2 mt-4">
-        <button *ngFor="let help of helps" class="text-sm text-start">
+        <button *ngFor="let help of helps" class="text-sm text-start hover:text-[#004BE3]">
           {{ help }}
         </button>
       </div>
@@ -44,18 +44,18 @@
   <div class="md:w-[90%] sm:w-full" *ngIf="products.length > 0; else empty">
     <p-dataView
       #dv
-      [value]="products"
+      [value]="filteredProducts"
       [paginator]="true"
       [rows]="6"
       layout="grid"
     >
       <ng-template pTemplate="header">
-        <div class="flex w-full justify-start">
-          <div class="text-4xl pl-24 2xl:pl-52 text-black font-bold">
-            Deportiva
+        <div class="flex w-full  flex-row mx-24 ">
+          <div class="flex text-4xl basis-2/3 2xl:ml-24 text-black font-bold">
+            {{nameTitle}}
           </div>
           <p-dataViewLayoutOptions
-            class="bg-transparent"
+            class="bg-transparent mx-11"
           ></p-dataViewLayoutOptions>
         </div>
       </ng-template>
@@ -128,7 +128,7 @@
           <div class="p-6">
             <div class="mb-2 flex items-center justify-between">
               <p
-                class="block text-3xl font-semibold leading-relaxed text-black antialiased"
+                class="block text-2xl font-semibold leading-relaxed text-black antialiased"
               >
                 {{ product.name }}
               </p>
@@ -154,6 +154,7 @@
                 pRipple
                 class="flex w-full select-none rounded-lg items-center bg-[#E3E829] p-2 text-center text-black align-middle text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
+                
                 (click)="addProduct(product)"
               >
                 <img

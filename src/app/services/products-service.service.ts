@@ -269,7 +269,7 @@ export class ProductsServiceService {
         name: 'Mascara Tigre Niño',
         description:
           'Tipo rompecabezas armable',
-        price:20000 ,
+        price:20000,
         category: 'gifs',
         stock: 22,
         image1: '/src/assets/images/componentEleven.png',
@@ -299,8 +299,8 @@ export class ProductsServiceService {
         rating: 0,
       },
       {
-        idProd: 14,
-        name: 'Computador. Sin garantía',
+        idProd: 13,
+        name: 'Computador',
         description:
           'Computador. Sin garantía de software y hardware. Una compra por año. Transporte lo asume el comprador.',
         price:100000 ,
@@ -316,11 +316,11 @@ export class ProductsServiceService {
         rating: 0,
       } ,
       {
-        idProd: 15,
+        idProd: 14,
         name: 'iPhone 13 Pro Max Extra',
         description:
           'Potente teléfono inteligente con cámara avanzada, procesador rápido y pantalla ProMotion.',
-        price: 1099.0,
+        price: 1099000,
         category: 'tecnologia',
         stock: 0,
         image1: '/src/assets/images/iphone13promax1.png',
@@ -333,11 +333,11 @@ export class ProductsServiceService {
         rating: 0,
       },
       {
-        idProd: 16,
+        idProd: 15,
         name: 'Dell XPS 13',
         description:
           'Portátil ultradelgado con pantalla InfinityEdge, procesador Intel Core i7 y SSD rápido.',
-        price: 1299.0,
+        price: 1299000,
         category: 'tecnologia',
         stock: 20,
         image1: '/src/assets/images/Dell_XPS_13_1.png',
@@ -350,11 +350,11 @@ export class ProductsServiceService {
         rating: 0,
       },
       {
-        idProd: 17,
+        idProd: 16,
         name: 'Sony WH-1000XM4',
         description:
           'Auriculares inalámbricos con cancelación de ruido adaptativa y calidad de sonido premium.',
-        price: 349.0,
+        price: 349000,
         category: 'tecnologia',
         stock: 40,
         image1: '/src/assets/images/Sony%20WH-1000XM4_1.png',
