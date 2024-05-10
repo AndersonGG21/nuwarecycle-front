@@ -1,21 +1,11 @@
-<nav
-  class="bg-white w-full flex relative justify-between items-center mx-auto px-8 h-20"
->
+<nav class="bg-white w-full flex relative justify-between items-center mx-auto px-8 h-20">
   <div class="inline-flex">
-    <a class="_o6689fn" href="/"
-      ><div class="hidden md:flex items-center justify-center gap-2">
-        <img
-          src="/src/assets/images/sura-logo.png"
-          alt="Sura Logo"
-          width="100"
-        />
+    <a class="_o6689fn" href="/">
+      <div class="hidden md:flex items-center justify-center gap-2">
+        <img src="/src/assets/images/sura-logo.png" alt="Sura Logo" width="100" />
       </div>
       <div class="block md:hidden">
-        <img
-          src="/src/assets/images/sura-logo.png"
-          alt="Sura Logo"
-          width="100"
-        />
+        <img src="/src/assets/images/sura-logo.png" alt="Sura Logo" width="100" />
       </div>
     </a>
   </div>
@@ -23,16 +13,10 @@
     <div class="inline-block">
       <div class="inline-flex items-center max-w-full relative">
         <li class="pi pi-search absolute ml-4"></li>
-        <p-autoComplete
-          placeholder="Buscar"
-          [required]="true"
-          [(ngModel)]="selectedProduct"
-          [suggestions]="filteredProds"
-          (completeMethod)="filterProducts($event)"
-          (onSelect)="redirectToProduct()"
+        <p-autoComplete placeholder="Buscar" [required]="true" [(ngModel)]="selectedProduct"
+          [suggestions]="filteredProds" (completeMethod)="filterProducts($event)" (onSelect)="redirectToProduct()"
           field="name"
-          ngClass="ng-autocomplete block w-[40vw] p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 rounded-full"
-        >
+          ngClass="ng-autocomplete block w-[40vw] p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-suraBlue-500 focus:border-suraBluering-suraBlue-500 rounded-full">
           <ng-template let-product pTemplate="item">
             <div class="flex items-center gap-2">
               <img src="{{ product.image1 }}" style="width: 58px" />
@@ -49,21 +33,14 @@
       <div class="flex mr-4 items-center">
         <div class="block relative">
           <div class="flex items-center h-5">
-            <button
-              (click)="showLikedModal()"
-              class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative"
-            >
+            <button (click)="showLikedModal()" class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative">
               <li class="pi pi-heart text-lg"></li>
             </button>
           </div>
         </div>
         <div class="block relative">
-          <p-button
-            type="button"
-            class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative"
-            (click)="showDialog()"
-            [badge]="badge$"
-          >
+          <p-button type="button" class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full relative"
+            (click)="showDialog()" [badge]="badge$">
             <div class="flex items-center h-5">
               <div class="_xpkakx">
                 <li class="pi pi-shopping-cart text-lg"></li>
@@ -77,14 +54,11 @@
         <li class="pi pi-bars text-lg"></li>
       </button>
       <button (click)="menu.toggle($event)" class="ml-6">
-        <p-avatar
-          [image]="
+        <p-avatar [image]="
             cookie.get('profileImg')
               ? cookie.get('profileImg')
               : '/src/assets/images/user-image-placeholder.png'
-          "
-          shape="circle"
-        ></p-avatar>
+          " shape="circle"></p-avatar>
       </button>
     </div>
   </div>
@@ -94,38 +68,26 @@
   <ng-template pTemplate="header">
     <header class="flex items-center justify-center h-14 border-b w-full">
       <div class="inline-flex w-full">
-        <a class="_o6689fn" href="/"
-          ><div class="hidden md:flex items-center justify-center gap-2">
-            <img
-              src="/src/assets/images/logo.png"
-              alt="NuwaRecycle Logo"
-              width="50"
-            />
-            <strong class="font-geist text-xl sm:text-base">NuwaRecycle</strong>
+        <a class="_o6689fn" href="/">
+          <div class="hidden md:flex items-center justify-center gap-2">
+            <img src="/src/assets/images/sura-logo.png" alt="Sura Logo" width="50" />
           </div>
           <div class="block md:hidden">
-            <img
-              src="/src/assets/images/logo.png"
-              alt="NuwaRecycle Logo"
-              width="50"
-            />
+            <img src="/src/assets/images/sura-logo.png" alt="Sura Logo" width="50" />
           </div>
         </a>
       </div>
     </header>
   </ng-template>
   <ng-template pTemplate="content">
-    <aside
-      class="overflow-y-auto overflow-x-hidden h-full flex flex-col justify-between"
-    >
+    <aside class="overflow-y-auto overflow-x-hidden h-full flex flex-col justify-between">
       <ul class="flex flex-col py-4">
         <li class="flex flex-row items-center h-8">
           <div class="text-sm font-light tracking-wide text-gray-500">Menu</div>
-        </li>        
+        </li>
         <li class="cursor-pointer" (click)="redirectT('dashboard')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
-          >
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-suraYellow-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-table"></i>
             </span>
@@ -135,42 +97,38 @@
 
         <li class="cursor-pointer" (click)="redirectT('home')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
-          >
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-suraYellow-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-home"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Home</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Inicio</span>
           </a>
         </li>
         <li class="cursor-pointer" (click)="redirectT('products')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
-          >
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-suraYellow-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-desktop"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Products</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Productos</span>
           </a>
         </li>
         <li class="cursor-pointer" (click)="redirectT('cart')">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
-          >
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-suraYellow-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-shopping-cart"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Cart</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Carrito</span>
           </a>
         </li>
         <li class="cursor-pointer" (click)="likedVisible = true">
           <a
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-[#E3E829] pr-6"
-          >
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-2 border-transparent hover:border-suraYellow-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
               <i class="pi pi-heart"></i>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Wishlist</span>
+            <span class="ml-2 text-sm tracking-wide truncate">Lista de deseos</span>
           </a>
         </li>
       </ul>
@@ -178,11 +136,7 @@
         <footer class="flex justify-between items-center w-full self-end">
           <div class="flex justify-center items-center space-x-2">
             <div>
-              <img
-                class="rounded-full w-10 h-10"
-                src="{{ cookie.get('profileImg') }}"
-                alt="avatar"
-              />
+              <img class="rounded-full w-10 h-10" src="{{ cookie.get('profileImg') }}" alt="avatar" />
             </div>
             <div class="flex justify-start flex-col items-start">
               <p class="cursor-pointer text-sm leading-5 text-black">
@@ -204,49 +158,25 @@
 </p-sidebar>
 
 <!-- Shopping Cart Modal -->
-<p-dialog
-  header="Tu carrito de compras"
-  [(visible)]="visible"
-  [modal]="true"
-  [style]="{ width: '40vw', 'max-height': '100vh', 'overflow-y': 'scroll' }"
-  [draggable]="false"
-  [resizable]="false"
-  position="topright"
->
+<p-dialog header="Tu carrito de compras" [(visible)]="visible" [modal]="true"
+  [style]="{ width: '40vw', 'max-height': '100vh', 'overflow-y': 'scroll' }" [draggable]="false" [resizable]="false"
+  position="topright">
   <ng-container *ngIf="shoppingCartProducts.length > 0; else empty">
-    <div
-      class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm"
-      *ngFor="let product of shoppingCartProducts"
-    >
-      <img
-        src="{{ product.image1 }}"
-        alt="Product{} thumbnail in Shopping cart"
-        width="90"
-        height="90"
-        class="rounded-lg bg-white"
-      />
+    <div class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm"
+      *ngFor="let product of shoppingCartProducts">
+      <img src="{{ product.image1 }}" alt="Product{} thumbnail in Shopping cart" width="90" height="90"
+        class="rounded-lg bg-white" />
       <div class="flex flex-col h-full items-start justify-center gap-2">
         <h2 class="w-56 font-geist-bold text-base line-height-4">
           {{ product.name }}
         </h2>
-        <span class="w-56 font-geist text-base line-height-4 text-gray-500"
-          >{{ product.description.substring(0, 50) }}...</span
-        >
+        <span class="w-56 font-geist text-base line-height-4 text-gray-500">{{ product.description.substring(0, 50)
+          }}...</span>
         <div class="flex flex-col">
           <label for="horizontal">Horizontal with Step</label>
-          <p-inputNumber
-            [(ngModel)]="product.amount"
-            [showButtons]="true"
-            buttonLayout="horizontal"
-            inputId="horizontal"
-            spinnerMode="horizontal"
-            [step]="1"
-            incrementButtonIcon="pi pi-plus"
-            decrementButtonIcon="pi pi-minus"
-            [min]="0"
-            [max]="100"
-            class="w-9"
-          >
+          <p-inputNumber [(ngModel)]="product.amount" [showButtons]="true" buttonLayout="horizontal"
+            inputId="horizontal" spinnerMode="horizontal" [step]="1" incrementButtonIcon="pi pi-plus"
+            decrementButtonIcon="pi pi-minus" [min]="0" [max]="100" class="w-9">
           </p-inputNumber>
         </div>
       </div>
@@ -256,222 +186,134 @@
         </button>
         <span class="font-geist-bold">{{
           product.price | currency : "USD"
-        }}</span>
+          }}</span>
       </div>
     </div>
     <button
-      class="w-full px-2 py-4 text-sm font-bold leading-none text-white md:w-24 rounded-lg focus:ring-1 focus:ring-white bg-blue-500 mt-2"
-      routerLink="cart"
-      (click)="visible = false"
-    >
+      class="w-full px-2 py-4 text-sm font-bold leading-none text-white md:w-24 rounded-lg focus:ring-1 focus:ring-white bg-suraBluering-suraBlue-500 mt-2"
+      routerLink="cart" (click)="visible = false">
       Ir al carrito
     </button>
   </ng-container>
 
   <ng-template #empty>
-    <p class="mt-2 text-blue-500">
+    <p class="mt-2 text-suraBluering-suraBlue-500">
       No tienes ningun producto en tu carrito.
     </p>
   </ng-template>
 </p-dialog>
 
 <!-- Login Modal -->
-<p-dialog
-  header="Bienvendio a Sura!"
-  [(visible)]="loginVisible"
-  [modal]="true"
-  [style]="{
+<p-dialog header="Bienvendio a Sura!" [(visible)]="loginVisible" [modal]="true" [style]="{
     width: '40vw',
     overflow: 'hidden',
     padding: '10px',
     height: 'auto'
-  }"
-  [draggable]="false"
-  [resizable]="false"
-  [breakpoints]="{ '960px': '75vw' }"
->
+  }" [draggable]="false" [resizable]="false" [breakpoints]="{ '960px': '75vw' }">
   <div class="flex items-center justify-center w-full lg:p-0" *ngIf="!register">
-    <form
-      [formGroup]="credentials"
-      (ngSubmit)="submit()"
-      class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
-    >
+    <form [formGroup]="credentials" (ngSubmit)="submit()"
+      class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl">
       <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">Inicio de Sesión</h3>
       <p class="mb-4 text-grey-700">Ingresa tu correo y contraseña</p>
-      <label for="email" class="mb-2 text-sm text-start text-grey-900"
-        >Correo*</label
-      >
-      <input
-        id="email"
-        type="email"
-        placeholder="mail@loopple.com"
-        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
-        formControlName="email"
-      />
-      <label for="password" class="mb-2 text-sm text-start text-grey-900"
-        >Contraseña*</label
-      >
-      <input
-        id="password"
-        type="password"
-        placeholder="Enter a password"
-        class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
-        formControlName="password"
-      />
+      <label for="email" class="mb-2 text-sm text-start text-grey-900">Correo*</label>
+      <input id="email" type="email" placeholder="mail@loopple.com"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-suraYetext-suraYellow-500"
+        formControlName="email" />
+      <label for="password" class="mb-2 text-sm text-start text-grey-900">Contraseña*</label>
+      <input id="password" type="password" placeholder="Enter a password"
+        class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-suraYetext-suraYellow-500"
+        formControlName="password" />
 
       <button
-        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
-        type="submit"
-      >
+        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-suraYetext-suraYellow-500"
+        type="submit">
         Iniciar Sesión
       </button>
       <p class="text-sm leading-relaxed text-grey-900">
         ¿No estás registrado?
-        <a
-          (click)="register = true"
-          class="font-bold text-grey-700 cursor-pointer"
-          >Crea una cuenta</a
-        >
+        <a (click)="register = true" class="font-bold text-grey-700 cursor-pointer">Crea una cuenta</a>
       </p>
     </form>
   </div>
 
   <ng-container *ngIf="register">
-    <form
-      [formGroup]="newUser"
-      class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl"
-    >
+    <form [formGroup]="newUser" class="flex flex-col w-full h-full p-6 text-center bg-white rounded-3xl">
       <h3 class="mb-3 text-4xl font-extrabold text-dark-grey-900">
         Crear una cuenta
       </h3>
       <div class="w-full h-28">
-        <input
-          type="file"
-          id="imageUpload"
-          name="imageUpload"
-          accept="image/*"
-          class="hidden"
-          (change)="handleFileInputChange($event)"
-          #fileInput
-        />
+        <input type="file" id="imageUpload" name="imageUpload" accept="image/*" class="hidden"
+          (change)="handleFileInputChange($event)" #fileInput />
         <div class="mx-auto w-24 text-center">
           <div class="relative w-24">
-            <span
-              class="w-24 h-24 rounded-full absolute flex items-center justify-center"
-              *ngIf="previewImg == ''; else prev"
-              >Sube una foto
+            <span class="w-24 h-24 rounded-full absolute flex items-center justify-center"
+              *ngIf="previewImg == ''; else prev">Sube una foto
             </span>
             <ng-template #prev>
-              <img
-                class="w-24 h-24 rounded-full absolute"
-                [src]="previewImg"
-                alt="Profile image"
-              />
+              <img class="w-24 h-24 rounded-full absolute" [src]="previewImg" alt="Profile image" />
             </ng-template>
             <button
               class="w-24 h-24 group hover:bg-gray-200 opacity-100 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500 border shadow-md"
-              (click)="triggerFileInput()"
-            >
-              <img
-                class="hidden group-hover:block w-8 absolute"
-                src="https://www.svgrepo.com/show/33565/upload.svg"
-                alt=""
-              />
+              (click)="triggerFileInput()">
+              <img class="hidden group-hover:block w-8 absolute" src="https://www.svgrepo.com/show/33565/upload.svg"
+                alt="" />
             </button>
           </div>
         </div>
       </div>
-      <label for="email" class="mb-2 text-sm text-start text-grey-900"
-        >Nombre*</label
-      >
-      <input
-        id="username"
-        type="text"
-        placeholder="Jhon Doe"
-        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
-        formControlName="username"
-      />
-      <label for="email" class="mb-2 text-sm text-start text-grey-900"
-        >Correo*</label
-      >
-      <input
-        id="email"
-        type="email"
-        placeholder="mail@loopple.com"
-        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
-        formControlName="userMail"
-      />
-      <label for="password" class="mb-2 text-sm text-start text-grey-900"
-        >Contraseña*</label
-      >
-      <input
-        id="password"
-        type="password"
-        placeholder="Enter a password"
-        class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-sunsetOrange-200"
-        formControlName="userPass"
-      />
+      <label for="email" class="mb-2 text-sm text-start text-grey-900">Nombre*</label>
+      <input id="username" type="text" placeholder="Jhon Doe"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-suraYetext-suraYellow-500"
+        formControlName="username" />
+      <label for="email" class="mb-2 text-sm text-start text-grey-900">Correo*</label>
+      <input id="email" type="email" placeholder="mail@loopple.com"
+        class="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none mb-7 placeholder:text-grey-700 text-black rounded-2xl border-2 border-gray-400 focus:border-suraYetext-suraYellow-500"
+        formControlName="userMail" />
+      <label for="password" class="mb-2 text-sm text-start text-grey-900">Contraseña*</label>
+      <input id="password" type="password" placeholder="Enter a password"
+        class="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none placeholder:text-grey-700 text-dark-grey-900 rounded-2xl border-2 border-gray-400 focus:border-suraYetext-suraYellow-500"
+        formControlName="userPass" />
 
       <button
-        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-sunsetOrange-200"
-        type="submit"
-        (click)="createUser()"
-      >
+        class="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-blue-600 focus:ring-1 focus:ring-white bg-suraYetext-suraYellow-500"
+        type="submit" (click)="createUser()">
         Crear cuenta
       </button>
       <p class="text-sm leading-relaxed text-grey-900">
         ¿Ya estás registrado?
-        <a
-          (click)="register = false"
-          class="font-bold text-grey-700 cursor-pointer"
-          >Inicia Sesión</a
-        >
+        <a (click)="register = false" class="font-bold text-grey-700 cursor-pointer">Inicia Sesión</a>
       </p>
     </form>
   </ng-container>
 </p-dialog>
 
 <!-- Liked Products Modal -->
-<p-dialog
-  header="Wishlist"
-  [(visible)]="likedVisible"
-  [modal]="true"
-  [style]="{ width: '40vw', 'max-height': '100vh', 'overflow-y': 'scroll' }"
-  [draggable]="false"
-  [resizable]="false"
-  position="topright"
->
+<p-dialog header="Wishlist" [(visible)]="likedVisible" [modal]="true"
+  [style]="{ width: '40vw', 'max-height': '100vh', 'overflow-y': 'scroll' }" [draggable]="false" [resizable]="false"
+  position="topright">
   <ng-container *ngIf="likedProducts.length > 0; else empty">
     <div
       class="flex w-full h-48 pl-0 items-center justify-between gap-4 border border-gray-200 shadow-sm cursor-pointer"
-      *ngFor="let product of likedProducts"
-      (click)="redirectToLikedProduct(product)"
-    >
-      <img
-        src="{{ product.image1 }}"
-        alt="Product{} thumbnail in Shopping cart"
-        width="90"
-        height="90"
-        class="rounded-lg bg-white"
-      />
+      *ngFor="let product of likedProducts" (click)="redirectToLikedProduct(product)">
+      <img src="{{ product.image1 }}" alt="Product{} thumbnail in Shopping cart" width="90" height="90"
+        class="rounded-lg bg-white" />
       <div class="flex flex-col h-full items-start justify-center gap-2">
         <h2 class="w-56 font-geist-bold text-base line-height-4">
           {{ product.name }}
         </h2>
-        <span class="w-56 font-geist text-base line-height-4 text-gray-500"
-          >{{ product.description.substring(0, 50) }}...</span
-        >
+        <span class="w-56 font-geist text-base line-height-4 text-gray-500">{{ product.description.substring(0, 50)
+          }}...</span>
       </div>
       <div class="flex flex-col justify-around items-center h-full pr-2">
         <span class="font-geist-bold">{{
           product.price | currency : "USD"
-        }}</span>
+          }}</span>
       </div>
     </div>
   </ng-container>
 
   <ng-template #empty>
-    <p class="mt-2 text-sunsetOrange-200">
+    <p class="mt-2 text-suraYellow-500">
       You don't have any product in your Wishlist
     </p>
   </ng-template>

@@ -19,7 +19,20 @@ module.exports = {
           900: '#0030A4',
           950: '#001B66'
         },
-        sunsetOrange : {
+        suraYellow: {
+          50: '#F9FCEA',
+          100: '#F2F9C8',
+          200: '#EBF593',
+          300: '#E5EF55',
+          400: '#E3E829',
+          500: '#D8D51A',
+          600: '#BAAA14',
+          700: '#957E13',
+          800: '#7C6317',
+          900: '#69511A',
+          950: '#3D2C0B'
+        },
+        sunsetOrange: {
           50: '#f2652260',
           100: '#f2652280',
           200: '#f26522',
@@ -35,7 +48,7 @@ module.exports = {
         'anybody-thin': ['AnybodyThin'],
         'geist': ['Geist'],
         'geist-bold': ['Geist-Bold'],
-        'geist-thin': ['Geist-Thin']              
+        'geist-thin': ['Geist-Thin']
       },
       backgroundImage: {
         // 'gradient-green': "url('/assets/images/green-gradient.png')",
