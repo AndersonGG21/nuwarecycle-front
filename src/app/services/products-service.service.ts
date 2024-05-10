@@ -299,7 +299,7 @@ export class ProductsServiceService {
         rating: 0,
       },
       {
-        idProd: 13,
+        idProd: 14,
         name: 'Computador. Sin garantía',
         description:
           'Computador. Sin garantía de software y hardware. Una compra por año. Transporte lo asume el comprador.',
@@ -316,7 +316,7 @@ export class ProductsServiceService {
         rating: 0,
       } ,
       {
-        idProd: 14,
+        idProd: 15,
         name: 'iPhone 13 Pro Max Extra',
         description:
           'Potente teléfono inteligente con cámara avanzada, procesador rápido y pantalla ProMotion.',
@@ -333,7 +333,7 @@ export class ProductsServiceService {
         rating: 0,
       },
       {
-        idProd: 15,
+        idProd: 16,
         name: 'Dell XPS 13',
         description:
           'Portátil ultradelgado con pantalla InfinityEdge, procesador Intel Core i7 y SSD rápido.',
@@ -350,7 +350,7 @@ export class ProductsServiceService {
         rating: 0,
       },
       {
-        idProd: 16,
+        idProd: 17,
         name: 'Sony WH-1000XM4',
         description:
           'Auriculares inalámbricos con cancelación de ruido adaptativa y calidad de sonido premium.',

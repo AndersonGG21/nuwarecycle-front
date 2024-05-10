@@ -40,21 +40,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   private alertService = inject(AlertService);
   layout: string = 'list';
 
-  brands: string[] = [
-    'All',
-    'Apple',
-    'Samsung',
-    'Huawei',
-    'Microsoft',
-    'Lenovo',
-    'Asus',
-    'Dell',
-    'Sony',
-    'Cannon',
-    'Nintendo',
-    'Google',
-    'LG'
-  ];
+
 
   categories: string[] = [
     'todo', 
@@ -182,6 +168,7 @@ Math: any;
 
   getProductsByCategorySura(category: string) {
     if (category === 'todo') {
+      console.log('test')
       this.products = this.allProducts;
     } else {
       this.products = this.allProducts.filter(product => product.category === category);
