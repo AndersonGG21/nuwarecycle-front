@@ -52,6 +52,7 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
+import { FloatingChatbotComponent } from './components/floating-chatbot/floating-chatbot.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { InMemoryCache } from '@apollo/client/core';
     AlertComponent,
     AdminDashComponent,
     ProductsTableComponent,
-    UsersTableComponent
+    UsersTableComponent,
+    FloatingChatbotComponent
   ],
   imports: [
     BrowserModule,

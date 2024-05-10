@@ -1,0 +1,19 @@
+<!-- floating-chatbot.component.html -->
+
+<div class="floatingButtonWrap" id="test">
+    <div class="floatingButtonInner">
+        <a class="floatingButton" (click)="toggleMenu()" href="javascript:void(0);" data-uw-rm-brl="PR"
+            data-uw-original-href="https://www.segurossura.com.co/paginas/personas.aspx#">
+            <span>Canales de contacto</span>
+        </a>
+        <ul class="floatingMenu" *ngIf="isMenuOpen">
+            <li>Chat con Tibot</li>
+            <li>Preguntas frecuentes</li>
+            <li>Llámanos</li>
+            <li>Comunícate por WhatsApp</li>
+            <li>Escríbenos tus PQRS</li>
+            <li>Puntos de atención</li>
+            <li>Preguntas COVID-19</li>
+        </ul>
+    </div>
+</div>
