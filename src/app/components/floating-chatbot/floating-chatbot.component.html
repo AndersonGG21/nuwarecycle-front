@@ -1,19 +1,64 @@
-<!-- floating-chatbot.component.html -->
+<div class="flex flex-col">
+  <div class="floatingButtonInner" (click)="op.toggle($event)">
+    <a
+      class="floatingButton cursor-pointer"      
+      data-uw-rm-brl="PR"
+      data-uw-original-href="https://www.segurossura.com.co/paginas/personas.aspx#"      
+    >
+      <span>Canales de contacto</span>
+    </a>
+  </div>
 
-<div class="floatingButtonWrap" id="test">
-    <div class="floatingButtonInner">
-        <a class="floatingButton" (click)="toggleMenu()" href="javascript:void(0);" data-uw-rm-brl="PR"
-            data-uw-original-href="https://www.segurossura.com.co/paginas/personas.aspx#">
-            <span>Canales de contacto</span>
-        </a>
-        <ul class="floatingMenu" *ngIf="isMenuOpen">
-            <li>Chat con Tibot</li>
-            <li>Preguntas frecuentes</li>
-            <li>Llámanos</li>
-            <li>Comunícate por WhatsApp</li>
-            <li>Escríbenos tus PQRS</li>
-            <li>Puntos de atención</li>
-            <li>Preguntas COVID-19</li>
-        </ul>
-    </div>
+  <p-overlayPanel #op>
+    <ng-template pTemplate="content">
+      <ul class="flex flex-col justify-between w-full h-full gap-2 text-sm">
+        <li
+          class="shadow-md shadow-blue-700 p-3 flex justify-between w-full items-center rounded-lg z-10 bg-white cursor-pointer hover:scale-95 transition-all ease-in"
+        >
+          <span>Chat con Tibot</span>
+          <i class="pi pi-comments text-blue-700" style="font-size: 20px"></i>
+        </li>
+        <li
+          class="shadow-md shadow-blue-700 p-3 flex justify-between w-full items-center rounded-lg z-10 bg-white cursor-pointer hover:scale-95 transition-all ease-in"
+        >
+          <span>Preguntas frecuentes</span>
+          <i class="pi pi-question-circle text-blue-700" style="font-size: 20px"></i>
+        </li>
+        <li
+          class="shadow-md shadow-blue-700 p-3 flex justify-between w-full items-center rounded-lg z-10 bg-white cursor-pointer hover:scale-95 transition-all ease-in"
+        >
+          <span>Llámanos</span>
+          <i class="pi pi-phone text-blue-700" style="font-size: 20px"></i>
+        </li>
+        <li
+          class="shadow-md shadow-blue-700 p-3 flex justify-between w-full items-center rounded-lg z-10 bg-white cursor-pointer hover:scale-95 transition-all ease-in"
+        >
+          <span>Comunícate por WhatsApp</span>
+          <i class="pi pi-whatsapp text-blue-700" style="font-size: 20px"></i>
+        </li>
+        <li
+          class="shadow-md shadow-blue-700 p-3 flex justify-between w-full items-center rounded-lg z-10 bg-white cursor-pointer hover:scale-95 transition-all ease-in"
+        >
+          <span>Escríbenos tus PQRS</span>
+          <i class="pi pi-file text-blue-700" style="font-size: 20px"></i>
+        </li>
+        <li
+          class="shadow-md shadow-blue-700 p-3 flex justify-between w-full items-center rounded-lg z-10 bg-white cursor-pointer hover:scale-95 transition-all ease-in"
+        >
+          <span>Puntos de atención</span>
+          <i class="pi pi-map-marker text-blue-700" style="font-size: 20px"></i>
+        </li>
+        <li
+          class="shadow-md shadow-blue-700 p-3 flex justify-between w-full items-center rounded-lg z-10 bg-white cursor-pointer hover:scale-95 transition-all ease-in"
+        >
+          <span>Preguntas COVID-19</span>
+          <i class="pi pi-at text-blue-700" style="font-size: 20px"></i>
+        </li>
+      </ul>
+    </ng-template>
+  </p-overlayPanel>
 </div>
+
+
+
+

@@ -56,23 +56,56 @@ export class ProductsComponent implements OnInit, OnChanges {
     'LG'
   ];
 
-  categories: string[] = [
-    'All',
-    'Computers', 
-    'SmartPhones', 
-    'Headphones', 
-    'Gaming Consoles', 
-    'Cameras', 
-    'Televisions', 
-    'Wearable Tech', 
-    'Laptops',
-    'Speakers',
-    'Smart Home'
+  categories: any[] = [
+    {
+      name: 'Todos',
+      value: 'All'
+    },
+    {
+      name: 'Ropa',
+      value: 'Computers'
+    },
+    {
+      name: 'Celulares',
+      value: 'SmartPhones'
+    },
+    {
+      name: 'Audifonos',
+      value: 'Headphones'
+    },
+    {
+      name: 'Consolas',
+      value: 'Gaming Consoles'
+    },
+    {
+      name: 'Camaras',
+      value: 'Cameras'
+    },
+    {
+      name: 'Cultural',
+      value: 'Televisions'
+    },
+    {
+      name: 'Tecnologia Vestible',
+      value: 'Wearable Tech'
+    },
+    {
+      name: 'Laptops',
+      value: 'Laptops'
+    },
+    {
+      name: 'Bocinas',
+      value: 'Speakers'
+    },
+    {
+      name: 'Hogar Inteligente',
+      value: 'Smart Home'
+    }   
   ];
 
   prices: PriceRange[] = [
-    { name: 'All', key: 'all', min: 0 ,max: 100000},
-    { name: 'Under $50', key: 'under50', min: 0, max: 50},
+    { name: 'Todos', key: 'all', min: 0 ,max: 100000},
+    { name: 'Menos de $50', key: 'under50', min: 0, max: 50},
     { name: '$50 - $100', key: '50to100', min: 50, max: 100 },
     { name: '$100 - $150', key: '100to150', min: 100, max: 150 },
     { name: '$150 - $300', key: '150to300', min: 150, max: 300 },
@@ -86,8 +119,6 @@ export class ProductsComponent implements OnInit, OnChanges {
 
     this.products = this.productService.getProductsJson();
     this.filteredProducts  = this.products;
-
-
 
     if (!this.category) {
       this.selectedCategory = this.categories[0]
@@ -120,25 +151,23 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   getProductsBetweenPrices(price : PriceRange) {
+    this.filteredProducts = this.allProducts;
     let {min, max} = price;
     if (min == 0 && max == 100000) {
-      this.products = this.allProducts;
-    } else {
-      this.productService.getProductsBetweenPrices(min, max).subscribe((products) => {
-        this.products = products;           
-      });
+      this.filteredProducts = this.allProducts;
+    } else {      
+      this.filteredProducts = this.products.filter((product) => product.price >= min && product.price <= max);
     }    
   }
 
   getProductsBetweenRange(min : number, max : number) {
+    this.filteredProducts = this.allProducts;
     min = min * 1000;
     max = max * 1000;
     if (min == 0 && max == 100000) {
-      this.products = this.allProducts;
+      this.filteredProducts = this.allProducts;
     } else {
-      this.productService.getProductsBetweenPrices(min, max).subscribe((products) => {
-        this.products = products;           
-      });
+      this.filteredProducts = this.products.filter((product) => product.price >= min && product.price <= max);
     }    
   }
 

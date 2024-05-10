@@ -4,7 +4,7 @@
       <h2
         class="text-zinc-900 text-base font-medium leading-[150%] uppercase self-stretch w-full -mr-5 font-geist-bold"
       >
-        Category
+        Categorias
       </h2>
       <div class="flex flex-col justify-center w-full gap-y-2">
         <div
@@ -12,18 +12,18 @@
           *ngFor="let category of categories"
         >
           <p-radioButton
-            name="category"
-            [value]="category"
+            name="category.name"
+            [value]="category.value"
             [(ngModel)]="selectedCategory"
-            [inputId]="category"
-            (onClick)="getProductsByCategory(category)"
+            [inputId]="category.name"
+            (onClick)="getProductsByCategory(category.value)"
             class="border border-[#E3E829] rounded-full"
           ></p-radioButton>
           <label
             [for]="category"
             class="text-zinc-900 text-sm font-medium self-stretch max-w-[305px] grow shrink-0 basis-auto"
           >
-            {{ category }}
+            {{ category.name }}
           </label>
         </div>
       </div>
@@ -34,7 +34,7 @@
       <h2
         class="text-zinc-900 text-base font-medium leading-[150%] uppercase self-stretch w-full -mr-5 font-geist-bold"
       >
-        Price Range
+        Rango de Precio
       </h2>
 
       <div class="flex flex-col justify-center w-full gap-y-4">
@@ -46,10 +46,10 @@
         ></p-slider>
         <div class="flex gap-3 w-full">
           <div class="border border-gray-300 w-1/2 rounded-md p-1">
-            Min price: {{ rangeValues[0] }} K
+            Minimo: {{ rangeValues[0] }} K
           </div>
           <div class="border border-gray-300 w-1/2 rounded-md p-1">
-            Max price: {{ rangeValues[1] }} K
+            Maximo: {{ rangeValues[1] }} K
           </div>
         </div>
       </div>
@@ -102,46 +102,7 @@
           <label [for]="brand" class="text-md">{{ brand }}</label>
         </div>
       </div>
-    </div>
-
-    <div
-      class="justify-center items-center rounded bg-white self-stretch flex w-full grow flex-col mt-6 px-5 py-8 border border-gray-200 shadow-md"
-    >
-      <a href="#">
-        <img
-          loading="lazy"
-          src="https://th.bing.com/th/id/OIP.S4cHwTWrfd6wpxawknqhGwHaH_?pid=ImgDet&rs=1"
-          alt="Product"
-          class="aspect-square object-cover object-center w-[180px] overflow-hidden self-center max-w-full"
-        />
-      </a>
-      <div
-        class="justify-center items-center self-center flex w-[248px] max-w-full flex-col mt-6"
-      >
-        <div class="justify-center items-center self-stretch flex flex-col">          
-          <h3
-            class="text-zinc-900 text-center text-2xl font-semibold leading-[133.333%] mt-2"
-          >
-            Heavy on Features. <br />
-            Light on Price.
-          </h3>
-        </div>
-        <div
-          class="justify-center items-start self-center flex w-[166px] max-w-full gap-2 mt-4"
-        >
-          <span
-            class="text-neutral-600 text-sm leading-[142.857%] self-center my-auto"
-          >
-            Only for:
-          </span>
-          <span
-            class="text-zinc-900 text-center text-base font-semibold items-center bg-amber-200 max-w-full px-3 py-1.5 rounded"
-          >
-            $299 USD
-          </span>
-        </div>
-      </div>
-    </div>
+    </div>    
   </aside>
   <div class="md:w-[85%] sm:w-full" *ngIf="filteredProducts.length > 0;else empty">
     <p-dataView
@@ -201,7 +162,7 @@
               (click)="likeProduct(product)"
             >
               <li class="pi pi-heart"></li>
-              Add to favorites
+              Añadir a favoritos
             </button>
             <button
               pRipple
@@ -210,7 +171,7 @@
               (click)="addProduct(product)"
             >
               <li class="pi pi-shopping-cart"></li>
-              Add to Cart
+              Añadir al carrito
             </button>
           </footer>
         </div>
@@ -259,7 +220,7 @@
               (click)="addProduct(product)"
             >
               <li class="pi pi-shopping-cart"></li>
-              Add to Cart
+              Añadir al carrito
             </button>
           </div>
         </div>

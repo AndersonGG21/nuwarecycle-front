@@ -30,6 +30,7 @@ import { BadgeModule } from 'primeng/badge';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 
 //Components
@@ -72,7 +73,7 @@ import { FloatingChatbotComponent } from './components/floating-chatbot/floating
     AdminDashComponent,
     ProductsTableComponent,
     UsersTableComponent,
-    FloatingChatbotComponent
+    FloatingChatbotComponent    
   ],
   imports: [
     BrowserModule,
@@ -100,7 +101,8 @@ import { FloatingChatbotComponent } from './components/floating-chatbot/floating
     ReactiveFormsModule,
     HttpClientModule,
     TableModule,
-    ApolloModule    
+    ApolloModule,
+    OverlayPanelModule
   ],
   providers: [CookieService, {
     provide: HTTP_INTERCEPTORS,
