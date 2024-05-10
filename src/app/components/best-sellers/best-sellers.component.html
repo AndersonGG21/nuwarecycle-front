@@ -2,43 +2,25 @@
   <h2 class="font-geist-bold text-4xl mb-4 uppercase">
     {{title}}
   </h2>
-  <p-carousel
-    [value]="products"
-    [numVisible]="3"
-    [numScroll]="3"
-    [circular]="false"
-    [responsiveOptions]="responsiveOptions"
-  >
+  <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false"
+    [responsiveOptions]="responsiveOptions">
     <ng-template let-product pTemplate="item">
-      <div
-        class="relative flex w-72 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border border-gray-200
-        hover:scale-105 transition-all hover:shadow-xl"
-      >                
-        <div
-          class="relative mx-2 mt-2 h-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
-        >
-          <img
-            src="{{ product.image1 }}"
-            class="h-full w-full object-cover cursor-pointer"
-            (click)="redirectToProduct(product)"
-          />
+      <div class="relative flex w-72 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border border-gray-200
+        hover:scale-105 transition-all hover:shadow-xl">
+        <div class="relative mx-2 mt-2 h-52 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
+          <img src="{{ product.image1 }}" class="h-full w-full object-cover cursor-pointer"
+            (click)="redirectToProduct(product)" />
         </div>
         <div class="p-6">
           <div class="mb-2 flex items-center justify-between">
-            <p
-              class="block font-geist-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
-            >
+            <p class="block font-geist-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
               {{ product.name }}
             </p>
-            <p
-              class="block font-geist-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased"
-            >
-              {{ product.price | currency: 'USD'  }}
+            <p class="block font-geist-bold text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
+              {{ product.price | currency: 'USD' }}
             </p>
           </div>
-          <p
-            class="block font-geist text-sm font-normal leading-normal text-gray-700 antialiased opacity-75"
-          >
+          <p class="block font-geist text-sm font-normal leading-normal text-gray-700 antialiased opacity-75">
             {{ product.description }}
           </p>
         </div>
@@ -46,12 +28,9 @@
           <button class="backdrop-blur z-10 rounded-full bg-[#E3E829/10] p-4" (click)="likeProduct(product)">
             <i class="pi pi-heart"></i>
           </button>
-          <button
-            pRipple
-            class="block w-full select-none rounded-lg bg-[#E3E829] py-3 px-6 text-center align-middle font-geist-bold text-xs font-bold uppercase text-black transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button"
-            (click)="addProduct(product)"
-          >
+          <button pRipple
+            class="block w-full select-none rounded-lg bg-suraYellow-500 py-3 px-6 text-center align-middle font-geist-bold text-xs font-bold uppercase text-black transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button" (click)="addProduct(product)">
             Añadir al carrito
           </button>
         </div>
