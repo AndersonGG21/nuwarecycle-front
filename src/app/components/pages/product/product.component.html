@@ -6,8 +6,8 @@
       [containerStyle]="{ 'max-width': '640px', position: 'relative' }"
       thumbnailsPosition="left"
     >
-      <ng-template pTemplate="item" let-item>
-        <img [src]="item" class="w-full h-full object-fill" />
+      <ng-template pTemplate="item"  let-item>
+        <img [src]="item" class="w-[600px] h-full  object-fill" />
       </ng-template>
       <ng-template pTemplate="thumbnail" let-item>
         <div class="flex justify-center w-[70px]" *ngIf="item != ''">

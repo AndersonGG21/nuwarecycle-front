@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   selectedPrice: any;
   selectedBrands: string[] = [];
   rangeValues: number[] = [0, 50];
+  nameTitle: string = 'Todos los articulos'
   @Input() category?: string;
   private router = inject(Router);
   private cartService = inject(ShoppingCartService);
@@ -39,86 +40,41 @@ export class ProductsComponent implements OnInit, OnChanges {
   private cookie = inject(CookieService);
   private alertService = inject(AlertService);
   layout: string = 'list';
+  
 
-  brands: string[] = [
-    'All',
-    'Apple',
-    'Samsung',
-    'Huawei',
-    'Microsoft',
-    'Lenovo',
-    'Asus',
-    'Dell',
-    'Sony',
-    'Cannon',
-    'Nintendo',
-    'Google',
-    'LG'
-  ];
 
-  categories: any[] = [
-    {
-      name: 'Todos',
-      value: 'All'
-    },
-    {
-      name: 'Ropa',
-      value: 'Computers'
-    },
-    {
-      name: 'Celulares',
-      value: 'SmartPhones'
-    },
-    {
-      name: 'Audifonos',
-      value: 'Headphones'
-    },
-    {
-      name: 'Consolas',
-      value: 'Gaming Consoles'
-    },
-    {
-      name: 'Camaras',
-      value: 'Cameras'
-    },
-    {
-      name: 'Cultural',
-      value: 'Televisions'
-    },
-    {
-      name: 'Tecnologia Vestible',
-      value: 'Wearable Tech'
-    },
-    {
-      name: 'Laptops',
-      value: 'Laptops'
-    },
-    {
-      name: 'Bocinas',
-      value: 'Speakers'
-    },
-    {
-      name: 'Hogar Inteligente',
-      value: 'Smart Home'
-    }   
+
+  categories: string[] = [
+    'todo', 
+    'cultura', 
+    'deportiva', 
+    'bodega y servicios',
+    'gifs',
+    'tecnologia'
   ];
 
   prices: PriceRange[] = [
-    { name: 'Todos', key: 'all', min: 0 ,max: 100000},
-    { name: 'Menos de $50', key: 'under50', min: 0, max: 50},
-    { name: '$50 - $100', key: '50to100', min: 50, max: 100 },
-    { name: '$100 - $150', key: '100to150', min: 100, max: 150 },
-    { name: '$150 - $300', key: '150to300', min: 150, max: 300 },
-    { name: '$300 - $500', key: '300to500', min: 300, max: 500 },
-    { name: '$500 - $1000', key: '500to1000', min: 500, max: 1000 },
-    { name: 'Over $1000', key: 'over1000', min: 1000, max: 100000 },
+    { name: 'Hasta $10000', key: 'min', min: 0 ,max: 10000},
+    { name: '10.000 a $80.000', key: 'medium', min: 10000, max: 80000},
+    { name: 'Mas de $80.000', key: 'max', min: 80000, max: 100000000 },
   ];
+
+  helps: string[] = [
+    '¿Necesitas Ayuda?',
+    '¿Como Puedo Comprar?', 
+    '¿Metodo de Pago?', 
+    '¿Problemas Con el Envio?', 
+    'Terminos y Condiciones'
+  ]
+Math: any;
+categoryName: any;
   
 
   ngOnInit(): void {    
 
     this.products = this.productService.getProductsJson();
     this.filteredProducts  = this.products;
+  
 
     if (!this.category) {
       this.selectedCategory = this.categories[0]
@@ -203,5 +159,29 @@ export class ProductsComponent implements OnInit, OnChanges {
     this.productService.likeProduct(liked).subscribe((response) => {
       this.alertService.success('Product added to your wishlist');
     });
+    
   }
+
+  formatNumber(price: number): string {
+    return Math.floor(price).toLocaleString('es-CO');
+  }
+
+  getProductsByCategorySura(category: string) {
+    this.nameTitle = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+    if (category === 'todo') {
+      this.filteredProducts = this.products;
+    
+    } else {
+      this.filteredProducts = this.products.filter(product => product.category === category);
+  }
+}
+
+filterProductsByPrice(priceRange: PriceRange): void {
+  this.nameTitle = priceRange.name.charAt(0).toUpperCase() + priceRange.name.slice(1).toLowerCase();
+  this.filteredProducts = this.products.filter(product =>
+    product.price >= priceRange.min && product.price <= priceRange.max
+  );
+}
+
+
 }
